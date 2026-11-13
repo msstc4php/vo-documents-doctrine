@@ -35,7 +35,8 @@ TypeRegistrar::registerAll();
 ```
 
 With Symfony, map `TypeRegistrar::types()` (name => class) under `doctrine.dbal.types` or
-`doctrine_mongodb.types`. `Odm\TypeRegistrar` has the same API and the same names. In `doctrine.yaml` list the types you use (`types()` gives the full name => class map):
+`doctrine_mongodb.types`. `Odm\TypeRegistrar` has the same API and the same names. In `doctrine.yaml`, list the types
+you use; `types()` gives the full name => class map:
 
 ```yaml
 doctrine:
@@ -59,7 +60,8 @@ private PersonName $name;
 
 A string type stores the canonical form (digits only for numbers, upper case for AU licence numbers), never the
 masked or formatted one. A composite stores the codec payload of the value object: JSON text in an ORM column, a
-sub-document in ODM (each type carries its own codec, so no mapper setup is needed). An invalid stored value throws the value object's own exception, whose message never contains it.
+sub-document in ODM (each type carries its own codec, so no mapper setup is needed). An invalid stored value throws
+the value object's own exception, whose message never contains it.
 
 ## Types
 
@@ -91,5 +93,6 @@ sub-document in ODM (each type carries its own codec, so no mapper setup is need
 | `vod_ru_person_name` | `Name\RU\PersonName` | CLOB (JSON) | sub-document |
 | `vod_ru_snils` | `Document\RU\Snils` | VARCHAR(11) | string |
 
-Column lengths: string types use the longest accepted form; name columns use `AbstractNamePart::MAX_LENGTH` (100) for name parts and
+Column lengths: string types use the longest accepted form; name columns use `AbstractNamePart::MAX_LENGTH` (100) for
+name parts and
 `Icao\PersonName::MAX_LENGTH` (255) for the ICAO name.
