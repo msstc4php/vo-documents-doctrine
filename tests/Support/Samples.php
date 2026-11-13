@@ -97,8 +97,8 @@ final class Samples
         ];
         yield 'au person name with latin override' => [
             'vod_au_person_name',
-            new AuPersonName(AuFamilyName::from('Smith'), AuGivenName::from('Jane'), IcaoPersonName::from('SMITH<<JANE')),
-            ['family' => 'Smith', 'given' => 'Jane', 'latin' => 'SMITH<<JANE'],
+            new AuPersonName(AuFamilyName::from('Müller'), AuGivenName::from('Zoë'), IcaoPersonName::from('MULLER<<ZOE')),
+            ['family' => 'Müller', 'given' => 'Zoë', 'latin' => 'MULLER<<ZOE'],
         ];
     }
 

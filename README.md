@@ -94,5 +94,4 @@ the value object's own exception, whose message never contains it.
 | `vod_ru_snils` | `Document\RU\Snils` | VARCHAR(11) | string |
 
 Column lengths: string types use the longest accepted form; name columns use `AbstractNamePart::MAX_LENGTH` (100) for
-name parts and
-`Icao\PersonName::MAX_LENGTH` (255) for the ICAO name.
+name parts and `Icao\PersonName::MAX_LENGTH` (255) for the ICAO name.

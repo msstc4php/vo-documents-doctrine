@@ -113,7 +113,7 @@ final class OrmRoundTripTest extends TestCase
 
     public function testAustralianLicenceAndPersonNameSurviveAFlushAndReload(): void
     {
-        $name = new AuPersonName(AuFamilyName::from('Smith'), AuGivenName::from('Jane'), IcaoPersonName::from('SMITH<<JANE'));
+        $name = new AuPersonName(AuFamilyName::from('Müller'), AuGivenName::from('Zoë'), IcaoPersonName::from('MULLER<<ZOE'));
         $this->entityManager->persist(new AuPerson(NswDriverLicenceNumber::from('ab123456'), $name));
         $this->entityManager->flush();
         $this->entityManager->clear();
@@ -123,7 +123,7 @@ final class OrmRoundTripTest extends TestCase
         self::assertInstanceOf(AuPerson::class, $person);
         self::assertSame('AB123456', (string) $person->licence);
         self::assertTrue($name->equals($person->name));
-        self::assertSame('SMITH<<JANE', $person->name->latinOverride()?->value);
+        self::assertSame('MULLER<<ZOE', $person->name->latinOverride()?->value);
         self::assertSame(['AB123456'], $this->connection->fetchFirstColumn('SELECT licence FROM au_person'));
     }
 }
