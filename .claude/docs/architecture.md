@@ -16,5 +16,6 @@ requires, per branch, exactly one registered type for every non-abstract, non-`I
 `ValueObject` (string ones directly; others must have a codec in `Codecs::all()`), and no type for anything else.
 A class added to `vo-documents` without a type here fails the suite after the next `composer update`.
 
-Class names are flat and country-prefixed (`RuSnilsType`, `AuNswDriverLicenceNumberType`) because `FamilyName` and
-`GivenName` exist in both `Name\RU` and `Name\AU`.
+Class names are flat and country-prefixed (`RuSnilsType`, `AuNswDriverLicenceNumberType`) because `FamilyName`,
+`GivenName` and `PersonName` exist in every `Name\<CC>` namespace. Enums and `@internal` helper classes
+(`DE\SerialNumberFormat`, `ES\ControlLetter`, `GB\NhsCheckDigit`) are not value objects and have no type.

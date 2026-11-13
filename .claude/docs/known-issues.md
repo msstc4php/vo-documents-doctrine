@@ -46,3 +46,6 @@ for name columns with a unique index; the types do not set one, because Doctrine
 platform-specific.
 
 - ORM 3.3 (the lowest supported) has no `Configuration::enableNativeLazyObjects()`; the ORM integration test enables native lazy objects only on ORM >= 3.4 (checked with `InstalledVersions`, because PHPStan at highest deps reports `method_exists` as always true).
+
+- **Optional given name.** `Name\NL`, `Name\CH` and `Name\GB` `PersonName` accept a null `given`, so `{"family":"X"}` is a valid
+  payload for them; the wrong-shape tests use an unknown key (`surname`) instead.

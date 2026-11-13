@@ -19,7 +19,47 @@ use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\AuTasDriverLicenceNumberType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\AuTaxFileNumberType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\AuVicDriverLicenceNumberType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\AuWaDriverLicenceNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\ChAhvNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\ChDriverLicenceNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\ChFamilyNameType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\ChGivenNameType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\ChIdentityDocumentNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\DeFamilyNameType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\DeGivenNameType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\DeIdentityCardNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\DePassportNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\DePensionInsuranceNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\DeTaxIdentificationNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\EsDniType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\EsFamilyNameType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\EsGivenNameType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\EsNieType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\EsSocialSecurityNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\FrDriverLicenceNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\FrFamilyNameType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\FrGivenNameType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\FrLegacyIdentityCardNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\FrNirType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\FrPassportNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\FrTaxIdentificationNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\GbChiNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\GbFamilyNameType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\GbGivenNameType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\GbGreatBritainDriverLicenceNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\GbHealthAndCareNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\GbNationalInsuranceNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\GbNhsNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\GbNorthernIrelandDriverLicenceNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\GbPassportNumberType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\IcaoPersonNameType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\ItFamilyNameType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\ItFiscalCodeType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\ItGivenNameType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\ItPassportNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\NlBsnType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\NlFamilyNameType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\NlGivenNameType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\NlIdentityDocumentNumberType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\RuDriverLicenceNumberType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\RuFamilyNameType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\RuGivenNameType;
@@ -30,6 +70,10 @@ use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\RuOmsPolicyNumberType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\RuPassportIssuingUnitCodeType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\RuPatronymicType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\RuSnilsType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\TrFamilyNameType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\TrGivenNameType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\TrIdentityNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\TrPassportNumberType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\TypeRegistrar;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Tests\Support\Samples;
 use MSSTC4PHP\ValueObject\Exception\InvalidValueObjectException;
@@ -61,6 +105,50 @@ use PHPUnit\Framework\TestCase;
 #[CoversClass(RuPatronymicType::class)]
 #[CoversClass(RuSnilsType::class)]
 #[CoversClass(IcaoPersonNameType::class)]
+#[CoversClass(DeIdentityCardNumberType::class)]
+#[CoversClass(DePassportNumberType::class)]
+#[CoversClass(DePensionInsuranceNumberType::class)]
+#[CoversClass(DeTaxIdentificationNumberType::class)]
+#[CoversClass(FrDriverLicenceNumberType::class)]
+#[CoversClass(FrLegacyIdentityCardNumberType::class)]
+#[CoversClass(FrNirType::class)]
+#[CoversClass(FrPassportNumberType::class)]
+#[CoversClass(FrTaxIdentificationNumberType::class)]
+#[CoversClass(ItFiscalCodeType::class)]
+#[CoversClass(ItPassportNumberType::class)]
+#[CoversClass(EsDniType::class)]
+#[CoversClass(EsNieType::class)]
+#[CoversClass(EsSocialSecurityNumberType::class)]
+#[CoversClass(NlBsnType::class)]
+#[CoversClass(NlIdentityDocumentNumberType::class)]
+#[CoversClass(ChAhvNumberType::class)]
+#[CoversClass(ChDriverLicenceNumberType::class)]
+#[CoversClass(ChIdentityDocumentNumberType::class)]
+#[CoversClass(GbChiNumberType::class)]
+#[CoversClass(GbGreatBritainDriverLicenceNumberType::class)]
+#[CoversClass(GbHealthAndCareNumberType::class)]
+#[CoversClass(GbNationalInsuranceNumberType::class)]
+#[CoversClass(GbNhsNumberType::class)]
+#[CoversClass(GbNorthernIrelandDriverLicenceNumberType::class)]
+#[CoversClass(GbPassportNumberType::class)]
+#[CoversClass(TrIdentityNumberType::class)]
+#[CoversClass(TrPassportNumberType::class)]
+#[CoversClass(DeFamilyNameType::class)]
+#[CoversClass(DeGivenNameType::class)]
+#[CoversClass(FrFamilyNameType::class)]
+#[CoversClass(FrGivenNameType::class)]
+#[CoversClass(ItFamilyNameType::class)]
+#[CoversClass(ItGivenNameType::class)]
+#[CoversClass(EsFamilyNameType::class)]
+#[CoversClass(EsGivenNameType::class)]
+#[CoversClass(NlFamilyNameType::class)]
+#[CoversClass(NlGivenNameType::class)]
+#[CoversClass(ChFamilyNameType::class)]
+#[CoversClass(ChGivenNameType::class)]
+#[CoversClass(GbFamilyNameType::class)]
+#[CoversClass(GbGivenNameType::class)]
+#[CoversClass(TrFamilyNameType::class)]
+#[CoversClass(TrGivenNameType::class)]
 #[CoversClass(TypeRegistrar::class)]
 final class StringTypesTest extends TestCase
 {
