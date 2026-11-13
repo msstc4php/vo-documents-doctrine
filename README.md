@@ -1,7 +1,8 @@
 # msstc4php/vo-documents-doctrine
 
 Doctrine ORM and MongoDB ODM types for [`msstc4php/vo-documents`](https://github.com/msstc4php/vo-documents):
-25 types per branch (identity document numbers, name parts, Latin ICAO names and two composite person names).
+77 types per branch (identity document numbers, name parts, Latin ICAO names and one composite person name per country
+of RU, AU, DE, FR, IT, ES, NL, CH, GB and TR).
 Backed enums (`DriverLicenceCategory`, `Jurisdiction`, `Sex`) need no type: map them with `enumType`.
 
 No framework is a runtime dependency. Install the Doctrine stack you actually use; the other branch never loads.
