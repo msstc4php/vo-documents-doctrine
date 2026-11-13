@@ -1,8 +1,8 @@
 # msstc4php/vo-documents-doctrine
 
 Doctrine ORM and MongoDB ODM types for [`msstc4php/vo-documents`](https://github.com/msstc4php/vo-documents):
-77 types per branch (identity document numbers, name parts, Latin ICAO names and one composite person name per country
-of RU, AU, DE, FR, IT, ES, NL, CH, GB and TR).
+77 types per branch: identity document numbers, name parts, Latin ICAO names, and the composite person name of each
+country (RU, AU, DE, FR, IT, ES, NL, CH, GB and TR).
 Backed enums (`DriverLicenceCategory`, `Jurisdiction`, `Sex`) need no type: map them with `enumType`.
 
 No framework is a runtime dependency. Install the Doctrine stack you actually use; the other branch never loads.
@@ -59,8 +59,8 @@ private Snils $snils;
 private PersonName $name;
 ```
 
-A string type stores the canonical form (digits only for numbers, upper case for AU licence numbers), never the
-masked or formatted one. A composite stores the codec payload of the value object: JSON text in an ORM column, a
+A string type stores the canonical upper-case form as each document defines it (digits, or letters and digits), never
+the masked or formatted one. A composite stores the codec payload of the value object: JSON text in an ORM column, a
 sub-document in ODM (each type carries its own codec, so no mapper setup is needed). An invalid stored value throws
 the value object's own exception, whose message never contains it.
 

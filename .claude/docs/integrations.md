@@ -82,7 +82,8 @@ Type names are `vod_<cc>_<snake_name>` (`icao` for `Icao\PersonName`); the same 
 | `vod_tr_passport_number` | `Document\TR\PassportNumber` | VARCHAR(9) | string |
 | `vod_tr_person_name` | `Name\TR\PersonName` | CLOB (JSON) | sub-document |
 
-- Document numbers store the canonical digits (AU licences: upper-case letters and digits). Length = longest canonical form.
+- Document numbers store the canonical upper-case form as each document defines it (digits, or letters and digits).
+  Length = longest canonical form.
 - Name parts use `AbstractNamePart::MAX_LENGTH` (100), `Icao\PersonName` uses `Icao\PersonName::MAX_LENGTH` (255); the
   columns reference the constants, so they follow `vo-documents`.
 - Composite person names store the codec payload `{family, given, [patronymic,] latin}`; `latin` is only an override,

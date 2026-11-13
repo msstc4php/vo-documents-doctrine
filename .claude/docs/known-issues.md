@@ -8,6 +8,12 @@ has only a local `origin`), and `^0.1` also needs a `v0.1.x` tag. Until the owne
 tags a release, every Composer-based CI job fails at `composer update`. Locally use
 `COMPOSER=composer-local.json composer update --ignore-platform-req=php` (path repositories, gitignored profile).
 
+**Release note (owner):** the bridge maps the DE, FR, IT, ES, NL, CH, GB and TR classes (plan 2) and the shared
+`Name\Latin` bases, so its lower bound on `msstc4php/vo-documents` must be the first tag that contains them. If
+`v0.1.0` is tagged without them, tag them as `v0.2.0` and raise `composer.json` (and the `dev-main as …` alias of
+`composer-ci.json`) to `^0.2` in the same change; otherwise `composer update --prefer-lowest` resolves a release
+without the classes and the types fail to load.
+
 ## ODM integration test not run locally
 
 No MongoDB server is available in the development sandbox, so `OdmRoundTripTest` is skipped there; it runs in CI
