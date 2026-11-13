@@ -167,6 +167,8 @@ final class Samples
         yield 'gb given name' => ['vod_gb_given_name', GbGivenName::from('S' . \str_repeat('m', AbstractNamePart::MAX_LENGTH - 1)), AbstractNamePart::MAX_LENGTH, self::BAD_NAME];
         yield 'tr family name' => ['vod_tr_family_name', TrFamilyName::from('S' . \str_repeat('m', AbstractNamePart::MAX_LENGTH - 1)), AbstractNamePart::MAX_LENGTH, self::BAD_NAME];
         yield 'tr given name' => ['vod_tr_given_name', TrGivenName::from('S' . \str_repeat('m', AbstractNamePart::MAX_LENGTH - 1)), AbstractNamePart::MAX_LENGTH, self::BAD_NAME];
+        yield 'tr family name multibyte' => ['vod_tr_family_name', TrFamilyName::from('İ' . \str_repeat('ı', AbstractNamePart::MAX_LENGTH - 1)), AbstractNamePart::MAX_LENGTH, self::BAD_NAME];
+        yield 'fr given name multibyte' => ['vod_fr_given_name', FrGivenName::from('É' . \str_repeat('é', AbstractNamePart::MAX_LENGTH - 1)), AbstractNamePart::MAX_LENGTH, self::BAD_NAME];
         yield 'icao person name' => ['vod_icao_person_name', IcaoPersonName::from(\str_repeat('A', 127) . '<<' . \str_repeat('B', IcaoPersonName::MAX_LENGTH - 129)), IcaoPersonName::MAX_LENGTH, self::BAD_NAME];
     }
 

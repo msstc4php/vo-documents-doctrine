@@ -100,14 +100,27 @@ final class CompositeTypesTest extends TestCase
     #[DataProviderExternal(Samples::class, 'composites')]
     public function testRefusesAnInvalidNameWithoutEchoingIt(string $name, ValueObject $vo, array $payload): void
     {
-        $stored = ['family' => 'ZZQQ9'] + $payload;
+        $stored = [\array_key_first($payload) => 'ZZQQ9'] + $payload;
 
         try {
             Type::getType($name)->convertToPHPValue($stored);
             self::fail('An invalid stored name was accepted.');
         } catch (InvalidValueObjectException $exception) {
             self::assertStringNotContainsString('ZZQQ9', $exception->getMessage());
+            self::assertStringContainsString('name', \strtolower($exception->getMessage()));
         }
+    }
+
+    /**
+     * @param array<string, string|null> $payload
+     */
+    #[DataProviderExternal(Samples::class, 'composites')]
+    public function testRefusesAMissingRequiredKey(string $name, ValueObject $vo, array $payload): void
+    {
+        unset($payload[\array_key_first($payload)]);
+        $this->expectException(InvalidArgumentException::class);
+
+        Type::getType($name)->convertToPHPValue($payload);
     }
 
     #[DataProviderExternal(Samples::class, 'compositeNames')]
