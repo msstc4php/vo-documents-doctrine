@@ -136,14 +136,17 @@ final class CompositeTypesTest extends TestCase
 
     /**
      * @param array<string, string|null> $payload
+     * @param non-empty-string $key
      */
-    #[DataProviderExternal(Samples::class, 'composites')]
-    public function testRefusesAMissingRequiredKey(string $name, ValueObject $vo, array $payload): void
+    #[DataProviderExternal(Samples::class, 'compositeRequiredKeys')]
+    public function testRefusesAMissingRequiredKey(string $name, array $payload, string $key): void
     {
-        unset($payload[\array_key_first($payload)]);
+        unset($payload[$key]);
+        $stored = \json_encode($payload);
+        self::assertIsString($stored);
         $this->expectException(InvalidArgumentException::class);
 
-        Type::getType($name)->convertToPHPValue(\json_encode($payload), $this->platform);
+        Type::getType($name)->convertToPHPValue($stored, $this->platform);
     }
 
     #[DataProviderExternal(Samples::class, 'compositeNames')]

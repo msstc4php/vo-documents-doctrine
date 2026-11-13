@@ -238,6 +238,106 @@ final class Samples
             new TrPersonName(TrFamilyName::from('Yılmaz'), TrGivenName::from('Ayşe')),
             ['family' => 'Yılmaz', 'given' => 'Ayşe', 'latin' => null],
         ];
+        yield 'de person name with latin override' => [
+            'vod_de_person_name',
+            new DePersonName(
+                DeFamilyName::from('Müller'),
+                DeGivenName::from('Jürgen'),
+                IcaoPersonName::from('MULLER<<JURGEN'),
+            ),
+            ['family' => 'Müller', 'given' => 'Jürgen', 'latin' => 'MULLER<<JURGEN'],
+        ];
+        yield 'fr person name with latin override' => [
+            'vod_fr_person_name',
+            new FrPersonName(
+                FrFamilyName::from('Müller'),
+                FrGivenName::from('Joël'),
+                IcaoPersonName::from('MULLER<<JOEL'),
+            ),
+            ['family' => 'Müller', 'given' => 'Joël', 'latin' => 'MULLER<<JOEL'],
+        ];
+        yield 'it person name with latin override' => [
+            'vod_it_person_name',
+            new ItPersonName(
+                ItFamilyName::from('Müller'),
+                ItGivenName::from('Anna'),
+                IcaoPersonName::from('MULLER<<ANNA'),
+            ),
+            ['family' => 'Müller', 'given' => 'Anna', 'latin' => 'MULLER<<ANNA'],
+        ];
+        yield 'es person name with second surname and latin override' => [
+            'vod_es_person_name',
+            new EsPersonName(
+                EsFamilyName::from('Argüelles'),
+                EsFamilyName::from('López'),
+                EsGivenName::from('Ana'),
+                IcaoPersonName::from('ARGUELLES<LOPEZ<<ANA'),
+            ),
+            ['first' => 'Argüelles', 'second' => 'López', 'given' => 'Ana', 'latin' => 'ARGUELLES<LOPEZ<<ANA'],
+        ];
+        yield 'nl person name with one name' => [
+            'vod_nl_person_name',
+            new NlPersonName(NlFamilyName::from('van der Berg'), null),
+            ['family' => 'van der Berg', 'given' => null, 'latin' => null],
+        ];
+        yield 'nl person name with latin override' => [
+            'vod_nl_person_name',
+            new NlPersonName(
+                NlFamilyName::from('Müller'),
+                NlGivenName::from('Anna'),
+                IcaoPersonName::from('MULLER<<ANNA'),
+            ),
+            ['family' => 'Müller', 'given' => 'Anna', 'latin' => 'MULLER<<ANNA'],
+        ];
+        yield 'ch person name without given name and with latin override' => [
+            'vod_ch_person_name',
+            new ChPersonName(ChFamilyName::from('Müller'), null, IcaoPersonName::from('MULLER')),
+            ['family' => 'Müller', 'given' => null, 'latin' => 'MULLER'],
+        ];
+        yield 'gb person name with one name' => [
+            'vod_gb_person_name',
+            new GbPersonName(GbFamilyName::from('Smith'), null),
+            ['family' => 'Smith', 'given' => null, 'latin' => null],
+        ];
+        yield 'gb person name with latin override' => [
+            'vod_gb_person_name',
+            new GbPersonName(
+                GbFamilyName::from('Smith'),
+                GbGivenName::from('John'),
+                IcaoPersonName::from('SMYTH<<JOHN'),
+            ),
+            ['family' => 'Smith', 'given' => 'John', 'latin' => 'SMYTH<<JOHN'],
+        ];
+        yield 'tr person name with latin override' => [
+            'vod_tr_person_name',
+            new TrPersonName(
+                TrFamilyName::from('Öztürk'),
+                TrGivenName::from('Ayşe'),
+                IcaoPersonName::from('OZTURK<<AYSE'),
+            ),
+            ['family' => 'Öztürk', 'given' => 'Ayşe', 'latin' => 'OZTURK<<AYSE'],
+        ];
+    }
+
+    /**
+     * Per required key of a composite payload: the type name, a payload that has the key, and the key to remove.
+     *
+     * @return iterable<string, array{non-empty-string, array<string, string|null>, non-empty-string}>
+     */
+    public static function compositeRequiredKeys(): iterable
+    {
+        $required = [
+            'vod_ru_person_name' => ['family', 'given'],
+            'vod_es_person_name' => ['first', 'given'],
+            'vod_nl_person_name' => ['family'],
+            'vod_ch_person_name' => ['family'],
+            'vod_gb_person_name' => ['family'],
+        ];
+        foreach (self::composites() as $label => [$name, , $payload]) {
+            foreach ($required[$name] ?? ['family', 'given'] as $key) {
+                yield $label . ', without ' . $key => [$name, $payload, $key];
+            }
+        }
     }
 
     /**
