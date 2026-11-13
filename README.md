@@ -95,3 +95,10 @@ the value object's own exception, whose message never contains it.
 
 Column lengths: string types use the longest accepted form; name columns use `AbstractNamePart::MAX_LENGTH` (100) for
 name parts and `Icao\PersonName::MAX_LENGTH` (255) for the ICAO name.
+
+**Collation of name columns with a unique index.** Name parts keep their letter case and diacritics (`Müller` and
+`Muller`, `de Vries` and `De Vries` are different names). A case- or accent-insensitive collation makes such names
+collide in a unique index, or match each other in a lookup. Give these columns a binary or accent- and case-sensitive
+collation: on MySQL `utf8mb4_bin` or `utf8mb4_0900_as_cs`
+(`#[ORM\Column(type: 'vod_au_family_name', options: ['collation' => 'utf8mb4_bin'])]`). PostgreSQL's default
+deterministic collations already compare exactly.

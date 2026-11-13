@@ -28,3 +28,19 @@ type's length takes precedence over `#[ORM\Column(length: …)]`.
 
 100 characters for name parts and 255 for `Icao\PersonName` (`vo-documents` constants); an extremely long real name is
 refused by the value object before it reaches the column.
+
+## Open design items (deferred)
+
+- **Polymorphic AU licence column (plan 3).** There is one type per jurisdiction class; a column that holds "any AU
+  licence" needs a composite type storing the jurisdiction and the number (`{jurisdiction: "AU-NSW", number: …}`) and
+  rebuilding the class through `DriverLicenceNumberFactory::fromNumberIn()`. US has the same need; design it once in
+  plan 3.
+- **Upstream: `vo-base-doctrine` `AbstractJsonVoType` encodes without `JSON_UNESCAPED_UNICODE`**, so a Cyrillic or
+  accented name is stored as `\uXXXX` escapes in the JSON column (valid, but larger and not readable in SQL). A
+  separate vo-base-doctrine change; nothing to do here.
+
+## Name collation
+
+The README recommends a binary or accent- and case-sensitive collation (MySQL `utf8mb4_bin` / `utf8mb4_0900_as_cs`)
+for name columns with a unique index; the types do not set one, because Doctrine collation options are
+platform-specific.
