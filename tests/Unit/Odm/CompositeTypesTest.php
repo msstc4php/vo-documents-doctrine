@@ -20,6 +20,7 @@ use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\TrPersonNameType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\TypeRegistrar;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Tests\Support\Samples;
 use MSSTC4PHP\ValueObject\Documents\Document\RU\Snils;
+use MSSTC4PHP\ValueObject\Documents\Exception\InvalidPersonNameException;
 use MSSTC4PHP\ValueObject\Exception\InvalidValueObjectException;
 use Override;
 use PHPUnit\Framework\Attributes\CoversClass;
@@ -107,7 +108,7 @@ final class CompositeTypesTest extends TestCase
             self::fail('An invalid stored name was accepted.');
         } catch (InvalidValueObjectException $exception) {
             self::assertStringNotContainsString('ZZQQ9', $exception->getMessage());
-            self::assertStringContainsString('name', \strtolower($exception->getMessage()));
+            self::assertInstanceOf(InvalidPersonNameException::class, $exception);
         }
     }
 
