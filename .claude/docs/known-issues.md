@@ -44,3 +44,5 @@ refused by the value object before it reaches the column.
 The README recommends a binary or accent- and case-sensitive collation (MySQL `utf8mb4_bin` / `utf8mb4_0900_as_cs`)
 for name columns with a unique index; the types do not set one, because Doctrine collation options are
 platform-specific.
+
+- ORM 3.3 (the lowest supported) has no `Configuration::enableNativeLazyObjects()`; the ORM integration test enables native lazy objects only on ORM >= 3.4 (checked with `InstalledVersions`, because PHPStan at highest deps reports `method_exists` as always true).

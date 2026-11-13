@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace MSSTC4PHP\ValueObject\Documents\Doctrine\Tests\Integration;
 
+use Composer\InstalledVersions;
 use Doctrine\DBAL\Connection;
 use Doctrine\DBAL\DriverManager;
 use Doctrine\ORM\Configuration;
@@ -53,7 +54,10 @@ final class OrmRoundTripTest extends TestCase
         $config->setMetadataDriverImpl(new AttributeDriver([__DIR__ . '/../Support/Orm']));
         $config->setProxyDir(\sys_get_temp_dir() . '/vod-proxies');
         $config->setProxyNamespace('VodProxies');
-        $config->enableNativeLazyObjects(true);
+        // ORM 3.3 (the lowest supported) has no native lazy objects and falls back to its own proxies.
+        if (\version_compare(InstalledVersions::getVersion('doctrine/orm') ?? '0', '3.4.0', '>=')) {
+            $config->enableNativeLazyObjects(true);
+        }
 
         $this->entityManager = new EntityManager($this->connection, $config);
         new SchemaTool($this->entityManager)->createSchema([$this->entityManager->getClassMetadata(Person::class), $this->entityManager->getClassMetadata(AuPerson::class)]);
