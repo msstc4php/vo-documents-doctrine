@@ -43,7 +43,7 @@ final class TypeRegistrar
         AuPersonNameType::NAME => AuPersonNameType::class,
     ];
 
-    public static function register(): void
+    public static function registerAll(): void
     {
         foreach (self::TYPES as $name => $class) {
             if (!Type::hasType($name)) {

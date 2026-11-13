@@ -26,7 +26,7 @@ final class CompositeTypesTest extends TestCase
     #[Override]
     protected function setUp(): void
     {
-        TypeRegistrar::register();
+        TypeRegistrar::registerAll();
     }
 
     /**
@@ -84,13 +84,13 @@ final class CompositeTypesTest extends TestCase
     #[DataProviderExternal(Samples::class, 'composites')]
     public function testRefusesAnInvalidNameWithoutEchoingIt(string $name, ValueObject $vo, array $payload): void
     {
-        $stored = ['family' => '123'] + $payload;
+        $stored = ['family' => 'ZZQQ9'] + $payload;
 
         try {
             Type::getType($name)->convertToPHPValue($stored);
             self::fail('An invalid stored name was accepted.');
         } catch (InvalidValueObjectException $exception) {
-            self::assertStringNotContainsString('123', $exception->getMessage());
+            self::assertStringNotContainsString('ZZQQ9', $exception->getMessage());
         }
     }
 

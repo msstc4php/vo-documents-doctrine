@@ -50,7 +50,7 @@ final class OdmRoundTripTest extends TestCase
         }
 
         $this->connected = true;
-        TypeRegistrar::register();
+        TypeRegistrar::registerAll();
         $this->client->dropDatabase(self::DATABASE);
 
         $config = new Configuration();

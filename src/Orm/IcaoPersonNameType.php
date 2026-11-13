@@ -21,6 +21,6 @@ final class IcaoPersonNameType extends AbstractStringVoType
     #[Override]
     protected function columnLength(): int
     {
-        return 255;
+        return PersonName::MAX_LENGTH;
     }
 }

@@ -10,12 +10,19 @@ use Doctrine\ORM\Configuration;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Mapping\Driver\AttributeDriver;
 use Doctrine\ORM\Tools\SchemaTool;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\AuNswDriverLicenceNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\AuPersonNameType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\RuPersonNameType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\RuSnilsType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\TypeRegistrar;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Tests\Support\Orm\AuPerson;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Tests\Support\Orm\Person;
+use MSSTC4PHP\ValueObject\Documents\Document\AU\DriverLicence\NswDriverLicenceNumber;
 use MSSTC4PHP\ValueObject\Documents\Document\RU\Snils;
 use MSSTC4PHP\ValueObject\Documents\Icao\PersonName as IcaoPersonName;
+use MSSTC4PHP\ValueObject\Documents\Name\AU\FamilyName as AuFamilyName;
+use MSSTC4PHP\ValueObject\Documents\Name\AU\GivenName as AuGivenName;
+use MSSTC4PHP\ValueObject\Documents\Name\AU\PersonName as AuPersonName;
 use MSSTC4PHP\ValueObject\Documents\Name\RU\FamilyName;
 use MSSTC4PHP\ValueObject\Documents\Name\RU\GivenName;
 use MSSTC4PHP\ValueObject\Documents\Name\RU\Patronymic;
@@ -27,6 +34,8 @@ use PHPUnit\Framework\TestCase;
 
 #[CoversClass(RuSnilsType::class)]
 #[CoversClass(RuPersonNameType::class)]
+#[CoversClass(AuNswDriverLicenceNumberType::class)]
+#[CoversClass(AuPersonNameType::class)]
 #[UsesClass(TypeRegistrar::class)]
 final class OrmRoundTripTest extends TestCase
 {
@@ -37,7 +46,7 @@ final class OrmRoundTripTest extends TestCase
     #[Override]
     protected function setUp(): void
     {
-        TypeRegistrar::register();
+        TypeRegistrar::registerAll();
 
         $this->connection = DriverManager::getConnection(['driver' => 'pdo_sqlite', 'memory' => true]);
         $config = new Configuration();
@@ -47,7 +56,7 @@ final class OrmRoundTripTest extends TestCase
         $config->enableNativeLazyObjects(true);
 
         $this->entityManager = new EntityManager($this->connection, $config);
-        new SchemaTool($this->entityManager)->createSchema([$this->entityManager->getClassMetadata(Person::class)]);
+        new SchemaTool($this->entityManager)->createSchema([$this->entityManager->getClassMetadata(Person::class), $this->entityManager->getClassMetadata(AuPerson::class)]);
     }
 
     public function testSnilsAndPersonNameSurviveAFlushAndReload(): void
@@ -100,5 +109,21 @@ final class OrmRoundTripTest extends TestCase
             ['family' => 'Иванов', 'given' => 'Иван', 'patronymic' => null, 'latin' => null],
             \json_decode($row['name'], true, 512, \JSON_THROW_ON_ERROR),
         );
+    }
+
+    public function testAustralianLicenceAndPersonNameSurviveAFlushAndReload(): void
+    {
+        $name = new AuPersonName(AuFamilyName::from('Smith'), AuGivenName::from('Jane'), IcaoPersonName::from('SMITH<<JANE'));
+        $this->entityManager->persist(new AuPerson(NswDriverLicenceNumber::from('ab123456'), $name));
+        $this->entityManager->flush();
+        $this->entityManager->clear();
+
+        $person = $this->entityManager->getRepository(AuPerson::class)->findOneBy([]);
+
+        self::assertInstanceOf(AuPerson::class, $person);
+        self::assertSame('AB123456', (string) $person->licence);
+        self::assertTrue($name->equals($person->name));
+        self::assertSame('SMITH<<JANE', $person->name->latinOverride()?->value);
+        self::assertSame(['AB123456'], $this->connection->fetchFirstColumn('SELECT licence FROM au_person'));
     }
 }

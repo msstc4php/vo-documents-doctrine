@@ -70,7 +70,7 @@ final class StringTypesTest extends TestCase
     #[Override]
     protected function setUp(): void
     {
-        TypeRegistrar::register();
+        TypeRegistrar::registerAll();
         $this->platform = new SQLitePlatform();
     }
 
@@ -88,12 +88,13 @@ final class StringTypesTest extends TestCase
     }
 
     #[DataProviderExternal(Samples::class, 'stringLengths')]
-    public function testColumnFitsTheLongestCanonicalForm(string $name, StringConvertible $vo, ?int $length): void
+    public function testColumnFitsExactlyTheLongestAcceptedForm(string $name, StringConvertible $vo, int $length): void
     {
-        $declaration = Type::getType($name)->getSQLDeclaration([], $this->platform);
+        self::assertSame(\sprintf('VARCHAR(%d)', $length), Type::getType($name)->getSQLDeclaration([], $this->platform));
+        self::assertSame($length, \mb_strlen((string) $vo));
 
-        self::assertSame(\sprintf('VARCHAR(%d)', $length ?? 255), $declaration);
-        self::assertLessThanOrEqual($length ?? 255, \mb_strlen((string) $vo));
+        $this->expectException(InvalidValueObjectException::class);
+        $vo::from($vo . \mb_substr((string) $vo, -1));
     }
 
     #[DataProviderExternal(Samples::class, 'stringNames')]

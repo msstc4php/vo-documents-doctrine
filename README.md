@@ -31,7 +31,7 @@ Without Symfony, once at bootstrap (idempotent, safe in long-running workers):
 ```php
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\TypeRegistrar;
 
-TypeRegistrar::register();
+TypeRegistrar::registerAll();
 ```
 
 With Symfony, map `TypeRegistrar::types()` (name => class) under `doctrine.dbal.types` or
@@ -56,8 +56,8 @@ sub-document in ODM. An invalid stored value throws the value object's own excep
 | Type name | Value object | ORM column | ODM field |
 |---|---|---|---|
 | `vod_au_act_driver_licence_number` | `Document\AU\DriverLicence\ActDriverLicenceNumber` | VARCHAR(10) | string |
-| `vod_au_family_name` | `Name\AU\FamilyName` | VARCHAR(255) | string |
-| `vod_au_given_name` | `Name\AU\GivenName` | VARCHAR(255) | string |
+| `vod_au_family_name` | `Name\AU\FamilyName` | VARCHAR(100) | string |
+| `vod_au_given_name` | `Name\AU\GivenName` | VARCHAR(100) | string |
 | `vod_au_medicare_card_number` | `Document\AU\MedicareCardNumber` | VARCHAR(10) | string |
 | `vod_au_nsw_driver_licence_number` | `Document\AU\DriverLicence\NswDriverLicenceNumber` | VARCHAR(8) | string |
 | `vod_au_nt_driver_licence_number` | `Document\AU\DriverLicence\NtDriverLicenceNumber` | VARCHAR(10) | string |
@@ -70,16 +70,16 @@ sub-document in ODM. An invalid stored value throws the value object's own excep
 | `vod_au_wa_driver_licence_number` | `Document\AU\DriverLicence\WaDriverLicenceNumber` | VARCHAR(7) | string |
 | `vod_icao_person_name` | `Icao\PersonName` | VARCHAR(255) | string |
 | `vod_ru_driver_licence_number` | `Document\RU\DriverLicenceNumber` | VARCHAR(10) | string |
-| `vod_ru_family_name` | `Name\RU\FamilyName` | VARCHAR(255) | string |
-| `vod_ru_given_name` | `Name\RU\GivenName` | VARCHAR(255) | string |
+| `vod_ru_family_name` | `Name\RU\FamilyName` | VARCHAR(100) | string |
+| `vod_ru_given_name` | `Name\RU\GivenName` | VARCHAR(100) | string |
 | `vod_ru_inn` | `Document\RU\Inn` | VARCHAR(12) | string |
 | `vod_ru_internal_passport_number` | `Document\RU\InternalPassportNumber` | VARCHAR(10) | string |
 | `vod_ru_international_passport_number` | `Document\RU\InternationalPassportNumber` | VARCHAR(9) | string |
 | `vod_ru_oms_policy_number` | `Document\RU\OmsPolicyNumber` | VARCHAR(16) | string |
 | `vod_ru_passport_issuing_unit_code` | `Document\RU\PassportIssuingUnitCode` | VARCHAR(6) | string |
-| `vod_ru_patronymic` | `Name\RU\Patronymic` | VARCHAR(255) | string |
+| `vod_ru_patronymic` | `Name\RU\Patronymic` | VARCHAR(100) | string |
 | `vod_ru_person_name` | `Name\RU\PersonName` | CLOB (JSON) | sub-document |
 | `vod_ru_snils` | `Document\RU\Snils` | VARCHAR(11) | string |
 
-Column length is the longest canonical form; name parts have no upper bound in `vo-documents`, so their columns are
-VARCHAR(255).
+Column length is the longest accepted form: `AbstractNamePart::MAX_LENGTH` (100) for name parts and
+`Icao\PersonName::MAX_LENGTH` (255) for the ICAO name.

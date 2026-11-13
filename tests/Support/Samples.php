@@ -24,6 +24,7 @@ use MSSTC4PHP\ValueObject\Documents\Document\RU\OmsPolicyNumber;
 use MSSTC4PHP\ValueObject\Documents\Document\RU\PassportIssuingUnitCode;
 use MSSTC4PHP\ValueObject\Documents\Document\RU\Snils;
 use MSSTC4PHP\ValueObject\Documents\Icao\PersonName as IcaoPersonName;
+use MSSTC4PHP\ValueObject\Documents\Name\AbstractNamePart;
 use MSSTC4PHP\ValueObject\Documents\Name\AU\FamilyName as AuFamilyName;
 use MSSTC4PHP\ValueObject\Documents\Name\AU\GivenName as AuGivenName;
 use MSSTC4PHP\ValueObject\Documents\Name\AU\PersonName as AuPersonName;
@@ -37,13 +38,13 @@ use MSSTC4PHP\ValueObject\Documents\Name\RU\PersonName as RuPersonName;
  */
 final class Samples
 {
-    private const string BAD_DOCUMENT = '!!!';
+    private const string BAD_DOCUMENT = 'ZZQQ9!';
 
-    private const string BAD_NAME = '123';
+    private const string BAD_NAME = 'ZZQQ9';
 
     /**
-     * @return iterable<string, array{non-empty-string, StringConvertible, positive-int|null, non-empty-string}>
-     *                                                                                                           type name, longest canonical sample, column length (null: free text), invalid stored value
+     * @return iterable<string, array{non-empty-string, StringConvertible, positive-int, non-empty-string}>
+     *                                                                                                      type name, longest canonical sample, column length (null: free text), invalid stored value
      */
     public static function strings(): iterable
     {
@@ -64,12 +65,12 @@ final class Samples
         yield 'au tas' => ['vod_au_tas_driver_licence_number', TasDriverLicenceNumber::from('ABC12345'), 8, self::BAD_DOCUMENT];
         yield 'au vic' => ['vod_au_vic_driver_licence_number', VicDriverLicenceNumber::from('1234567890'), 10, self::BAD_DOCUMENT];
         yield 'au wa' => ['vod_au_wa_driver_licence_number', WaDriverLicenceNumber::from('1234567'), 7, self::BAD_DOCUMENT];
-        yield 'ru family name' => ['vod_ru_family_name', RuFamilyName::from('Иванов'), null, self::BAD_NAME];
-        yield 'ru given name' => ['vod_ru_given_name', RuGivenName::from('Иван'), null, self::BAD_NAME];
-        yield 'ru patronymic' => ['vod_ru_patronymic', Patronymic::from('Иванович'), null, self::BAD_NAME];
-        yield 'au family name' => ['vod_au_family_name', AuFamilyName::from("O'Brien"), null, self::BAD_NAME];
-        yield 'au given name' => ['vod_au_given_name', AuGivenName::from('Jane'), null, self::BAD_NAME];
-        yield 'icao person name' => ['vod_icao_person_name', IcaoPersonName::from('VAN<DER<BERG<<JAN<PIETER'), null, self::BAD_NAME];
+        yield 'ru family name' => ['vod_ru_family_name', RuFamilyName::from('И' . \str_repeat('в', AbstractNamePart::MAX_LENGTH - 1)), AbstractNamePart::MAX_LENGTH, self::BAD_NAME];
+        yield 'ru given name' => ['vod_ru_given_name', RuGivenName::from('И' . \str_repeat('в', AbstractNamePart::MAX_LENGTH - 1)), AbstractNamePart::MAX_LENGTH, self::BAD_NAME];
+        yield 'ru patronymic' => ['vod_ru_patronymic', Patronymic::from('И' . \str_repeat('в', AbstractNamePart::MAX_LENGTH - 1)), AbstractNamePart::MAX_LENGTH, self::BAD_NAME];
+        yield 'au family name' => ['vod_au_family_name', AuFamilyName::from('S' . \str_repeat('m', AbstractNamePart::MAX_LENGTH - 1)), AbstractNamePart::MAX_LENGTH, self::BAD_NAME];
+        yield 'au given name' => ['vod_au_given_name', AuGivenName::from('J' . \str_repeat('a', AbstractNamePart::MAX_LENGTH - 1)), AbstractNamePart::MAX_LENGTH, self::BAD_NAME];
+        yield 'icao person name' => ['vod_icao_person_name', IcaoPersonName::from(\str_repeat('A', 127) . '<<' . \str_repeat('B', IcaoPersonName::MAX_LENGTH - 129)), IcaoPersonName::MAX_LENGTH, self::BAD_NAME];
     }
 
     /**
@@ -121,7 +122,7 @@ final class Samples
     }
 
     /**
-     * @return iterable<string, array{non-empty-string, StringConvertible, positive-int|null}>
+     * @return iterable<string, array{non-empty-string, StringConvertible, positive-int}>
      */
     public static function stringLengths(): iterable
     {

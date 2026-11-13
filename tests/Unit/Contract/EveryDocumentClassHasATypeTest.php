@@ -240,7 +240,7 @@ final class EveryDocumentClassHasATypeTest extends TestCase
     {
         $classes = [];
         if ($branch === 'orm') {
-            OrmRegistrar::register();
+            OrmRegistrar::registerAll();
             foreach (OrmRegistrar::types() as $name => $_) {
                 $classes[$name] = $this->mappedClass(OrmType::getType($name));
             }
@@ -248,7 +248,7 @@ final class EveryDocumentClassHasATypeTest extends TestCase
             return $classes;
         }
 
-        OdmRegistrar::register();
+        OdmRegistrar::registerAll();
         foreach (OdmRegistrar::types() as $name => $_) {
             $classes[$name] = $this->mappedClass(OdmType::getType($name));
         }

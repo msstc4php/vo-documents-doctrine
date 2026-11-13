@@ -67,7 +67,7 @@ final class StringTypesTest extends TestCase
     #[Override]
     protected function setUp(): void
     {
-        TypeRegistrar::register();
+        TypeRegistrar::registerAll();
     }
 
     #[DataProviderExternal(Samples::class, 'stringPairs')]

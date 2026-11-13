@@ -14,8 +14,8 @@ final class TypeRegistrarTest extends TestCase
 {
     public function testRegistersEveryTypeAndIsIdempotent(): void
     {
-        TypeRegistrar::register();
-        TypeRegistrar::register();
+        TypeRegistrar::registerAll();
+        TypeRegistrar::registerAll();
 
         foreach (TypeRegistrar::types() as $name => $class) {
             self::assertTrue(Type::hasType($name), \sprintf('Type "%s" was not registered.', $name));

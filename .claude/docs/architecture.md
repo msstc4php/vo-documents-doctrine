@@ -5,7 +5,7 @@ Two independent branches, no shared code (`deptrac.yaml`: `Orm` and `Odm` have n
 - `src/Orm/*Type.php`: `final` subclasses of `MSSTC4PHP\ValueObject\Doctrine\Orm\AbstractStringVoType` (name the value
   object class and the column length) or `AbstractJsonVoType` (return the codec from `vo-documents`).
 - `src/Odm/*Type.php`: the same over `Odm\AbstractStringVoType` / `Odm\AbstractArrayVoType`; no column length.
-- `Orm\TypeRegistrar` / `Odm\TypeRegistrar`: `register()` (idempotent) and `types()` (name => class).
+- `Orm\TypeRegistrar` / `Odm\TypeRegistrar`: `registerAll()` (idempotent) and `types()` (name => class).
 
 All conversion logic lives in `vo-base-doctrine`; this package only binds a value object to a name.
 
