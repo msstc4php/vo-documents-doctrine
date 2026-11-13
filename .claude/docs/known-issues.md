@@ -23,3 +23,8 @@ test therefore builds `Doctrine\ORM\Configuration` itself.
 
 `Orm\AbstractStringVoType::getSQLDeclaration()` merges `['length' => $this->columnLength()] + $column`, so the
 type's length takes precedence over `#[ORM\Column(length: …)]`.
+
+## Name columns are bounded by decision
+
+100 characters for name parts and 255 for `Icao\PersonName` (`vo-documents` constants); an extremely long real name is
+refused by the value object before it reaches the column.

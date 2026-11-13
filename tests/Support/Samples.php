@@ -43,8 +43,9 @@ final class Samples
     private const string BAD_NAME = 'ZZQQ9';
 
     /**
+     * Per type: the type name, the longest canonical sample, the column length and an invalid stored value.
+     *
      * @return iterable<string, array{non-empty-string, StringConvertible, positive-int, non-empty-string}>
-     *                                                                                                      type name, longest canonical sample, column length (null: free text), invalid stored value
      */
     public static function strings(): iterable
     {
