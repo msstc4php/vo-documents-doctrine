@@ -42,6 +42,7 @@ Type names are `vod_<cc>_<snake_name>` (`icao` for `Icao\PersonName`); the same 
 | `vod_ca_nu_health_card_number` | `Document\CA\HealthCard\NuHealthCardNumber` | VARCHAR(9) | string |
 | `vod_ca_on_driver_licence_number` | `Document\CA\DriverLicence\OnDriverLicenceNumber` | VARCHAR(15) | string |
 | `vod_ca_on_health_card_number` | `Document\CA\HealthCard\OnHealthCardNumber` | VARCHAR(10) | string |
+| `vod_ca_on_health_card_version_code` | `Document\CA\HealthCard\OnHealthCardVersionCode` | VARCHAR(2) | string |
 | `vod_ca_passport_number` | `Document\CA\PassportNumber` | VARCHAR(9) | string |
 | `vod_ca_pe_health_card_number` | `Document\CA\HealthCard\PeHealthCardNumber` | VARCHAR(8) | string |
 | `vod_ca_person_name` | `Name\CA\PersonName` | CLOB (JSON) | sub-document |
@@ -180,7 +181,8 @@ Type names are `vod_<cc>_<snake_name>` (`icao` for `Icao\PersonName`); the same 
 - Stored values are always the canonical `value()` that `from()` accepts back: BC and SK licences, the Brazilian voter
   registration number (12 digits) and similar pad or strip on input, so the column holds the padded form. The
   `SpIdentityCardNumber::fromNumberAndCheckCharacter()` result is stored the same way (`from()` on reload).
-- `OnHealthCardNumber` keeps an optional version code outside `value()`; the type stores the number only, so the code is
-  lost on reload (documented in the README).
+- Ontario: `OnHealthCardNumber` (ten digits) and `OnHealthCardVersionCode` (1-2 letters) are separate value objects
+  with separate types; `OnHealthCardNumber::fromCard()` splits the printed card into an `OnHealthCard` result (no
+  type: not a value object). Map two columns, the version code nullable (`tests/Support/Orm/AmericasPerson`).
 - The AU licence-number interface (`Document\AU\DriverLicenceNumber`) and its factory are not types: map the
   jurisdiction-specific class, or store the string and the `Jurisdiction` enum separately.

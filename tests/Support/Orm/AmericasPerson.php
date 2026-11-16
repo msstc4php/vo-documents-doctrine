@@ -6,9 +6,11 @@ namespace MSSTC4PHP\ValueObject\Documents\Doctrine\Tests\Support\Orm;
 
 use Doctrine\ORM\Mapping as ORM;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\CaOnHealthCardNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\CaOnHealthCardVersionCodeType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\UsPersonNameType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\UsSocialSecurityNumberType;
 use MSSTC4PHP\ValueObject\Documents\Document\CA\HealthCard\OnHealthCardNumber;
+use MSSTC4PHP\ValueObject\Documents\Document\CA\HealthCard\OnHealthCardVersionCode;
 use MSSTC4PHP\ValueObject\Documents\Document\US\SocialSecurityNumber;
 use MSSTC4PHP\ValueObject\Documents\Name\US\PersonName;
 
@@ -28,6 +30,8 @@ class AmericasPerson
         public PersonName $name,
         #[ORM\Column(type: CaOnHealthCardNumberType::NAME)]
         public OnHealthCardNumber $healthCard,
+        #[ORM\Column(type: CaOnHealthCardVersionCodeType::NAME, nullable: true)]
+        public ?OnHealthCardVersionCode $healthCardVersionCode = null,
     ) {
     }
 }

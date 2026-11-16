@@ -59,8 +59,9 @@ platform-specific.
   equals what the name derives, so a sample with such an override stores `latin: null`. Samples must use a differing
   spelling (US and MX allow only transliteration variants: `Müller`/`Jürgen` with `MULLER<<JURGEN`; CA and BR accept
   any ICAO spelling).
-- **Ontario version code is not persisted** (controller decision): `OnHealthCardNumber::versionCode()` is `null` after
-  a reload.
+- **Ontario version code has its own type** (final review of plan 3, replacing "not persisted"):
+  `vod_ca_on_health_card_version_code` (VARCHAR(2)) beside `vod_ca_on_health_card_number`; `OnHealthCard` (the
+  `fromCard()` result) is not a `ValueObject`, so the completeness test expects no type for it.
 - **Optional parts in the Americas names.** US `given` (and with it `middle`/`suffix`), CA `given` and MX
   `first`/`second` are nullable; BR `given` is required. Required payload keys: US `family`, CA `family`, MX `given`,
   BR `family` and `given` (see `Samples::compositeRequiredKeys()`).

@@ -115,6 +115,7 @@ final class TypeRegistrar
         CaNtHealthCardNumberType::NAME => CaNtHealthCardNumberType::class,
         CaNuHealthCardNumberType::NAME => CaNuHealthCardNumberType::class,
         CaOnHealthCardNumberType::NAME => CaOnHealthCardNumberType::class,
+        CaOnHealthCardVersionCodeType::NAME => CaOnHealthCardVersionCodeType::class,
         CaPeHealthCardNumberType::NAME => CaPeHealthCardNumberType::class,
         CaQcHealthCardNumberType::NAME => CaQcHealthCardNumberType::class,
         CaSkHealthCardNumberType::NAME => CaSkHealthCardNumberType::class,

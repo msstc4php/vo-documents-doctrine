@@ -38,6 +38,7 @@ use MSSTC4PHP\ValueObject\Documents\Document\CA\HealthCard\NsHealthCardNumber as
 use MSSTC4PHP\ValueObject\Documents\Document\CA\HealthCard\NtHealthCardNumber as CaNtHealthCardNumber;
 use MSSTC4PHP\ValueObject\Documents\Document\CA\HealthCard\NuHealthCardNumber as CaNuHealthCardNumber;
 use MSSTC4PHP\ValueObject\Documents\Document\CA\HealthCard\OnHealthCardNumber as CaOnHealthCardNumber;
+use MSSTC4PHP\ValueObject\Documents\Document\CA\HealthCard\OnHealthCardVersionCode as CaOnHealthCardVersionCode;
 use MSSTC4PHP\ValueObject\Documents\Document\CA\HealthCard\PeHealthCardNumber as CaPeHealthCardNumber;
 use MSSTC4PHP\ValueObject\Documents\Document\CA\HealthCard\QcHealthCardNumber as CaQcHealthCardNumber;
 use MSSTC4PHP\ValueObject\Documents\Document\CA\HealthCard\SkHealthCardNumber as CaSkHealthCardNumber;
@@ -273,6 +274,7 @@ final class Samples
         yield 'ca nt health card number' => ['vod_ca_nt_health_card_number', CaNtHealthCardNumber::from('D1234567'), 8, self::BAD_DOCUMENT];
         yield 'ca nu health card number' => ['vod_ca_nu_health_card_number', CaNuHealthCardNumber::from('123456789'), 9, self::BAD_DOCUMENT];
         yield 'ca on health card number' => ['vod_ca_on_health_card_number', CaOnHealthCardNumber::from('9876543217'), 10, self::BAD_DOCUMENT];
+        yield 'ca on health card version code' => ['vod_ca_on_health_card_version_code', CaOnHealthCardVersionCode::from('YM'), 2, self::BAD_DOCUMENT];
         yield 'ca pe health card number' => ['vod_ca_pe_health_card_number', CaPeHealthCardNumber::from('12345678'), 8, self::BAD_DOCUMENT];
         yield 'ca qc health card number' => ['vod_ca_qc_health_card_number', CaQcHealthCardNumber::from('YUXJ75021213'), 12, self::BAD_DOCUMENT];
         yield 'ca sk health card number' => ['vod_ca_sk_health_card_number', CaSkHealthCardNumber::from('123456789'), 9, self::BAD_DOCUMENT];

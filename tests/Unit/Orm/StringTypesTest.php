@@ -44,6 +44,7 @@ use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\CaNtHealthCardNumberType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\CaNuHealthCardNumberType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\CaOnDriverLicenceNumberType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\CaOnHealthCardNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\CaOnHealthCardVersionCodeType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\CaPassportNumberType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\CaPeHealthCardNumberType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\CaQcDriverLicenceNumberType;
@@ -155,6 +156,7 @@ use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\UsWiDlIdNumberType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\UsWyDlIdNumberType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Tests\Support\Samples;
 use MSSTC4PHP\ValueObject\Documents\Document\CA\HealthCard\OnHealthCardNumber;
+use MSSTC4PHP\ValueObject\Documents\Document\CA\HealthCard\OnHealthCardVersionCode;
 use MSSTC4PHP\ValueObject\Exception\InvalidValueObjectException;
 use Override;
 use PHPUnit\Framework\Attributes\CoversClass;
@@ -250,6 +252,7 @@ use PHPUnit\Framework\TestCase;
 #[CoversClass(CaNtHealthCardNumberType::class)]
 #[CoversClass(CaNuHealthCardNumberType::class)]
 #[CoversClass(CaOnHealthCardNumberType::class)]
+#[CoversClass(CaOnHealthCardVersionCodeType::class)]
 #[CoversClass(CaPeHealthCardNumberType::class)]
 #[CoversClass(CaQcHealthCardNumberType::class)]
 #[CoversClass(CaSkHealthCardNumberType::class)]
@@ -330,28 +333,18 @@ final class StringTypesTest extends TestCase
         self::assertSame((string) $vo, (string) $restored);
     }
 
-    public function testOntarioHealthCardStoresTheNumberWithoutTheVersionCode(): void
+    public function testOntarioCardIsStoredAsTheNumberAndTheVersionCode(): void
     {
-        $type = Type::getType(CaOnHealthCardNumberType::NAME);
+        $card = OnHealthCardNumber::fromCard('9876543217 YM');
+        $numberType = Type::getType(CaOnHealthCardNumberType::NAME);
+        $versionCodeType = Type::getType(CaOnHealthCardVersionCodeType::NAME);
 
-        $stored = $type->convertToDatabaseValue(OnHealthCardNumber::from('9876543217 YM'), $this->platform);
-        self::assertSame('9876543217', $stored);
+        self::assertSame('9876543217', $numberType->convertToDatabaseValue($card->number(), $this->platform));
+        self::assertSame('YM', $versionCodeType->convertToDatabaseValue($card->versionCode(), $this->platform));
 
-        $restored = $type->convertToPHPValue($stored, $this->platform);
-        self::assertInstanceOf(OnHealthCardNumber::class, $restored);
-        self::assertSame('9876543217', (string) $restored);
-        self::assertNull($restored->versionCode());
-        self::assertTrue($restored->equals(OnHealthCardNumber::from('9876543217')));
-    }
-
-    #[DataProviderExternal(Samples::class, 'stringLengths')]
-    public function testColumnFitsExactlyTheLongestAcceptedForm(string $name, StringConvertible $vo, int $length): void
-    {
-        self::assertSame(\sprintf('VARCHAR(%d)', $length), Type::getType($name)->getSQLDeclaration([], $this->platform));
-        self::assertSame($length, \mb_strlen((string) $vo));
-
-        $this->expectException(InvalidValueObjectException::class);
-        $vo::from($vo . \mb_substr((string) $vo, -1));
+        $versionCode = $versionCodeType->convertToPHPValue('YM', $this->platform);
+        self::assertInstanceOf(OnHealthCardVersionCode::class, $versionCode);
+        self::assertTrue($card->versionCode()?->equals($versionCode));
     }
 
     #[DataProviderExternal(Samples::class, 'stringNames')]

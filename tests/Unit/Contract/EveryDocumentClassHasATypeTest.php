@@ -48,6 +48,7 @@ use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\CaNtHealthCardNumberType as Odm
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\CaNuHealthCardNumberType as OdmCaNuHealthCardNumberType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\CaOnDriverLicenceNumberType as OdmCaOnDriverLicenceNumberType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\CaOnHealthCardNumberType as OdmCaOnHealthCardNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\CaOnHealthCardVersionCodeType as OdmCaOnHealthCardVersionCodeType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\CaPassportNumberType as OdmCaPassportNumberType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\CaPeHealthCardNumberType as OdmCaPeHealthCardNumberType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\CaPersonNameType as OdmCaPersonNameType;
@@ -207,6 +208,7 @@ use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\CaNtHealthCardNumberType as Orm
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\CaNuHealthCardNumberType as OrmCaNuHealthCardNumberType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\CaOnDriverLicenceNumberType as OrmCaOnDriverLicenceNumberType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\CaOnHealthCardNumberType as OrmCaOnHealthCardNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\CaOnHealthCardVersionCodeType as OrmCaOnHealthCardVersionCodeType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\CaPassportNumberType as OrmCaPassportNumberType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\CaPeHealthCardNumberType as OrmCaPeHealthCardNumberType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\CaPersonNameType as OrmCaPersonNameType;
@@ -518,6 +520,7 @@ use SplFileInfo;
 #[UsesClass(OrmCaNtHealthCardNumberType::class)]
 #[UsesClass(OrmCaNuHealthCardNumberType::class)]
 #[UsesClass(OrmCaOnHealthCardNumberType::class)]
+#[UsesClass(OrmCaOnHealthCardVersionCodeType::class)]
 #[UsesClass(OrmCaPeHealthCardNumberType::class)]
 #[UsesClass(OrmCaQcHealthCardNumberType::class)]
 #[UsesClass(OrmCaSkHealthCardNumberType::class)]
@@ -599,6 +602,7 @@ use SplFileInfo;
 #[UsesClass(OdmCaNtHealthCardNumberType::class)]
 #[UsesClass(OdmCaNuHealthCardNumberType::class)]
 #[UsesClass(OdmCaOnHealthCardNumberType::class)]
+#[UsesClass(OdmCaOnHealthCardVersionCodeType::class)]
 #[UsesClass(OdmCaPeHealthCardNumberType::class)]
 #[UsesClass(OdmCaQcHealthCardNumberType::class)]
 #[UsesClass(OdmCaSkHealthCardNumberType::class)]

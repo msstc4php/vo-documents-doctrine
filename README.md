@@ -1,7 +1,7 @@
 # msstc4php/vo-documents-doctrine
 
 Doctrine ORM and MongoDB ODM types for [`msstc4php/vo-documents`](https://github.com/msstc4php/vo-documents):
-158 types per branch: identity document numbers, name parts, Latin ICAO names, and the composite person name of each
+159 types per branch: identity document numbers, name parts, Latin ICAO names, and the composite person name of each
 country (RU, AU, DE, FR, IT, ES, NL, CH, GB, TR, US, CA, MX and BR).
 Backed enums (`DriverLicenceCategory`, `Jurisdiction`, `Sex`, `Name\US\NameSuffix`) need no type: map them with `enumType`.
 
@@ -106,6 +106,7 @@ the value object's own exception, whose message never contains it.
 | `vod_ca_nu_health_card_number` | `Document\CA\HealthCard\NuHealthCardNumber` | VARCHAR(9) | string |
 | `vod_ca_on_driver_licence_number` | `Document\CA\DriverLicence\OnDriverLicenceNumber` | VARCHAR(15) | string |
 | `vod_ca_on_health_card_number` | `Document\CA\HealthCard\OnHealthCardNumber` | VARCHAR(10) | string |
+| `vod_ca_on_health_card_version_code` | `Document\CA\HealthCard\OnHealthCardVersionCode` | VARCHAR(2) | string |
 | `vod_ca_passport_number` | `Document\CA\PassportNumber` | VARCHAR(9) | string |
 | `vod_ca_pe_health_card_number` | `Document\CA\HealthCard\PeHealthCardNumber` | VARCHAR(8) | string |
 | `vod_ca_person_name` | `Name\CA\PersonName` | CLOB (JSON) | sub-document |
@@ -230,10 +231,11 @@ the value object's own exception, whose message never contains it.
 Column lengths: string types use the longest accepted form; name columns use `AbstractNamePart::MAX_LENGTH` (100) for
 name parts and `Icao\PersonName::MAX_LENGTH` (255) for the ICAO name.
 
-**Ontario health card.** `Document\CA\HealthCard\OnHealthCardNumber` accepts a trailing version code (`9876543217 YM`),
-but `value()` is the ten-digit number and that is all `vod_ca_on_health_card_number` stores. The version code is not
-stored and comes back as `null` after a reload; two cards of one person are equal. If you need the code, keep it in a
-column of your own.
+**Ontario health card.** The printed card `9876543217 YM` is two value objects: `OnHealthCardNumber::fromCard()`
+returns an `OnHealthCard` with `number()` (`vod_ca_on_health_card_number`, the ten digits) and `versionCode()`
+(`vod_ca_on_health_card_version_code`, one or two letters, `null` for a card printed without one). Map them to two
+columns, the version code nullable; two cards of one person share the number. `OnHealthCard` itself is a plain result,
+not a value object, and has no type. `OnHealthCardNumber::from()` refuses the printed form with its version code.
 
 **Collation of name columns with a unique index.** Name parts keep their letter case and diacritics (`Müller` and
 `Muller`, `de Vries` and `De Vries` are different names). A case- or accent-insensitive collation makes such names

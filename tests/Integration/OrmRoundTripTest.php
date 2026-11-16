@@ -14,6 +14,7 @@ use Doctrine\ORM\Tools\SchemaTool;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\AuNswDriverLicenceNumberType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\AuPersonNameType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\CaOnHealthCardNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\CaOnHealthCardVersionCodeType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\RuPersonNameType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\RuSnilsType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\TypeRegistrar;
@@ -24,6 +25,7 @@ use MSSTC4PHP\ValueObject\Documents\Doctrine\Tests\Support\Orm\AuPerson;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Tests\Support\Orm\Person;
 use MSSTC4PHP\ValueObject\Documents\Document\AU\DriverLicence\NswDriverLicenceNumber;
 use MSSTC4PHP\ValueObject\Documents\Document\CA\HealthCard\OnHealthCardNumber;
+use MSSTC4PHP\ValueObject\Documents\Document\CA\HealthCard\OnHealthCardVersionCode;
 use MSSTC4PHP\ValueObject\Documents\Document\RU\Snils;
 use MSSTC4PHP\ValueObject\Documents\Document\US\SocialSecurityNumber;
 use MSSTC4PHP\ValueObject\Documents\Icao\PersonName as IcaoPersonName;
@@ -49,6 +51,7 @@ use PHPUnit\Framework\TestCase;
 #[CoversClass(UsSocialSecurityNumberType::class)]
 #[CoversClass(UsPersonNameType::class)]
 #[CoversClass(CaOnHealthCardNumberType::class)]
+#[CoversClass(CaOnHealthCardVersionCodeType::class)]
 #[UsesClass(TypeRegistrar::class)]
 final class OrmRoundTripTest extends TestCase
 {
@@ -158,17 +161,18 @@ final class OrmRoundTripTest extends TestCase
         self::assertNull($person->name->given);
     }
 
-    public function testOntarioVersionCodeIsNotStored(): void
+    public function testOntarioCardSurvivesAsTheNumberAndTheVersionCode(): void
     {
-        $this->entityManager->persist(new AmericasPerson(SocialSecurityNumber::from('123456789'), new UsPersonName(UsFamilyName::from('Smith'), UsGivenName::from('Jane')), OnHealthCardNumber::from('9876543217 YM')));
+        $card = OnHealthCardNumber::fromCard('9876543217 YM');
+        $this->entityManager->persist(new AmericasPerson(SocialSecurityNumber::from('123456789'), new UsPersonName(UsFamilyName::from('Smith'), UsGivenName::from('Jane')), $card->number(), $card->versionCode()));
         $this->entityManager->flush();
         $this->entityManager->clear();
 
         $person = $this->entityManager->getRepository(AmericasPerson::class)->findOneBy([]);
 
         self::assertInstanceOf(AmericasPerson::class, $person);
-        self::assertSame(['9876543217'], $this->connection->fetchFirstColumn('SELECT healthCard FROM americas_person'));
-        self::assertTrue($person->healthCard->equals(OnHealthCardNumber::from('9876543217')));
-        self::assertNull($person->healthCard->versionCode());
+        self::assertSame([['healthCard' => '9876543217', 'healthCardVersionCode' => 'YM']], $this->connection->fetchAllAssociative('SELECT healthCard, healthCardVersionCode FROM americas_person'));
+        self::assertTrue($person->healthCard->equals($card->number()));
+        self::assertTrue($person->healthCardVersionCode?->equals(OnHealthCardVersionCode::from('YM')));
     }
 }
