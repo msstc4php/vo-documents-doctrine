@@ -8,11 +8,11 @@ has only a local `origin`), and `^0.1` also needs a `v0.1.x` tag. Until the owne
 tags a release, every Composer-based CI job fails at `composer update`. Locally use
 `COMPOSER=composer-local.json composer update --ignore-platform-req=php` (path repositories, gitignored profile).
 
-**Release note (owner):** the bridge maps the DE, FR, IT, ES, NL, CH, GB and TR classes (plan 2) and the shared
-`Name\Latin` bases, so its lower bound on `msstc4php/vo-documents` must be the first tag that contains them. If
-`v0.1.0` is tagged without them, tag them as `v0.2.0` and raise `composer.json` (and the `dev-main as …` alias of
-`composer-ci.json`) to `^0.2` in the same change; otherwise `composer update --prefer-lowest` resolves a release
-without the classes and the types fail to load.
+**Release note (owner):** the bridge maps the DE, FR, IT, ES, NL, CH, GB and TR classes (plan 2), the US, CA, MX and BR
+classes (plan 3) and the shared `Name\Latin` bases, so its lower bound on `msstc4php/vo-documents` must be the first
+tag that contains them. If `v0.1.0` is tagged without them, tag them as `v0.2.0` and raise `composer.json` (and the
+`dev-main as …` alias of `composer-ci.json`) to `^0.2` in the same change; otherwise `composer update --prefer-lowest`
+resolves a release without the classes and the types fail to load.
 
 ## ODM integration test not run locally
 
@@ -37,10 +37,10 @@ refused by the value object before it reaches the column.
 
 ## Open design items (deferred)
 
-- **Polymorphic AU licence column (plan 3).** There is one type per jurisdiction class; a column that holds "any AU
-  licence" needs a composite type storing the jurisdiction and the number (`{jurisdiction: "AU-NSW", number: …}`) and
-  rebuilding the class through `DriverLicenceNumberFactory::fromNumberIn()`. US has the same need; design it once in
-  plan 3.
+- **Polymorphic licence column (not done in plan 3).** There is one type per jurisdiction class; a column that holds
+  "any AU licence" needs a composite type storing the jurisdiction and the number (`{jurisdiction: "AU-NSW", number:
+  …}`) and rebuilding the class through `DriverLicenceNumberFactory::fromNumberIn()`. US DL/ID, CA licences and health
+  cards, MX licences and BR RG have the same need; design it once.
 - **Upstream: `vo-base-doctrine` `AbstractJsonVoType` encodes without `JSON_UNESCAPED_UNICODE`**, so a Cyrillic or
   accented name is stored as `\uXXXX` escapes in the JSON column (valid, but larger and not readable in SQL). A
   separate vo-base-doctrine change; nothing to do here.
@@ -51,16 +51,18 @@ The README recommends a binary or accent- and case-sensitive collation (MySQL `u
 for name columns with a unique index; the types do not set one, because Doctrine collation options are
 platform-specific.
 
-- ORM 3.3 (the lowest supported) has no `Configuration::enableNativeLazyObjects()`; the ORM integration test enables native lazy objects only on ORM >= 3.4 (checked with `InstalledVersions`, because PHPStan at highest deps reports `method_exists` as always true).
+- ORM 3.3 (the lowest supported) has no `Configuration::enableNativeLazyObjects()`; the ORM integration test enables
+  native lazy objects only on ORM >= 3.4 (checked with `InstalledVersions`, because PHPStan at highest deps reports
+  `method_exists` as always true).
 
 - **Latin override equal to the derived form is dropped.** `PersonName::latinOverride()` is `null` when the override
   equals what the name derives, so a sample with such an override stores `latin: null`. Samples must use a differing
   spelling (US and MX allow only transliteration variants: `Müller`/`Jürgen` with `MULLER<<JURGEN`; CA and BR accept
   any ICAO spelling).
-- **Ontario version code is not persisted** (controller decision): `OnHealthCardNumber::versionCode()` is `null` after a
-  reload.
-- **Optional parts in the Americas names.** US `given` (and with it `middle`/`suffix`), CA `given` and MX `first`/`second`
-  are nullable; BR `given` is required. Required payload keys: US `family`, CA `family`, MX `given`, BR `family` and
-  `given` (see `Samples::compositeRequiredKeys()`).
-- **Optional given name.** `Name\NL`, `Name\CH` and `Name\GB` `PersonName` accept a null `given`, so `{"family":"X"}` is a valid
-  payload for them; the wrong-shape tests use an unknown key (`surname`) instead.
+- **Ontario version code is not persisted** (controller decision): `OnHealthCardNumber::versionCode()` is `null` after
+  a reload.
+- **Optional parts in the Americas names.** US `given` (and with it `middle`/`suffix`), CA `given` and MX
+  `first`/`second` are nullable; BR `given` is required. Required payload keys: US `family`, CA `family`, MX `given`,
+  BR `family` and `given` (see `Samples::compositeRequiredKeys()`).
+- **Optional given name.** `Name\NL`, `Name\CH` and `Name\GB` `PersonName` accept a null `given`, so `{"family":"X"}`
+  is a valid payload for them; the wrong-shape tests use an unknown key (`surname`) instead.

@@ -17,5 +17,6 @@ requires, per branch, exactly one registered type for every non-abstract, non-`I
 A class added to `vo-documents` without a type here fails the suite after the next `composer update`.
 
 Class names are flat and country-prefixed (`RuSnilsType`, `AuNswDriverLicenceNumberType`) because `FamilyName`,
-`GivenName` and `PersonName` exist in every `Name\<CC>` namespace. Enums and `@internal` helper classes
-(`DE\SerialNumberFormat`, `ES\ControlLetter`, `GB\NhsCheckDigit`) are not value objects and have no type.
+`GivenName` and `PersonName` exist in every `Name\<CC>` namespace. Interfaces, factories, enums (`Jurisdiction`, `Sex`,
+`Name\US\NameSuffix`) and `@internal` helper classes (`DE\SerialNumberFormat`, `ES\ControlLetter`, `GB\NhsCheckDigit`)
+are not value objects and have no type.
