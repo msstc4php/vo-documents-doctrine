@@ -347,6 +347,16 @@ final class StringTypesTest extends TestCase
         self::assertTrue($card->versionCode()?->equals($versionCode));
     }
 
+    #[DataProviderExternal(Samples::class, 'stringLengths')]
+    public function testColumnFitsExactlyTheLongestAcceptedForm(string $name, StringConvertible $vo, int $length): void
+    {
+        self::assertSame(\sprintf('VARCHAR(%d)', $length), Type::getType($name)->getSQLDeclaration([], $this->platform));
+        self::assertSame($length, \mb_strlen((string) $vo));
+
+        $this->expectException(InvalidValueObjectException::class);
+        $vo::from($vo . \mb_substr((string) $vo, -1));
+    }
+
     #[DataProviderExternal(Samples::class, 'stringNames')]
     public function testNullRoundTrips(string $name): void
     {
