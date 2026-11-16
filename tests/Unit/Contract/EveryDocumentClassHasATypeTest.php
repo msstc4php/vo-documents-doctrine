@@ -23,6 +23,40 @@ use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\AuTasDriverLicenceNumberType as
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\AuTaxFileNumberType as OdmAuTaxFileNumberType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\AuVicDriverLicenceNumberType as OdmAuVicDriverLicenceNumberType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\AuWaDriverLicenceNumberType as OdmAuWaDriverLicenceNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\BrCnsType as OdmBrCnsType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\BrCpfType as OdmBrCpfType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\BrDriverLicenceNumberType as OdmBrDriverLicenceNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\BrFamilyNameType as OdmBrFamilyNameType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\BrGivenNameType as OdmBrGivenNameType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\BrNisType as OdmBrNisType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\BrPassportNumberType as OdmBrPassportNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\BrPersonNameType as OdmBrPersonNameType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\BrSpIdentityCardNumberType as OdmBrSpIdentityCardNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\BrVoterRegistrationNumberType as OdmBrVoterRegistrationNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\CaAbDriverLicenceNumberType as OdmCaAbDriverLicenceNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\CaAbHealthCardNumberType as OdmCaAbHealthCardNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\CaBcDriverLicenceNumberType as OdmCaBcDriverLicenceNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\CaBcHealthCardNumberType as OdmCaBcHealthCardNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\CaFamilyNameType as OdmCaFamilyNameType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\CaGivenNameType as OdmCaGivenNameType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\CaMbHealthCardNumberType as OdmCaMbHealthCardNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\CaNbHealthCardNumberType as OdmCaNbHealthCardNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\CaNlHealthCardNumberType as OdmCaNlHealthCardNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\CaNsDriverLicenceNumberType as OdmCaNsDriverLicenceNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\CaNsHealthCardNumberType as OdmCaNsHealthCardNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\CaNtHealthCardNumberType as OdmCaNtHealthCardNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\CaNuHealthCardNumberType as OdmCaNuHealthCardNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\CaOnDriverLicenceNumberType as OdmCaOnDriverLicenceNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\CaOnHealthCardNumberType as OdmCaOnHealthCardNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\CaPassportNumberType as OdmCaPassportNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\CaPeHealthCardNumberType as OdmCaPeHealthCardNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\CaPersonNameType as OdmCaPersonNameType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\CaQcDriverLicenceNumberType as OdmCaQcDriverLicenceNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\CaQcHealthCardNumberType as OdmCaQcHealthCardNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\CaSkDriverLicenceNumberType as OdmCaSkDriverLicenceNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\CaSkHealthCardNumberType as OdmCaSkHealthCardNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\CaSocialInsuranceNumberType as OdmCaSocialInsuranceNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\CaYtHealthCardNumberType as OdmCaYtHealthCardNumberType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\ChAhvNumberType as OdmChAhvNumberType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\ChDriverLicenceNumberType as OdmChDriverLicenceNumberType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\ChFamilyNameType as OdmChFamilyNameType;
@@ -66,6 +100,14 @@ use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\ItFiscalCodeType as OdmItFiscal
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\ItGivenNameType as OdmItGivenNameType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\ItPassportNumberType as OdmItPassportNumberType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\ItPersonNameType as OdmItPersonNameType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\MxCurpType as OdmMxCurpType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\MxElectorKeyType as OdmMxElectorKeyType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\MxFamilyNameType as OdmMxFamilyNameType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\MxGivenNameType as OdmMxGivenNameType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\MxMexDriverLicenceNumberType as OdmMxMexDriverLicenceNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\MxPersonNameType as OdmMxPersonNameType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\MxRfcType as OdmMxRfcType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\MxSocialSecurityNumberType as OdmMxSocialSecurityNumberType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\NlBsnType as OdmNlBsnType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\NlFamilyNameType as OdmNlFamilyNameType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\NlGivenNameType as OdmNlGivenNameType;
@@ -88,6 +130,45 @@ use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\TrIdentityNumberType as OdmTrId
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\TrPassportNumberType as OdmTrPassportNumberType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\TrPersonNameType as OdmTrPersonNameType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\TypeRegistrar as OdmRegistrar;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\UsAlDlIdNumberType as OdmUsAlDlIdNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\UsAzDlIdNumberType as OdmUsAzDlIdNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\UsCoDlIdNumberType as OdmUsCoDlIdNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\UsCtDlIdNumberType as OdmUsCtDlIdNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\UsFamilyNameType as OdmUsFamilyNameType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\UsFlDlIdNumberType as OdmUsFlDlIdNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\UsGivenNameType as OdmUsGivenNameType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\UsHiDlIdNumberType as OdmUsHiDlIdNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\UsIaDlIdNumberType as OdmUsIaDlIdNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\UsIdDlIdNumberType as OdmUsIdDlIdNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\UsIlDlIdNumberType as OdmUsIlDlIdNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\UsInDlIdNumberType as OdmUsInDlIdNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\UsItinType as OdmUsItinType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\UsKsDlIdNumberType as OdmUsKsDlIdNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\UsKyDlIdNumberType as OdmUsKyDlIdNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\UsMaDlIdNumberType as OdmUsMaDlIdNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\UsMdDlIdNumberType as OdmUsMdDlIdNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\UsMedicareBeneficiaryIdentifierType as OdmUsMedicareBeneficiaryIdentifierType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\UsMeDlIdNumberType as OdmUsMeDlIdNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\UsMiddleNameType as OdmUsMiddleNameType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\UsMiDlIdNumberType as OdmUsMiDlIdNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\UsMsDlIdNumberType as OdmUsMsDlIdNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\UsNdDlIdNumberType as OdmUsNdDlIdNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\UsNeDlIdNumberType as OdmUsNeDlIdNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\UsNjDlIdNumberType as OdmUsNjDlIdNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\UsNmDlIdNumberType as OdmUsNmDlIdNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\UsNyDlIdNumberType as OdmUsNyDlIdNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\UsOkDlIdNumberType as OdmUsOkDlIdNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\UsPaDlIdNumberType as OdmUsPaDlIdNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\UsPassportBookNumberType as OdmUsPassportBookNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\UsPassportCardNumberType as OdmUsPassportCardNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\UsPersonNameType as OdmUsPersonNameType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\UsRiDlIdNumberType as OdmUsRiDlIdNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\UsSocialSecurityNumberType as OdmUsSocialSecurityNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\UsTxDlIdNumberType as OdmUsTxDlIdNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\UsVtDlIdNumberType as OdmUsVtDlIdNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\UsWaDlIdNumberType as OdmUsWaDlIdNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\UsWiDlIdNumberType as OdmUsWiDlIdNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\UsWyDlIdNumberType as OdmUsWyDlIdNumberType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\AuActDriverLicenceNumberType as OrmAuActDriverLicenceNumberType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\AuFamilyNameType as OrmAuFamilyNameType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\AuGivenNameType as OrmAuGivenNameType;
@@ -101,6 +182,40 @@ use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\AuTasDriverLicenceNumberType as
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\AuTaxFileNumberType as OrmAuTaxFileNumberType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\AuVicDriverLicenceNumberType as OrmAuVicDriverLicenceNumberType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\AuWaDriverLicenceNumberType as OrmAuWaDriverLicenceNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\BrCnsType as OrmBrCnsType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\BrCpfType as OrmBrCpfType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\BrDriverLicenceNumberType as OrmBrDriverLicenceNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\BrFamilyNameType as OrmBrFamilyNameType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\BrGivenNameType as OrmBrGivenNameType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\BrNisType as OrmBrNisType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\BrPassportNumberType as OrmBrPassportNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\BrPersonNameType as OrmBrPersonNameType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\BrSpIdentityCardNumberType as OrmBrSpIdentityCardNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\BrVoterRegistrationNumberType as OrmBrVoterRegistrationNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\CaAbDriverLicenceNumberType as OrmCaAbDriverLicenceNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\CaAbHealthCardNumberType as OrmCaAbHealthCardNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\CaBcDriverLicenceNumberType as OrmCaBcDriverLicenceNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\CaBcHealthCardNumberType as OrmCaBcHealthCardNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\CaFamilyNameType as OrmCaFamilyNameType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\CaGivenNameType as OrmCaGivenNameType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\CaMbHealthCardNumberType as OrmCaMbHealthCardNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\CaNbHealthCardNumberType as OrmCaNbHealthCardNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\CaNlHealthCardNumberType as OrmCaNlHealthCardNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\CaNsDriverLicenceNumberType as OrmCaNsDriverLicenceNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\CaNsHealthCardNumberType as OrmCaNsHealthCardNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\CaNtHealthCardNumberType as OrmCaNtHealthCardNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\CaNuHealthCardNumberType as OrmCaNuHealthCardNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\CaOnDriverLicenceNumberType as OrmCaOnDriverLicenceNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\CaOnHealthCardNumberType as OrmCaOnHealthCardNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\CaPassportNumberType as OrmCaPassportNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\CaPeHealthCardNumberType as OrmCaPeHealthCardNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\CaPersonNameType as OrmCaPersonNameType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\CaQcDriverLicenceNumberType as OrmCaQcDriverLicenceNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\CaQcHealthCardNumberType as OrmCaQcHealthCardNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\CaSkDriverLicenceNumberType as OrmCaSkDriverLicenceNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\CaSkHealthCardNumberType as OrmCaSkHealthCardNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\CaSocialInsuranceNumberType as OrmCaSocialInsuranceNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\CaYtHealthCardNumberType as OrmCaYtHealthCardNumberType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\ChAhvNumberType as OrmChAhvNumberType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\ChDriverLicenceNumberType as OrmChDriverLicenceNumberType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\ChFamilyNameType as OrmChFamilyNameType;
@@ -144,6 +259,14 @@ use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\ItFiscalCodeType as OrmItFiscal
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\ItGivenNameType as OrmItGivenNameType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\ItPassportNumberType as OrmItPassportNumberType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\ItPersonNameType as OrmItPersonNameType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\MxCurpType as OrmMxCurpType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\MxElectorKeyType as OrmMxElectorKeyType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\MxFamilyNameType as OrmMxFamilyNameType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\MxGivenNameType as OrmMxGivenNameType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\MxMexDriverLicenceNumberType as OrmMxMexDriverLicenceNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\MxPersonNameType as OrmMxPersonNameType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\MxRfcType as OrmMxRfcType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\MxSocialSecurityNumberType as OrmMxSocialSecurityNumberType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\NlBsnType as OrmNlBsnType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\NlFamilyNameType as OrmNlFamilyNameType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\NlGivenNameType as OrmNlGivenNameType;
@@ -166,6 +289,45 @@ use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\TrIdentityNumberType as OrmTrId
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\TrPassportNumberType as OrmTrPassportNumberType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\TrPersonNameType as OrmTrPersonNameType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\TypeRegistrar as OrmRegistrar;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\UsAlDlIdNumberType as OrmUsAlDlIdNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\UsAzDlIdNumberType as OrmUsAzDlIdNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\UsCoDlIdNumberType as OrmUsCoDlIdNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\UsCtDlIdNumberType as OrmUsCtDlIdNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\UsFamilyNameType as OrmUsFamilyNameType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\UsFlDlIdNumberType as OrmUsFlDlIdNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\UsGivenNameType as OrmUsGivenNameType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\UsHiDlIdNumberType as OrmUsHiDlIdNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\UsIaDlIdNumberType as OrmUsIaDlIdNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\UsIdDlIdNumberType as OrmUsIdDlIdNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\UsIlDlIdNumberType as OrmUsIlDlIdNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\UsInDlIdNumberType as OrmUsInDlIdNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\UsItinType as OrmUsItinType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\UsKsDlIdNumberType as OrmUsKsDlIdNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\UsKyDlIdNumberType as OrmUsKyDlIdNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\UsMaDlIdNumberType as OrmUsMaDlIdNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\UsMdDlIdNumberType as OrmUsMdDlIdNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\UsMedicareBeneficiaryIdentifierType as OrmUsMedicareBeneficiaryIdentifierType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\UsMeDlIdNumberType as OrmUsMeDlIdNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\UsMiddleNameType as OrmUsMiddleNameType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\UsMiDlIdNumberType as OrmUsMiDlIdNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\UsMsDlIdNumberType as OrmUsMsDlIdNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\UsNdDlIdNumberType as OrmUsNdDlIdNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\UsNeDlIdNumberType as OrmUsNeDlIdNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\UsNjDlIdNumberType as OrmUsNjDlIdNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\UsNmDlIdNumberType as OrmUsNmDlIdNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\UsNyDlIdNumberType as OrmUsNyDlIdNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\UsOkDlIdNumberType as OrmUsOkDlIdNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\UsPaDlIdNumberType as OrmUsPaDlIdNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\UsPassportBookNumberType as OrmUsPassportBookNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\UsPassportCardNumberType as OrmUsPassportCardNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\UsPersonNameType as OrmUsPersonNameType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\UsRiDlIdNumberType as OrmUsRiDlIdNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\UsSocialSecurityNumberType as OrmUsSocialSecurityNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\UsTxDlIdNumberType as OrmUsTxDlIdNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\UsVtDlIdNumberType as OrmUsVtDlIdNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\UsWaDlIdNumberType as OrmUsWaDlIdNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\UsWiDlIdNumberType as OrmUsWiDlIdNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\UsWyDlIdNumberType as OrmUsWyDlIdNumberType;
 use MSSTC4PHP\ValueObject\Documents\Sex;
 use MSSTC4PHP\ValueObject\Payload\PayloadCodec;
 use PHPUnit\Framework\Attributes\CoversClass;
@@ -334,6 +496,168 @@ use SplFileInfo;
 #[UsesClass(OdmTrFamilyNameType::class)]
 #[UsesClass(OdmTrGivenNameType::class)]
 #[UsesClass(OdmTrPersonNameType::class)]
+#[UsesClass(OrmBrCnsType::class)]
+#[UsesClass(OrmBrCpfType::class)]
+#[UsesClass(OrmBrDriverLicenceNumberType::class)]
+#[UsesClass(OrmBrSpIdentityCardNumberType::class)]
+#[UsesClass(OrmBrNisType::class)]
+#[UsesClass(OrmBrPassportNumberType::class)]
+#[UsesClass(OrmBrVoterRegistrationNumberType::class)]
+#[UsesClass(OrmCaAbDriverLicenceNumberType::class)]
+#[UsesClass(OrmCaBcDriverLicenceNumberType::class)]
+#[UsesClass(OrmCaNsDriverLicenceNumberType::class)]
+#[UsesClass(OrmCaOnDriverLicenceNumberType::class)]
+#[UsesClass(OrmCaQcDriverLicenceNumberType::class)]
+#[UsesClass(OrmCaSkDriverLicenceNumberType::class)]
+#[UsesClass(OrmCaAbHealthCardNumberType::class)]
+#[UsesClass(OrmCaBcHealthCardNumberType::class)]
+#[UsesClass(OrmCaMbHealthCardNumberType::class)]
+#[UsesClass(OrmCaNbHealthCardNumberType::class)]
+#[UsesClass(OrmCaNlHealthCardNumberType::class)]
+#[UsesClass(OrmCaNsHealthCardNumberType::class)]
+#[UsesClass(OrmCaNtHealthCardNumberType::class)]
+#[UsesClass(OrmCaNuHealthCardNumberType::class)]
+#[UsesClass(OrmCaOnHealthCardNumberType::class)]
+#[UsesClass(OrmCaPeHealthCardNumberType::class)]
+#[UsesClass(OrmCaQcHealthCardNumberType::class)]
+#[UsesClass(OrmCaSkHealthCardNumberType::class)]
+#[UsesClass(OrmCaYtHealthCardNumberType::class)]
+#[UsesClass(OrmCaPassportNumberType::class)]
+#[UsesClass(OrmCaSocialInsuranceNumberType::class)]
+#[UsesClass(OrmMxCurpType::class)]
+#[UsesClass(OrmMxMexDriverLicenceNumberType::class)]
+#[UsesClass(OrmMxElectorKeyType::class)]
+#[UsesClass(OrmMxRfcType::class)]
+#[UsesClass(OrmMxSocialSecurityNumberType::class)]
+#[UsesClass(OrmUsAlDlIdNumberType::class)]
+#[UsesClass(OrmUsAzDlIdNumberType::class)]
+#[UsesClass(OrmUsCoDlIdNumberType::class)]
+#[UsesClass(OrmUsCtDlIdNumberType::class)]
+#[UsesClass(OrmUsFlDlIdNumberType::class)]
+#[UsesClass(OrmUsHiDlIdNumberType::class)]
+#[UsesClass(OrmUsIaDlIdNumberType::class)]
+#[UsesClass(OrmUsIdDlIdNumberType::class)]
+#[UsesClass(OrmUsIlDlIdNumberType::class)]
+#[UsesClass(OrmUsInDlIdNumberType::class)]
+#[UsesClass(OrmUsKsDlIdNumberType::class)]
+#[UsesClass(OrmUsKyDlIdNumberType::class)]
+#[UsesClass(OrmUsMaDlIdNumberType::class)]
+#[UsesClass(OrmUsMdDlIdNumberType::class)]
+#[UsesClass(OrmUsMeDlIdNumberType::class)]
+#[UsesClass(OrmUsMiDlIdNumberType::class)]
+#[UsesClass(OrmUsMsDlIdNumberType::class)]
+#[UsesClass(OrmUsNdDlIdNumberType::class)]
+#[UsesClass(OrmUsNeDlIdNumberType::class)]
+#[UsesClass(OrmUsNjDlIdNumberType::class)]
+#[UsesClass(OrmUsNmDlIdNumberType::class)]
+#[UsesClass(OrmUsNyDlIdNumberType::class)]
+#[UsesClass(OrmUsOkDlIdNumberType::class)]
+#[UsesClass(OrmUsPaDlIdNumberType::class)]
+#[UsesClass(OrmUsRiDlIdNumberType::class)]
+#[UsesClass(OrmUsTxDlIdNumberType::class)]
+#[UsesClass(OrmUsVtDlIdNumberType::class)]
+#[UsesClass(OrmUsWaDlIdNumberType::class)]
+#[UsesClass(OrmUsWiDlIdNumberType::class)]
+#[UsesClass(OrmUsWyDlIdNumberType::class)]
+#[UsesClass(OrmUsItinType::class)]
+#[UsesClass(OrmUsMedicareBeneficiaryIdentifierType::class)]
+#[UsesClass(OrmUsPassportBookNumberType::class)]
+#[UsesClass(OrmUsPassportCardNumberType::class)]
+#[UsesClass(OrmUsSocialSecurityNumberType::class)]
+#[UsesClass(OrmBrFamilyNameType::class)]
+#[UsesClass(OrmBrGivenNameType::class)]
+#[UsesClass(OrmBrPersonNameType::class)]
+#[UsesClass(OrmCaFamilyNameType::class)]
+#[UsesClass(OrmCaGivenNameType::class)]
+#[UsesClass(OrmCaPersonNameType::class)]
+#[UsesClass(OrmMxFamilyNameType::class)]
+#[UsesClass(OrmMxGivenNameType::class)]
+#[UsesClass(OrmMxPersonNameType::class)]
+#[UsesClass(OrmUsFamilyNameType::class)]
+#[UsesClass(OrmUsGivenNameType::class)]
+#[UsesClass(OrmUsMiddleNameType::class)]
+#[UsesClass(OrmUsPersonNameType::class)]
+#[UsesClass(OdmBrCnsType::class)]
+#[UsesClass(OdmBrCpfType::class)]
+#[UsesClass(OdmBrDriverLicenceNumberType::class)]
+#[UsesClass(OdmBrSpIdentityCardNumberType::class)]
+#[UsesClass(OdmBrNisType::class)]
+#[UsesClass(OdmBrPassportNumberType::class)]
+#[UsesClass(OdmBrVoterRegistrationNumberType::class)]
+#[UsesClass(OdmCaAbDriverLicenceNumberType::class)]
+#[UsesClass(OdmCaBcDriverLicenceNumberType::class)]
+#[UsesClass(OdmCaNsDriverLicenceNumberType::class)]
+#[UsesClass(OdmCaOnDriverLicenceNumberType::class)]
+#[UsesClass(OdmCaQcDriverLicenceNumberType::class)]
+#[UsesClass(OdmCaSkDriverLicenceNumberType::class)]
+#[UsesClass(OdmCaAbHealthCardNumberType::class)]
+#[UsesClass(OdmCaBcHealthCardNumberType::class)]
+#[UsesClass(OdmCaMbHealthCardNumberType::class)]
+#[UsesClass(OdmCaNbHealthCardNumberType::class)]
+#[UsesClass(OdmCaNlHealthCardNumberType::class)]
+#[UsesClass(OdmCaNsHealthCardNumberType::class)]
+#[UsesClass(OdmCaNtHealthCardNumberType::class)]
+#[UsesClass(OdmCaNuHealthCardNumberType::class)]
+#[UsesClass(OdmCaOnHealthCardNumberType::class)]
+#[UsesClass(OdmCaPeHealthCardNumberType::class)]
+#[UsesClass(OdmCaQcHealthCardNumberType::class)]
+#[UsesClass(OdmCaSkHealthCardNumberType::class)]
+#[UsesClass(OdmCaYtHealthCardNumberType::class)]
+#[UsesClass(OdmCaPassportNumberType::class)]
+#[UsesClass(OdmCaSocialInsuranceNumberType::class)]
+#[UsesClass(OdmMxCurpType::class)]
+#[UsesClass(OdmMxMexDriverLicenceNumberType::class)]
+#[UsesClass(OdmMxElectorKeyType::class)]
+#[UsesClass(OdmMxRfcType::class)]
+#[UsesClass(OdmMxSocialSecurityNumberType::class)]
+#[UsesClass(OdmUsAlDlIdNumberType::class)]
+#[UsesClass(OdmUsAzDlIdNumberType::class)]
+#[UsesClass(OdmUsCoDlIdNumberType::class)]
+#[UsesClass(OdmUsCtDlIdNumberType::class)]
+#[UsesClass(OdmUsFlDlIdNumberType::class)]
+#[UsesClass(OdmUsHiDlIdNumberType::class)]
+#[UsesClass(OdmUsIaDlIdNumberType::class)]
+#[UsesClass(OdmUsIdDlIdNumberType::class)]
+#[UsesClass(OdmUsIlDlIdNumberType::class)]
+#[UsesClass(OdmUsInDlIdNumberType::class)]
+#[UsesClass(OdmUsKsDlIdNumberType::class)]
+#[UsesClass(OdmUsKyDlIdNumberType::class)]
+#[UsesClass(OdmUsMaDlIdNumberType::class)]
+#[UsesClass(OdmUsMdDlIdNumberType::class)]
+#[UsesClass(OdmUsMeDlIdNumberType::class)]
+#[UsesClass(OdmUsMiDlIdNumberType::class)]
+#[UsesClass(OdmUsMsDlIdNumberType::class)]
+#[UsesClass(OdmUsNdDlIdNumberType::class)]
+#[UsesClass(OdmUsNeDlIdNumberType::class)]
+#[UsesClass(OdmUsNjDlIdNumberType::class)]
+#[UsesClass(OdmUsNmDlIdNumberType::class)]
+#[UsesClass(OdmUsNyDlIdNumberType::class)]
+#[UsesClass(OdmUsOkDlIdNumberType::class)]
+#[UsesClass(OdmUsPaDlIdNumberType::class)]
+#[UsesClass(OdmUsRiDlIdNumberType::class)]
+#[UsesClass(OdmUsTxDlIdNumberType::class)]
+#[UsesClass(OdmUsVtDlIdNumberType::class)]
+#[UsesClass(OdmUsWaDlIdNumberType::class)]
+#[UsesClass(OdmUsWiDlIdNumberType::class)]
+#[UsesClass(OdmUsWyDlIdNumberType::class)]
+#[UsesClass(OdmUsItinType::class)]
+#[UsesClass(OdmUsMedicareBeneficiaryIdentifierType::class)]
+#[UsesClass(OdmUsPassportBookNumberType::class)]
+#[UsesClass(OdmUsPassportCardNumberType::class)]
+#[UsesClass(OdmUsSocialSecurityNumberType::class)]
+#[UsesClass(OdmBrFamilyNameType::class)]
+#[UsesClass(OdmBrGivenNameType::class)]
+#[UsesClass(OdmBrPersonNameType::class)]
+#[UsesClass(OdmCaFamilyNameType::class)]
+#[UsesClass(OdmCaGivenNameType::class)]
+#[UsesClass(OdmCaPersonNameType::class)]
+#[UsesClass(OdmMxFamilyNameType::class)]
+#[UsesClass(OdmMxGivenNameType::class)]
+#[UsesClass(OdmMxPersonNameType::class)]
+#[UsesClass(OdmUsFamilyNameType::class)]
+#[UsesClass(OdmUsGivenNameType::class)]
+#[UsesClass(OdmUsMiddleNameType::class)]
+#[UsesClass(OdmUsPersonNameType::class)]
 final class EveryDocumentClassHasATypeTest extends TestCase
 {
     /**

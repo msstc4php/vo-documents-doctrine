@@ -8,16 +8,20 @@ use Doctrine\ODM\MongoDB\Types\Type;
 use InvalidArgumentException;
 use MSSTC4PHP\ValueObject\Contract\ValueObject;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\AuPersonNameType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\BrPersonNameType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\CaPersonNameType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\ChPersonNameType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\DePersonNameType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\EsPersonNameType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\FrPersonNameType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\GbPersonNameType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\ItPersonNameType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\MxPersonNameType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\NlPersonNameType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\RuPersonNameType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\TrPersonNameType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\TypeRegistrar;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\UsPersonNameType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Tests\Support\Samples;
 use MSSTC4PHP\ValueObject\Documents\Document\RU\Snils;
 use MSSTC4PHP\ValueObject\Documents\Exception\InvalidPersonNameException;
@@ -37,6 +41,10 @@ use PHPUnit\Framework\TestCase;
 #[CoversClass(ChPersonNameType::class)]
 #[CoversClass(GbPersonNameType::class)]
 #[CoversClass(TrPersonNameType::class)]
+#[CoversClass(BrPersonNameType::class)]
+#[CoversClass(CaPersonNameType::class)]
+#[CoversClass(MxPersonNameType::class)]
+#[CoversClass(UsPersonNameType::class)]
 #[CoversClass(TypeRegistrar::class)]
 final class CompositeTypesTest extends TestCase
 {

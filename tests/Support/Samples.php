@@ -16,6 +16,34 @@ use MSSTC4PHP\ValueObject\Documents\Document\AU\DriverLicence\VicDriverLicenceNu
 use MSSTC4PHP\ValueObject\Documents\Document\AU\DriverLicence\WaDriverLicenceNumber;
 use MSSTC4PHP\ValueObject\Documents\Document\AU\MedicareCardNumber;
 use MSSTC4PHP\ValueObject\Documents\Document\AU\TaxFileNumber;
+use MSSTC4PHP\ValueObject\Documents\Document\BR\Cns as BrCns;
+use MSSTC4PHP\ValueObject\Documents\Document\BR\Cpf as BrCpf;
+use MSSTC4PHP\ValueObject\Documents\Document\BR\DriverLicenceNumber as BrDriverLicenceNumber;
+use MSSTC4PHP\ValueObject\Documents\Document\BR\IdentityCard\SpIdentityCardNumber as BrSpIdentityCardNumber;
+use MSSTC4PHP\ValueObject\Documents\Document\BR\Nis as BrNis;
+use MSSTC4PHP\ValueObject\Documents\Document\BR\PassportNumber as BrPassportNumber;
+use MSSTC4PHP\ValueObject\Documents\Document\BR\VoterRegistrationNumber as BrVoterRegistrationNumber;
+use MSSTC4PHP\ValueObject\Documents\Document\CA\DriverLicence\AbDriverLicenceNumber as CaAbDriverLicenceNumber;
+use MSSTC4PHP\ValueObject\Documents\Document\CA\DriverLicence\BcDriverLicenceNumber as CaBcDriverLicenceNumber;
+use MSSTC4PHP\ValueObject\Documents\Document\CA\DriverLicence\NsDriverLicenceNumber as CaNsDriverLicenceNumber;
+use MSSTC4PHP\ValueObject\Documents\Document\CA\DriverLicence\OnDriverLicenceNumber as CaOnDriverLicenceNumber;
+use MSSTC4PHP\ValueObject\Documents\Document\CA\DriverLicence\QcDriverLicenceNumber as CaQcDriverLicenceNumber;
+use MSSTC4PHP\ValueObject\Documents\Document\CA\DriverLicence\SkDriverLicenceNumber as CaSkDriverLicenceNumber;
+use MSSTC4PHP\ValueObject\Documents\Document\CA\HealthCard\AbHealthCardNumber as CaAbHealthCardNumber;
+use MSSTC4PHP\ValueObject\Documents\Document\CA\HealthCard\BcHealthCardNumber as CaBcHealthCardNumber;
+use MSSTC4PHP\ValueObject\Documents\Document\CA\HealthCard\MbHealthCardNumber as CaMbHealthCardNumber;
+use MSSTC4PHP\ValueObject\Documents\Document\CA\HealthCard\NbHealthCardNumber as CaNbHealthCardNumber;
+use MSSTC4PHP\ValueObject\Documents\Document\CA\HealthCard\NlHealthCardNumber as CaNlHealthCardNumber;
+use MSSTC4PHP\ValueObject\Documents\Document\CA\HealthCard\NsHealthCardNumber as CaNsHealthCardNumber;
+use MSSTC4PHP\ValueObject\Documents\Document\CA\HealthCard\NtHealthCardNumber as CaNtHealthCardNumber;
+use MSSTC4PHP\ValueObject\Documents\Document\CA\HealthCard\NuHealthCardNumber as CaNuHealthCardNumber;
+use MSSTC4PHP\ValueObject\Documents\Document\CA\HealthCard\OnHealthCardNumber as CaOnHealthCardNumber;
+use MSSTC4PHP\ValueObject\Documents\Document\CA\HealthCard\PeHealthCardNumber as CaPeHealthCardNumber;
+use MSSTC4PHP\ValueObject\Documents\Document\CA\HealthCard\QcHealthCardNumber as CaQcHealthCardNumber;
+use MSSTC4PHP\ValueObject\Documents\Document\CA\HealthCard\SkHealthCardNumber as CaSkHealthCardNumber;
+use MSSTC4PHP\ValueObject\Documents\Document\CA\HealthCard\YtHealthCardNumber as CaYtHealthCardNumber;
+use MSSTC4PHP\ValueObject\Documents\Document\CA\PassportNumber as CaPassportNumber;
+use MSSTC4PHP\ValueObject\Documents\Document\CA\SocialInsuranceNumber as CaSocialInsuranceNumber;
 use MSSTC4PHP\ValueObject\Documents\Document\CH\AhvNumber as ChAhvNumber;
 use MSSTC4PHP\ValueObject\Documents\Document\CH\DriverLicenceNumber as ChDriverLicenceNumber;
 use MSSTC4PHP\ValueObject\Documents\Document\CH\IdentityDocumentNumber as ChIdentityDocumentNumber;
@@ -40,6 +68,11 @@ use MSSTC4PHP\ValueObject\Documents\Document\GB\NorthernIrelandDriverLicenceNumb
 use MSSTC4PHP\ValueObject\Documents\Document\GB\PassportNumber as GbPassportNumber;
 use MSSTC4PHP\ValueObject\Documents\Document\IT\FiscalCode as ItFiscalCode;
 use MSSTC4PHP\ValueObject\Documents\Document\IT\PassportNumber as ItPassportNumber;
+use MSSTC4PHP\ValueObject\Documents\Document\MX\Curp as MxCurp;
+use MSSTC4PHP\ValueObject\Documents\Document\MX\DriverLicence\MexDriverLicenceNumber as MxMexDriverLicenceNumber;
+use MSSTC4PHP\ValueObject\Documents\Document\MX\ElectorKey as MxElectorKey;
+use MSSTC4PHP\ValueObject\Documents\Document\MX\Rfc as MxRfc;
+use MSSTC4PHP\ValueObject\Documents\Document\MX\SocialSecurityNumber as MxSocialSecurityNumber;
 use MSSTC4PHP\ValueObject\Documents\Document\NL\Bsn as NlBsn;
 use MSSTC4PHP\ValueObject\Documents\Document\NL\IdentityDocumentNumber as NlIdentityDocumentNumber;
 use MSSTC4PHP\ValueObject\Documents\Document\RU\DriverLicenceNumber;
@@ -51,11 +84,52 @@ use MSSTC4PHP\ValueObject\Documents\Document\RU\PassportIssuingUnitCode;
 use MSSTC4PHP\ValueObject\Documents\Document\RU\Snils;
 use MSSTC4PHP\ValueObject\Documents\Document\TR\IdentityNumber as TrIdentityNumber;
 use MSSTC4PHP\ValueObject\Documents\Document\TR\PassportNumber as TrPassportNumber;
+use MSSTC4PHP\ValueObject\Documents\Document\US\DlId\AlDlIdNumber as UsAlDlIdNumber;
+use MSSTC4PHP\ValueObject\Documents\Document\US\DlId\AzDlIdNumber as UsAzDlIdNumber;
+use MSSTC4PHP\ValueObject\Documents\Document\US\DlId\CoDlIdNumber as UsCoDlIdNumber;
+use MSSTC4PHP\ValueObject\Documents\Document\US\DlId\CtDlIdNumber as UsCtDlIdNumber;
+use MSSTC4PHP\ValueObject\Documents\Document\US\DlId\FlDlIdNumber as UsFlDlIdNumber;
+use MSSTC4PHP\ValueObject\Documents\Document\US\DlId\HiDlIdNumber as UsHiDlIdNumber;
+use MSSTC4PHP\ValueObject\Documents\Document\US\DlId\IaDlIdNumber as UsIaDlIdNumber;
+use MSSTC4PHP\ValueObject\Documents\Document\US\DlId\IdDlIdNumber as UsIdDlIdNumber;
+use MSSTC4PHP\ValueObject\Documents\Document\US\DlId\IlDlIdNumber as UsIlDlIdNumber;
+use MSSTC4PHP\ValueObject\Documents\Document\US\DlId\InDlIdNumber as UsInDlIdNumber;
+use MSSTC4PHP\ValueObject\Documents\Document\US\DlId\KsDlIdNumber as UsKsDlIdNumber;
+use MSSTC4PHP\ValueObject\Documents\Document\US\DlId\KyDlIdNumber as UsKyDlIdNumber;
+use MSSTC4PHP\ValueObject\Documents\Document\US\DlId\MaDlIdNumber as UsMaDlIdNumber;
+use MSSTC4PHP\ValueObject\Documents\Document\US\DlId\MdDlIdNumber as UsMdDlIdNumber;
+use MSSTC4PHP\ValueObject\Documents\Document\US\DlId\MeDlIdNumber as UsMeDlIdNumber;
+use MSSTC4PHP\ValueObject\Documents\Document\US\DlId\MiDlIdNumber as UsMiDlIdNumber;
+use MSSTC4PHP\ValueObject\Documents\Document\US\DlId\MsDlIdNumber as UsMsDlIdNumber;
+use MSSTC4PHP\ValueObject\Documents\Document\US\DlId\NdDlIdNumber as UsNdDlIdNumber;
+use MSSTC4PHP\ValueObject\Documents\Document\US\DlId\NeDlIdNumber as UsNeDlIdNumber;
+use MSSTC4PHP\ValueObject\Documents\Document\US\DlId\NjDlIdNumber as UsNjDlIdNumber;
+use MSSTC4PHP\ValueObject\Documents\Document\US\DlId\NmDlIdNumber as UsNmDlIdNumber;
+use MSSTC4PHP\ValueObject\Documents\Document\US\DlId\NyDlIdNumber as UsNyDlIdNumber;
+use MSSTC4PHP\ValueObject\Documents\Document\US\DlId\OkDlIdNumber as UsOkDlIdNumber;
+use MSSTC4PHP\ValueObject\Documents\Document\US\DlId\PaDlIdNumber as UsPaDlIdNumber;
+use MSSTC4PHP\ValueObject\Documents\Document\US\DlId\RiDlIdNumber as UsRiDlIdNumber;
+use MSSTC4PHP\ValueObject\Documents\Document\US\DlId\TxDlIdNumber as UsTxDlIdNumber;
+use MSSTC4PHP\ValueObject\Documents\Document\US\DlId\VtDlIdNumber as UsVtDlIdNumber;
+use MSSTC4PHP\ValueObject\Documents\Document\US\DlId\WaDlIdNumber as UsWaDlIdNumber;
+use MSSTC4PHP\ValueObject\Documents\Document\US\DlId\WiDlIdNumber as UsWiDlIdNumber;
+use MSSTC4PHP\ValueObject\Documents\Document\US\DlId\WyDlIdNumber as UsWyDlIdNumber;
+use MSSTC4PHP\ValueObject\Documents\Document\US\Itin as UsItin;
+use MSSTC4PHP\ValueObject\Documents\Document\US\MedicareBeneficiaryIdentifier as UsMedicareBeneficiaryIdentifier;
+use MSSTC4PHP\ValueObject\Documents\Document\US\PassportBookNumber as UsPassportBookNumber;
+use MSSTC4PHP\ValueObject\Documents\Document\US\PassportCardNumber as UsPassportCardNumber;
+use MSSTC4PHP\ValueObject\Documents\Document\US\SocialSecurityNumber as UsSocialSecurityNumber;
 use MSSTC4PHP\ValueObject\Documents\Icao\PersonName as IcaoPersonName;
 use MSSTC4PHP\ValueObject\Documents\Name\AbstractNamePart;
 use MSSTC4PHP\ValueObject\Documents\Name\AU\FamilyName as AuFamilyName;
 use MSSTC4PHP\ValueObject\Documents\Name\AU\GivenName as AuGivenName;
 use MSSTC4PHP\ValueObject\Documents\Name\AU\PersonName as AuPersonName;
+use MSSTC4PHP\ValueObject\Documents\Name\BR\FamilyName as BrFamilyName;
+use MSSTC4PHP\ValueObject\Documents\Name\BR\GivenName as BrGivenName;
+use MSSTC4PHP\ValueObject\Documents\Name\BR\PersonName as BrPersonName;
+use MSSTC4PHP\ValueObject\Documents\Name\CA\FamilyName as CaFamilyName;
+use MSSTC4PHP\ValueObject\Documents\Name\CA\GivenName as CaGivenName;
+use MSSTC4PHP\ValueObject\Documents\Name\CA\PersonName as CaPersonName;
 use MSSTC4PHP\ValueObject\Documents\Name\CH\FamilyName as ChFamilyName;
 use MSSTC4PHP\ValueObject\Documents\Name\CH\GivenName as ChGivenName;
 use MSSTC4PHP\ValueObject\Documents\Name\CH\PersonName as ChPersonName;
@@ -74,6 +148,9 @@ use MSSTC4PHP\ValueObject\Documents\Name\GB\PersonName as GbPersonName;
 use MSSTC4PHP\ValueObject\Documents\Name\IT\FamilyName as ItFamilyName;
 use MSSTC4PHP\ValueObject\Documents\Name\IT\GivenName as ItGivenName;
 use MSSTC4PHP\ValueObject\Documents\Name\IT\PersonName as ItPersonName;
+use MSSTC4PHP\ValueObject\Documents\Name\MX\FamilyName as MxFamilyName;
+use MSSTC4PHP\ValueObject\Documents\Name\MX\GivenName as MxGivenName;
+use MSSTC4PHP\ValueObject\Documents\Name\MX\PersonName as MxPersonName;
 use MSSTC4PHP\ValueObject\Documents\Name\NL\FamilyName as NlFamilyName;
 use MSSTC4PHP\ValueObject\Documents\Name\NL\GivenName as NlGivenName;
 use MSSTC4PHP\ValueObject\Documents\Name\NL\PersonName as NlPersonName;
@@ -84,6 +161,11 @@ use MSSTC4PHP\ValueObject\Documents\Name\RU\PersonName as RuPersonName;
 use MSSTC4PHP\ValueObject\Documents\Name\TR\FamilyName as TrFamilyName;
 use MSSTC4PHP\ValueObject\Documents\Name\TR\GivenName as TrGivenName;
 use MSSTC4PHP\ValueObject\Documents\Name\TR\PersonName as TrPersonName;
+use MSSTC4PHP\ValueObject\Documents\Name\US\FamilyName as UsFamilyName;
+use MSSTC4PHP\ValueObject\Documents\Name\US\GivenName as UsGivenName;
+use MSSTC4PHP\ValueObject\Documents\Name\US\MiddleName as UsMiddleName;
+use MSSTC4PHP\ValueObject\Documents\Name\US\NameSuffix;
+use MSSTC4PHP\ValueObject\Documents\Name\US\PersonName as UsPersonName;
 
 /**
  * A longest canonical sample and a stored value that must be refused, per type name.
@@ -169,6 +251,83 @@ final class Samples
         yield 'tr given name' => ['vod_tr_given_name', TrGivenName::from('S' . \str_repeat('m', AbstractNamePart::MAX_LENGTH - 1)), AbstractNamePart::MAX_LENGTH, self::BAD_NAME];
         yield 'tr family name multibyte' => ['vod_tr_family_name', TrFamilyName::from('İ' . \str_repeat('ı', AbstractNamePart::MAX_LENGTH - 1)), AbstractNamePart::MAX_LENGTH, self::BAD_NAME];
         yield 'fr given name multibyte' => ['vod_fr_given_name', FrGivenName::from('É' . \str_repeat('é', AbstractNamePart::MAX_LENGTH - 1)), AbstractNamePart::MAX_LENGTH, self::BAD_NAME];
+        yield 'br cns' => ['vod_br_cns', BrCns::from('700000000000005'), 15, self::BAD_DOCUMENT];
+        yield 'br cpf' => ['vod_br_cpf', BrCpf::from('28001238938'), 11, self::BAD_DOCUMENT];
+        yield 'br driver licence number' => ['vod_br_driver_licence_number', BrDriverLicenceNumber::from('9A04C07DE00'), 11, self::BAD_DOCUMENT];
+        yield 'br sp identity card number' => ['vod_br_sp_identity_card_number', BrSpIdentityCardNumber::from('24681357X'), 9, self::BAD_DOCUMENT];
+        yield 'br nis' => ['vod_br_nis', BrNis::from('11816788893'), 11, self::BAD_DOCUMENT];
+        yield 'br passport number' => ['vod_br_passport_number', BrPassportNumber::from('AB123456'), 8, self::BAD_DOCUMENT];
+        yield 'br voter registration number' => ['vod_br_voter_registration_number', BrVoterRegistrationNumber::from('000111111111'), 12, self::BAD_DOCUMENT];
+        yield 'ca ab driver licence number' => ['vod_ca_ab_driver_licence_number', CaAbDriverLicenceNumber::from('123456789'), 9, self::BAD_DOCUMENT];
+        yield 'ca bc driver licence number' => ['vod_ca_bc_driver_licence_number', CaBcDriverLicenceNumber::from('00000050'), 8, self::BAD_DOCUMENT];
+        yield 'ca ns driver licence number' => ['vod_ca_ns_driver_licence_number', CaNsDriverLicenceNumber::from('FINCH220867001'), 14, self::BAD_DOCUMENT];
+        yield 'ca on driver licence number' => ['vod_ca_on_driver_licence_number', CaOnDriverLicenceNumber::from('A12345678901234'), 15, self::BAD_DOCUMENT];
+        yield 'ca qc driver licence number' => ['vod_ca_qc_driver_licence_number', CaQcDriverLicenceNumber::from('A123456789012'), 13, self::BAD_DOCUMENT];
+        yield 'ca sk driver licence number' => ['vod_ca_sk_driver_licence_number', CaSkDriverLicenceNumber::from('00000050'), 8, self::BAD_DOCUMENT];
+        yield 'ca ab health card number' => ['vod_ca_ab_health_card_number', CaAbHealthCardNumber::from('123456789'), 9, self::BAD_DOCUMENT];
+        yield 'ca bc health card number' => ['vod_ca_bc_health_card_number', CaBcHealthCardNumber::from('9012372173'), 10, self::BAD_DOCUMENT];
+        yield 'ca mb health card number' => ['vod_ca_mb_health_card_number', CaMbHealthCardNumber::from('123456789'), 9, self::BAD_DOCUMENT];
+        yield 'ca nb health card number' => ['vod_ca_nb_health_card_number', CaNbHealthCardNumber::from('123456789'), 9, self::BAD_DOCUMENT];
+        yield 'ca nl health card number' => ['vod_ca_nl_health_card_number', CaNlHealthCardNumber::from('123456789012'), 12, self::BAD_DOCUMENT];
+        yield 'ca ns health card number' => ['vod_ca_ns_health_card_number', CaNsHealthCardNumber::from('1234567890'), 10, self::BAD_DOCUMENT];
+        yield 'ca nt health card number' => ['vod_ca_nt_health_card_number', CaNtHealthCardNumber::from('D1234567'), 8, self::BAD_DOCUMENT];
+        yield 'ca nu health card number' => ['vod_ca_nu_health_card_number', CaNuHealthCardNumber::from('123456789'), 9, self::BAD_DOCUMENT];
+        yield 'ca on health card number' => ['vod_ca_on_health_card_number', CaOnHealthCardNumber::from('9876543217'), 10, self::BAD_DOCUMENT];
+        yield 'ca pe health card number' => ['vod_ca_pe_health_card_number', CaPeHealthCardNumber::from('12345678'), 8, self::BAD_DOCUMENT];
+        yield 'ca qc health card number' => ['vod_ca_qc_health_card_number', CaQcHealthCardNumber::from('YUXJ75021213'), 12, self::BAD_DOCUMENT];
+        yield 'ca sk health card number' => ['vod_ca_sk_health_card_number', CaSkHealthCardNumber::from('123456789'), 9, self::BAD_DOCUMENT];
+        yield 'ca yt health card number' => ['vod_ca_yt_health_card_number', CaYtHealthCardNumber::from('123456789'), 9, self::BAD_DOCUMENT];
+        yield 'ca passport number' => ['vod_ca_passport_number', CaPassportNumber::from('A123456BC'), 9, self::BAD_DOCUMENT];
+        yield 'ca social insurance number' => ['vod_ca_social_insurance_number', CaSocialInsuranceNumber::from('123456789'), 9, self::BAD_DOCUMENT];
+        yield 'mx curp' => ['vod_mx_curp', MxCurp::from('HEGJ561231HDFRRN04'), 18, self::BAD_DOCUMENT];
+        yield 'mx mex driver licence number' => ['vod_mx_mex_driver_licence_number', MxMexDriverLicenceNumber::from('123456789012'), 12, self::BAD_DOCUMENT];
+        yield 'mx elector key' => ['vod_mx_elector_key', MxElectorKey::from('GMLPJN56123109H400'), 18, self::BAD_DOCUMENT];
+        yield 'mx rfc' => ['vod_mx_rfc', MxRfc::from('HEGJ5612311A2'), 13, self::BAD_DOCUMENT];
+        yield 'mx social security number' => ['vod_mx_social_security_number', MxSocialSecurityNumber::from('12345678901'), 11, self::BAD_DOCUMENT];
+        yield 'us al dl id number' => ['vod_us_al_dl_id_number', UsAlDlIdNumber::from('12345678'), 8, self::BAD_DOCUMENT];
+        yield 'us az dl id number' => ['vod_us_az_dl_id_number', UsAzDlIdNumber::from('123456789'), 9, self::BAD_DOCUMENT];
+        yield 'us co dl id number' => ['vod_us_co_dl_id_number', UsCoDlIdNumber::from('123456789'), 9, self::BAD_DOCUMENT];
+        yield 'us ct dl id number' => ['vod_us_ct_dl_id_number', UsCtDlIdNumber::from('123456789'), 9, self::BAD_DOCUMENT];
+        yield 'us fl dl id number' => ['vod_us_fl_dl_id_number', UsFlDlIdNumber::from('A123456789012'), 13, self::BAD_DOCUMENT];
+        yield 'us hi dl id number' => ['vod_us_hi_dl_id_number', UsHiDlIdNumber::from('H12345678'), 9, self::BAD_DOCUMENT];
+        yield 'us ia dl id number' => ['vod_us_ia_dl_id_number', UsIaDlIdNumber::from('123456789'), 9, self::BAD_DOCUMENT];
+        yield 'us id dl id number' => ['vod_us_id_dl_id_number', UsIdDlIdNumber::from('123456789'), 9, self::BAD_DOCUMENT];
+        yield 'us il dl id number' => ['vod_us_il_dl_id_number', UsIlDlIdNumber::from('Y62093057270'), 12, self::BAD_DOCUMENT];
+        yield 'us in dl id number' => ['vod_us_in_dl_id_number', UsInDlIdNumber::from('1234567890'), 10, self::BAD_DOCUMENT];
+        yield 'us ks dl id number' => ['vod_us_ks_dl_id_number', UsKsDlIdNumber::from('123456789'), 9, self::BAD_DOCUMENT];
+        yield 'us ky dl id number' => ['vod_us_ky_dl_id_number', UsKyDlIdNumber::from('C12345678'), 9, self::BAD_DOCUMENT];
+        yield 'us ma dl id number' => ['vod_us_ma_dl_id_number', UsMaDlIdNumber::from('S12345678'), 9, self::BAD_DOCUMENT];
+        yield 'us md dl id number' => ['vod_us_md_dl_id_number', UsMdDlIdNumber::from('A999999999999'), 13, self::BAD_DOCUMENT];
+        yield 'us me dl id number' => ['vod_us_me_dl_id_number', UsMeDlIdNumber::from('1234567'), 7, self::BAD_DOCUMENT];
+        yield 'us mi dl id number' => ['vod_us_mi_dl_id_number', UsMiDlIdNumber::from('A123456789012'), 13, self::BAD_DOCUMENT];
+        yield 'us ms dl id number' => ['vod_us_ms_dl_id_number', UsMsDlIdNumber::from('123456789A'), 10, self::BAD_DOCUMENT];
+        yield 'us nd dl id number' => ['vod_us_nd_dl_id_number', UsNdDlIdNumber::from('ABC123456'), 9, self::BAD_DOCUMENT];
+        yield 'us ne dl id number' => ['vod_us_ne_dl_id_number', UsNeDlIdNumber::from('C12345678'), 9, self::BAD_DOCUMENT];
+        yield 'us nj dl id number' => ['vod_us_nj_dl_id_number', UsNjDlIdNumber::from('A12345678901234'), 15, self::BAD_DOCUMENT];
+        yield 'us nm dl id number' => ['vod_us_nm_dl_id_number', UsNmDlIdNumber::from('123456789'), 9, self::BAD_DOCUMENT];
+        yield 'us ny dl id number' => ['vod_us_ny_dl_id_number', UsNyDlIdNumber::from('123456789'), 9, self::BAD_DOCUMENT];
+        yield 'us ok dl id number' => ['vod_us_ok_dl_id_number', UsOkDlIdNumber::from('A123456789'), 10, self::BAD_DOCUMENT];
+        yield 'us pa dl id number' => ['vod_us_pa_dl_id_number', UsPaDlIdNumber::from('12345678'), 8, self::BAD_DOCUMENT];
+        yield 'us ri dl id number' => ['vod_us_ri_dl_id_number', UsRiDlIdNumber::from('12345678'), 8, self::BAD_DOCUMENT];
+        yield 'us tx dl id number' => ['vod_us_tx_dl_id_number', UsTxDlIdNumber::from('12345678'), 8, self::BAD_DOCUMENT];
+        yield 'us vt dl id number' => ['vod_us_vt_dl_id_number', UsVtDlIdNumber::from('1234567A'), 8, self::BAD_DOCUMENT];
+        yield 'us wa dl id number' => ['vod_us_wa_dl_id_number', UsWaDlIdNumber::from('WDL123456789'), 12, self::BAD_DOCUMENT];
+        yield 'us wi dl id number' => ['vod_us_wi_dl_id_number', UsWiDlIdNumber::from('H3001987016204'), 14, self::BAD_DOCUMENT];
+        yield 'us wy dl id number' => ['vod_us_wy_dl_id_number', UsWyDlIdNumber::from('123456789'), 9, self::BAD_DOCUMENT];
+        yield 'us itin' => ['vod_us_itin', UsItin::from('912701234'), 9, self::BAD_DOCUMENT];
+        yield 'us medicare beneficiary identifier' => ['vod_us_medicare_beneficiary_identifier', UsMedicareBeneficiaryIdentifier::from('1EG4TE5MK73'), 11, self::BAD_DOCUMENT];
+        yield 'us passport book number' => ['vod_us_passport_book_number', UsPassportBookNumber::from('123456789'), 9, self::BAD_DOCUMENT];
+        yield 'us passport card number' => ['vod_us_passport_card_number', UsPassportCardNumber::from('C21545427'), 9, self::BAD_DOCUMENT];
+        yield 'us social security number' => ['vod_us_social_security_number', UsSocialSecurityNumber::from('123456789'), 9, self::BAD_DOCUMENT];
+        yield 'br family name' => ['vod_br_family_name', BrFamilyName::from('S' . \str_repeat('m', AbstractNamePart::MAX_LENGTH - 1)), AbstractNamePart::MAX_LENGTH, self::BAD_NAME];
+        yield 'br given name' => ['vod_br_given_name', BrGivenName::from('S' . \str_repeat('m', AbstractNamePart::MAX_LENGTH - 1)), AbstractNamePart::MAX_LENGTH, self::BAD_NAME];
+        yield 'ca family name' => ['vod_ca_family_name', CaFamilyName::from('S' . \str_repeat('m', AbstractNamePart::MAX_LENGTH - 1)), AbstractNamePart::MAX_LENGTH, self::BAD_NAME];
+        yield 'ca given name' => ['vod_ca_given_name', CaGivenName::from('S' . \str_repeat('m', AbstractNamePart::MAX_LENGTH - 1)), AbstractNamePart::MAX_LENGTH, self::BAD_NAME];
+        yield 'mx family name' => ['vod_mx_family_name', MxFamilyName::from('S' . \str_repeat('m', AbstractNamePart::MAX_LENGTH - 1)), AbstractNamePart::MAX_LENGTH, self::BAD_NAME];
+        yield 'mx given name' => ['vod_mx_given_name', MxGivenName::from('S' . \str_repeat('m', AbstractNamePart::MAX_LENGTH - 1)), AbstractNamePart::MAX_LENGTH, self::BAD_NAME];
+        yield 'us family name' => ['vod_us_family_name', UsFamilyName::from('S' . \str_repeat('m', AbstractNamePart::MAX_LENGTH - 1)), AbstractNamePart::MAX_LENGTH, self::BAD_NAME];
+        yield 'us given name' => ['vod_us_given_name', UsGivenName::from('S' . \str_repeat('m', AbstractNamePart::MAX_LENGTH - 1)), AbstractNamePart::MAX_LENGTH, self::BAD_NAME];
+        yield 'us middle name' => ['vod_us_middle_name', UsMiddleName::from('S' . \str_repeat('m', AbstractNamePart::MAX_LENGTH - 1)), AbstractNamePart::MAX_LENGTH, self::BAD_NAME];
         yield 'icao person name' => ['vod_icao_person_name', IcaoPersonName::from(\str_repeat('A', 127) . '<<' . \str_repeat('B', IcaoPersonName::MAX_LENGTH - 129)), IcaoPersonName::MAX_LENGTH, self::BAD_NAME];
     }
 
@@ -317,6 +476,61 @@ final class Samples
             ),
             ['family' => 'Öztürk', 'given' => 'Ayşe', 'latin' => 'OZTURK<<AYSE'],
         ];
+        yield 'us person name' => [
+            'vod_us_person_name',
+            new UsPersonName(UsFamilyName::from('Smith'), UsGivenName::from('Jane'), UsMiddleName::from('Quinn'), NameSuffix::Junior),
+            ['family' => 'Smith', 'given' => 'Jane', 'middle' => 'Quinn', 'suffix' => 'JR', 'latin' => null],
+        ];
+        yield 'us person name with one name' => [
+            'vod_us_person_name',
+            new UsPersonName(UsFamilyName::from('Smith'), null),
+            ['family' => 'Smith', 'given' => null, 'middle' => null, 'suffix' => null, 'latin' => null],
+        ];
+        yield 'us person name with latin override' => [
+            'vod_us_person_name',
+            new UsPersonName(UsFamilyName::from('Müller'), UsGivenName::from('Jürgen'), null, null, IcaoPersonName::from('MULLER<<JURGEN')),
+            ['family' => 'Müller', 'given' => 'Jürgen', 'middle' => null, 'suffix' => null, 'latin' => 'MULLER<<JURGEN'],
+        ];
+        yield 'ca person name' => [
+            'vod_ca_person_name',
+            new CaPersonName(CaFamilyName::from('Tremblay'), CaGivenName::from('Marie')),
+            ['family' => 'Tremblay', 'given' => 'Marie', 'latin' => null],
+        ];
+        yield 'ca person name without given name' => [
+            'vod_ca_person_name',
+            new CaPersonName(CaFamilyName::from('Tremblay'), null),
+            ['family' => 'Tremblay', 'given' => null, 'latin' => null],
+        ];
+        yield 'ca person name with latin override' => [
+            'vod_ca_person_name',
+            new CaPersonName(CaFamilyName::from('Bélanger'), CaGivenName::from('Étienne'), IcaoPersonName::from('BELLANGER<<ETIENNE')),
+            ['family' => 'Bélanger', 'given' => 'Étienne', 'latin' => 'BELLANGER<<ETIENNE'],
+        ];
+        yield 'mx person name' => [
+            'vod_mx_person_name',
+            new MxPersonName(MxFamilyName::from('García'), MxFamilyName::from('López'), MxGivenName::from('María')),
+            ['first' => 'García', 'second' => 'López', 'given' => 'María', 'latin' => null],
+        ];
+        yield 'mx person name without first surname' => [
+            'vod_mx_person_name',
+            new MxPersonName(null, null, MxGivenName::from('Juan')),
+            ['first' => null, 'second' => null, 'given' => 'Juan', 'latin' => null],
+        ];
+        yield 'mx person name with latin override' => [
+            'vod_mx_person_name',
+            new MxPersonName(MxFamilyName::from('Müller'), null, MxGivenName::from('Jürgen'), IcaoPersonName::from('MULLER<<JURGEN')),
+            ['first' => 'Müller', 'second' => null, 'given' => 'Jürgen', 'latin' => 'MULLER<<JURGEN'],
+        ];
+        yield 'br person name' => [
+            'vod_br_person_name',
+            new BrPersonName(BrFamilyName::from('Silva'), BrGivenName::from('João')),
+            ['family' => 'Silva', 'given' => 'João', 'latin' => null],
+        ];
+        yield 'br person name with latin override' => [
+            'vod_br_person_name',
+            new BrPersonName(BrFamilyName::from('Gonçalves'), BrGivenName::from('João'), IcaoPersonName::from('GONSALVES<<JOAO')),
+            ['family' => 'Gonçalves', 'given' => 'João', 'latin' => 'GONSALVES<<JOAO'],
+        ];
     }
 
     /**
@@ -332,6 +546,9 @@ final class Samples
             'vod_nl_person_name' => ['family'],
             'vod_ch_person_name' => ['family'],
             'vod_gb_person_name' => ['family'],
+            'vod_us_person_name' => ['family'],
+            'vod_ca_person_name' => ['family'],
+            'vod_mx_person_name' => ['given'],
         ];
         foreach (self::composites() as $label => [$name, , $payload]) {
             foreach ($required[$name] ?? ['family', 'given'] as $key) {

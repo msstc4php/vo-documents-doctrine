@@ -53,5 +53,14 @@ platform-specific.
 
 - ORM 3.3 (the lowest supported) has no `Configuration::enableNativeLazyObjects()`; the ORM integration test enables native lazy objects only on ORM >= 3.4 (checked with `InstalledVersions`, because PHPStan at highest deps reports `method_exists` as always true).
 
+- **Latin override equal to the derived form is dropped.** `PersonName::latinOverride()` is `null` when the override
+  equals what the name derives, so a sample with such an override stores `latin: null`. Samples must use a differing
+  spelling (US and MX allow only transliteration variants: `Müller`/`Jürgen` with `MULLER<<JURGEN`; CA and BR accept
+  any ICAO spelling).
+- **Ontario version code is not persisted** (controller decision): `OnHealthCardNumber::versionCode()` is `null` after a
+  reload.
+- **Optional parts in the Americas names.** US `given` (and with it `middle`/`suffix`), CA `given` and MX `first`/`second`
+  are nullable; BR `given` is required. Required payload keys: US `family`, CA `family`, MX `given`, BR `family` and
+  `given` (see `Samples::compositeRequiredKeys()`).
 - **Optional given name.** `Name\NL`, `Name\CH` and `Name\GB` `PersonName` accept a null `given`, so `{"family":"X"}` is a valid
   payload for them; the wrong-shape tests use an unknown key (`surname`) instead.

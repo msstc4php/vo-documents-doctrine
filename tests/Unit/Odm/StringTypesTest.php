@@ -19,6 +19,38 @@ use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\AuTasDriverLicenceNumberType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\AuTaxFileNumberType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\AuVicDriverLicenceNumberType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\AuWaDriverLicenceNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\BrCnsType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\BrCpfType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\BrDriverLicenceNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\BrFamilyNameType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\BrGivenNameType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\BrNisType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\BrPassportNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\BrSpIdentityCardNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\BrVoterRegistrationNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\CaAbDriverLicenceNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\CaAbHealthCardNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\CaBcDriverLicenceNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\CaBcHealthCardNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\CaFamilyNameType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\CaGivenNameType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\CaMbHealthCardNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\CaNbHealthCardNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\CaNlHealthCardNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\CaNsDriverLicenceNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\CaNsHealthCardNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\CaNtHealthCardNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\CaNuHealthCardNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\CaOnDriverLicenceNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\CaOnHealthCardNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\CaPassportNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\CaPeHealthCardNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\CaQcDriverLicenceNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\CaQcHealthCardNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\CaSkDriverLicenceNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\CaSkHealthCardNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\CaSocialInsuranceNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\CaYtHealthCardNumberType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\ChAhvNumberType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\ChDriverLicenceNumberType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\ChFamilyNameType;
@@ -56,6 +88,13 @@ use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\ItFamilyNameType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\ItFiscalCodeType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\ItGivenNameType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\ItPassportNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\MxCurpType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\MxElectorKeyType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\MxFamilyNameType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\MxGivenNameType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\MxMexDriverLicenceNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\MxRfcType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\MxSocialSecurityNumberType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\NlBsnType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\NlFamilyNameType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\NlGivenNameType;
@@ -75,7 +114,46 @@ use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\TrGivenNameType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\TrIdentityNumberType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\TrPassportNumberType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\TypeRegistrar;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\UsAlDlIdNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\UsAzDlIdNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\UsCoDlIdNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\UsCtDlIdNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\UsFamilyNameType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\UsFlDlIdNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\UsGivenNameType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\UsHiDlIdNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\UsIaDlIdNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\UsIdDlIdNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\UsIlDlIdNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\UsInDlIdNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\UsItinType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\UsKsDlIdNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\UsKyDlIdNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\UsMaDlIdNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\UsMdDlIdNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\UsMedicareBeneficiaryIdentifierType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\UsMeDlIdNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\UsMiddleNameType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\UsMiDlIdNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\UsMsDlIdNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\UsNdDlIdNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\UsNeDlIdNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\UsNjDlIdNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\UsNmDlIdNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\UsNyDlIdNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\UsOkDlIdNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\UsPaDlIdNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\UsPassportBookNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\UsPassportCardNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\UsRiDlIdNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\UsSocialSecurityNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\UsTxDlIdNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\UsVtDlIdNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\UsWaDlIdNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\UsWiDlIdNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\UsWyDlIdNumberType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Tests\Support\Samples;
+use MSSTC4PHP\ValueObject\Documents\Document\CA\HealthCard\OnHealthCardNumber;
 use MSSTC4PHP\ValueObject\Exception\InvalidValueObjectException;
 use Override;
 use PHPUnit\Framework\Attributes\CoversClass;
@@ -149,6 +227,83 @@ use PHPUnit\Framework\TestCase;
 #[CoversClass(GbGivenNameType::class)]
 #[CoversClass(TrFamilyNameType::class)]
 #[CoversClass(TrGivenNameType::class)]
+#[CoversClass(BrCnsType::class)]
+#[CoversClass(BrCpfType::class)]
+#[CoversClass(BrDriverLicenceNumberType::class)]
+#[CoversClass(BrSpIdentityCardNumberType::class)]
+#[CoversClass(BrNisType::class)]
+#[CoversClass(BrPassportNumberType::class)]
+#[CoversClass(BrVoterRegistrationNumberType::class)]
+#[CoversClass(CaAbDriverLicenceNumberType::class)]
+#[CoversClass(CaBcDriverLicenceNumberType::class)]
+#[CoversClass(CaNsDriverLicenceNumberType::class)]
+#[CoversClass(CaOnDriverLicenceNumberType::class)]
+#[CoversClass(CaQcDriverLicenceNumberType::class)]
+#[CoversClass(CaSkDriverLicenceNumberType::class)]
+#[CoversClass(CaAbHealthCardNumberType::class)]
+#[CoversClass(CaBcHealthCardNumberType::class)]
+#[CoversClass(CaMbHealthCardNumberType::class)]
+#[CoversClass(CaNbHealthCardNumberType::class)]
+#[CoversClass(CaNlHealthCardNumberType::class)]
+#[CoversClass(CaNsHealthCardNumberType::class)]
+#[CoversClass(CaNtHealthCardNumberType::class)]
+#[CoversClass(CaNuHealthCardNumberType::class)]
+#[CoversClass(CaOnHealthCardNumberType::class)]
+#[CoversClass(CaPeHealthCardNumberType::class)]
+#[CoversClass(CaQcHealthCardNumberType::class)]
+#[CoversClass(CaSkHealthCardNumberType::class)]
+#[CoversClass(CaYtHealthCardNumberType::class)]
+#[CoversClass(CaPassportNumberType::class)]
+#[CoversClass(CaSocialInsuranceNumberType::class)]
+#[CoversClass(MxCurpType::class)]
+#[CoversClass(MxMexDriverLicenceNumberType::class)]
+#[CoversClass(MxElectorKeyType::class)]
+#[CoversClass(MxRfcType::class)]
+#[CoversClass(MxSocialSecurityNumberType::class)]
+#[CoversClass(UsAlDlIdNumberType::class)]
+#[CoversClass(UsAzDlIdNumberType::class)]
+#[CoversClass(UsCoDlIdNumberType::class)]
+#[CoversClass(UsCtDlIdNumberType::class)]
+#[CoversClass(UsFlDlIdNumberType::class)]
+#[CoversClass(UsHiDlIdNumberType::class)]
+#[CoversClass(UsIaDlIdNumberType::class)]
+#[CoversClass(UsIdDlIdNumberType::class)]
+#[CoversClass(UsIlDlIdNumberType::class)]
+#[CoversClass(UsInDlIdNumberType::class)]
+#[CoversClass(UsKsDlIdNumberType::class)]
+#[CoversClass(UsKyDlIdNumberType::class)]
+#[CoversClass(UsMaDlIdNumberType::class)]
+#[CoversClass(UsMdDlIdNumberType::class)]
+#[CoversClass(UsMeDlIdNumberType::class)]
+#[CoversClass(UsMiDlIdNumberType::class)]
+#[CoversClass(UsMsDlIdNumberType::class)]
+#[CoversClass(UsNdDlIdNumberType::class)]
+#[CoversClass(UsNeDlIdNumberType::class)]
+#[CoversClass(UsNjDlIdNumberType::class)]
+#[CoversClass(UsNmDlIdNumberType::class)]
+#[CoversClass(UsNyDlIdNumberType::class)]
+#[CoversClass(UsOkDlIdNumberType::class)]
+#[CoversClass(UsPaDlIdNumberType::class)]
+#[CoversClass(UsRiDlIdNumberType::class)]
+#[CoversClass(UsTxDlIdNumberType::class)]
+#[CoversClass(UsVtDlIdNumberType::class)]
+#[CoversClass(UsWaDlIdNumberType::class)]
+#[CoversClass(UsWiDlIdNumberType::class)]
+#[CoversClass(UsWyDlIdNumberType::class)]
+#[CoversClass(UsItinType::class)]
+#[CoversClass(UsMedicareBeneficiaryIdentifierType::class)]
+#[CoversClass(UsPassportBookNumberType::class)]
+#[CoversClass(UsPassportCardNumberType::class)]
+#[CoversClass(UsSocialSecurityNumberType::class)]
+#[CoversClass(BrFamilyNameType::class)]
+#[CoversClass(BrGivenNameType::class)]
+#[CoversClass(CaFamilyNameType::class)]
+#[CoversClass(CaGivenNameType::class)]
+#[CoversClass(MxFamilyNameType::class)]
+#[CoversClass(MxGivenNameType::class)]
+#[CoversClass(UsFamilyNameType::class)]
+#[CoversClass(UsGivenNameType::class)]
+#[CoversClass(UsMiddleNameType::class)]
 #[CoversClass(TypeRegistrar::class)]
 final class StringTypesTest extends TestCase
 {
@@ -169,6 +324,20 @@ final class StringTypesTest extends TestCase
         $restored = $type->convertToPHPValue($stored);
         self::assertInstanceOf($vo::class, $restored);
         self::assertSame((string) $vo, (string) $restored);
+    }
+
+    public function testOntarioHealthCardStoresTheNumberWithoutTheVersionCode(): void
+    {
+        $type = Type::getType(CaOnHealthCardNumberType::NAME);
+
+        $stored = $type->convertToDatabaseValue(OnHealthCardNumber::from('9876543217 YM'));
+        self::assertSame('9876543217', $stored);
+
+        $restored = $type->convertToPHPValue($stored);
+        self::assertInstanceOf(OnHealthCardNumber::class, $restored);
+        self::assertSame('9876543217', (string) $restored);
+        self::assertNull($restored->versionCode());
+        self::assertTrue($restored->equals(OnHealthCardNumber::from('9876543217')));
     }
 
     #[DataProviderExternal(Samples::class, 'stringNames')]

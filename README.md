@@ -1,9 +1,9 @@
 # msstc4php/vo-documents-doctrine
 
 Doctrine ORM and MongoDB ODM types for [`msstc4php/vo-documents`](https://github.com/msstc4php/vo-documents):
-77 types per branch: identity document numbers, name parts, Latin ICAO names, and the composite person name of each
-country (RU, AU, DE, FR, IT, ES, NL, CH, GB and TR).
-Backed enums (`DriverLicenceCategory`, `Jurisdiction`, `Sex`) need no type: map them with `enumType`.
+158 types per branch: identity document numbers, name parts, Latin ICAO names, and the composite person name of each
+country (RU, AU, DE, FR, IT, ES, NL, CH, GB, TR, US, CA, MX and BR).
+Backed enums (`DriverLicenceCategory`, `Jurisdiction`, `Sex`, `Name\US\NameSuffix`) need no type: map them with `enumType`.
 
 No framework is a runtime dependency. Install the Doctrine stack you actually use; the other branch never loads.
 
@@ -81,6 +81,40 @@ the value object's own exception, whose message never contains it.
 | `vod_au_tax_file_number` | `Document\AU\TaxFileNumber` | VARCHAR(9) | string |
 | `vod_au_vic_driver_licence_number` | `Document\AU\DriverLicence\VicDriverLicenceNumber` | VARCHAR(10) | string |
 | `vod_au_wa_driver_licence_number` | `Document\AU\DriverLicence\WaDriverLicenceNumber` | VARCHAR(7) | string |
+| `vod_br_cns` | `Document\BR\Cns` | VARCHAR(15) | string |
+| `vod_br_cpf` | `Document\BR\Cpf` | VARCHAR(11) | string |
+| `vod_br_driver_licence_number` | `Document\BR\DriverLicenceNumber` | VARCHAR(11) | string |
+| `vod_br_family_name` | `Name\BR\FamilyName` | VARCHAR(100) | string |
+| `vod_br_given_name` | `Name\BR\GivenName` | VARCHAR(100) | string |
+| `vod_br_nis` | `Document\BR\Nis` | VARCHAR(11) | string |
+| `vod_br_passport_number` | `Document\BR\PassportNumber` | VARCHAR(8) | string |
+| `vod_br_person_name` | `Name\BR\PersonName` | CLOB (JSON) | sub-document |
+| `vod_br_sp_identity_card_number` | `Document\BR\IdentityCard\SpIdentityCardNumber` | VARCHAR(9) | string |
+| `vod_br_voter_registration_number` | `Document\BR\VoterRegistrationNumber` | VARCHAR(12) | string |
+| `vod_ca_ab_driver_licence_number` | `Document\CA\DriverLicence\AbDriverLicenceNumber` | VARCHAR(9) | string |
+| `vod_ca_ab_health_card_number` | `Document\CA\HealthCard\AbHealthCardNumber` | VARCHAR(9) | string |
+| `vod_ca_bc_driver_licence_number` | `Document\CA\DriverLicence\BcDriverLicenceNumber` | VARCHAR(8) | string |
+| `vod_ca_bc_health_card_number` | `Document\CA\HealthCard\BcHealthCardNumber` | VARCHAR(10) | string |
+| `vod_ca_family_name` | `Name\CA\FamilyName` | VARCHAR(100) | string |
+| `vod_ca_given_name` | `Name\CA\GivenName` | VARCHAR(100) | string |
+| `vod_ca_mb_health_card_number` | `Document\CA\HealthCard\MbHealthCardNumber` | VARCHAR(9) | string |
+| `vod_ca_nb_health_card_number` | `Document\CA\HealthCard\NbHealthCardNumber` | VARCHAR(9) | string |
+| `vod_ca_nl_health_card_number` | `Document\CA\HealthCard\NlHealthCardNumber` | VARCHAR(12) | string |
+| `vod_ca_ns_driver_licence_number` | `Document\CA\DriverLicence\NsDriverLicenceNumber` | VARCHAR(14) | string |
+| `vod_ca_ns_health_card_number` | `Document\CA\HealthCard\NsHealthCardNumber` | VARCHAR(10) | string |
+| `vod_ca_nt_health_card_number` | `Document\CA\HealthCard\NtHealthCardNumber` | VARCHAR(8) | string |
+| `vod_ca_nu_health_card_number` | `Document\CA\HealthCard\NuHealthCardNumber` | VARCHAR(9) | string |
+| `vod_ca_on_driver_licence_number` | `Document\CA\DriverLicence\OnDriverLicenceNumber` | VARCHAR(15) | string |
+| `vod_ca_on_health_card_number` | `Document\CA\HealthCard\OnHealthCardNumber` | VARCHAR(10) | string |
+| `vod_ca_passport_number` | `Document\CA\PassportNumber` | VARCHAR(9) | string |
+| `vod_ca_pe_health_card_number` | `Document\CA\HealthCard\PeHealthCardNumber` | VARCHAR(8) | string |
+| `vod_ca_person_name` | `Name\CA\PersonName` | CLOB (JSON) | sub-document |
+| `vod_ca_qc_driver_licence_number` | `Document\CA\DriverLicence\QcDriverLicenceNumber` | VARCHAR(13) | string |
+| `vod_ca_qc_health_card_number` | `Document\CA\HealthCard\QcHealthCardNumber` | VARCHAR(12) | string |
+| `vod_ca_sk_driver_licence_number` | `Document\CA\DriverLicence\SkDriverLicenceNumber` | VARCHAR(8) | string |
+| `vod_ca_sk_health_card_number` | `Document\CA\HealthCard\SkHealthCardNumber` | VARCHAR(9) | string |
+| `vod_ca_social_insurance_number` | `Document\CA\SocialInsuranceNumber` | VARCHAR(9) | string |
+| `vod_ca_yt_health_card_number` | `Document\CA\HealthCard\YtHealthCardNumber` | VARCHAR(9) | string |
 | `vod_ch_ahv_number` | `Document\CH\AhvNumber` | VARCHAR(13) | string |
 | `vod_ch_driver_licence_number` | `Document\CH\DriverLicenceNumber` | VARCHAR(15) | string |
 | `vod_ch_family_name` | `Name\CH\FamilyName` | VARCHAR(100) | string |
@@ -124,6 +158,14 @@ the value object's own exception, whose message never contains it.
 | `vod_it_given_name` | `Name\IT\GivenName` | VARCHAR(100) | string |
 | `vod_it_passport_number` | `Document\IT\PassportNumber` | VARCHAR(9) | string |
 | `vod_it_person_name` | `Name\IT\PersonName` | CLOB (JSON) | sub-document |
+| `vod_mx_curp` | `Document\MX\Curp` | VARCHAR(18) | string |
+| `vod_mx_elector_key` | `Document\MX\ElectorKey` | VARCHAR(18) | string |
+| `vod_mx_family_name` | `Name\MX\FamilyName` | VARCHAR(100) | string |
+| `vod_mx_given_name` | `Name\MX\GivenName` | VARCHAR(100) | string |
+| `vod_mx_mex_driver_licence_number` | `Document\MX\DriverLicence\MexDriverLicenceNumber` | VARCHAR(12) | string |
+| `vod_mx_person_name` | `Name\MX\PersonName` | CLOB (JSON) | sub-document |
+| `vod_mx_rfc` | `Document\MX\Rfc` | VARCHAR(13) | string |
+| `vod_mx_social_security_number` | `Document\MX\SocialSecurityNumber` | VARCHAR(11) | string |
 | `vod_nl_bsn` | `Document\NL\Bsn` | VARCHAR(9) | string |
 | `vod_nl_family_name` | `Name\NL\FamilyName` | VARCHAR(100) | string |
 | `vod_nl_given_name` | `Name\NL\GivenName` | VARCHAR(100) | string |
@@ -145,9 +187,53 @@ the value object's own exception, whose message never contains it.
 | `vod_tr_identity_number` | `Document\TR\IdentityNumber` | VARCHAR(11) | string |
 | `vod_tr_passport_number` | `Document\TR\PassportNumber` | VARCHAR(9) | string |
 | `vod_tr_person_name` | `Name\TR\PersonName` | CLOB (JSON) | sub-document |
+| `vod_us_al_dl_id_number` | `Document\US\DlId\AlDlIdNumber` | VARCHAR(8) | string |
+| `vod_us_az_dl_id_number` | `Document\US\DlId\AzDlIdNumber` | VARCHAR(9) | string |
+| `vod_us_co_dl_id_number` | `Document\US\DlId\CoDlIdNumber` | VARCHAR(9) | string |
+| `vod_us_ct_dl_id_number` | `Document\US\DlId\CtDlIdNumber` | VARCHAR(9) | string |
+| `vod_us_family_name` | `Name\US\FamilyName` | VARCHAR(100) | string |
+| `vod_us_fl_dl_id_number` | `Document\US\DlId\FlDlIdNumber` | VARCHAR(13) | string |
+| `vod_us_given_name` | `Name\US\GivenName` | VARCHAR(100) | string |
+| `vod_us_hi_dl_id_number` | `Document\US\DlId\HiDlIdNumber` | VARCHAR(9) | string |
+| `vod_us_ia_dl_id_number` | `Document\US\DlId\IaDlIdNumber` | VARCHAR(9) | string |
+| `vod_us_id_dl_id_number` | `Document\US\DlId\IdDlIdNumber` | VARCHAR(9) | string |
+| `vod_us_il_dl_id_number` | `Document\US\DlId\IlDlIdNumber` | VARCHAR(12) | string |
+| `vod_us_in_dl_id_number` | `Document\US\DlId\InDlIdNumber` | VARCHAR(10) | string |
+| `vod_us_itin` | `Document\US\Itin` | VARCHAR(9) | string |
+| `vod_us_ks_dl_id_number` | `Document\US\DlId\KsDlIdNumber` | VARCHAR(9) | string |
+| `vod_us_ky_dl_id_number` | `Document\US\DlId\KyDlIdNumber` | VARCHAR(9) | string |
+| `vod_us_ma_dl_id_number` | `Document\US\DlId\MaDlIdNumber` | VARCHAR(9) | string |
+| `vod_us_md_dl_id_number` | `Document\US\DlId\MdDlIdNumber` | VARCHAR(13) | string |
+| `vod_us_me_dl_id_number` | `Document\US\DlId\MeDlIdNumber` | VARCHAR(7) | string |
+| `vod_us_medicare_beneficiary_identifier` | `Document\US\MedicareBeneficiaryIdentifier` | VARCHAR(11) | string |
+| `vod_us_mi_dl_id_number` | `Document\US\DlId\MiDlIdNumber` | VARCHAR(13) | string |
+| `vod_us_middle_name` | `Name\US\MiddleName` | VARCHAR(100) | string |
+| `vod_us_ms_dl_id_number` | `Document\US\DlId\MsDlIdNumber` | VARCHAR(10) | string |
+| `vod_us_nd_dl_id_number` | `Document\US\DlId\NdDlIdNumber` | VARCHAR(9) | string |
+| `vod_us_ne_dl_id_number` | `Document\US\DlId\NeDlIdNumber` | VARCHAR(9) | string |
+| `vod_us_nj_dl_id_number` | `Document\US\DlId\NjDlIdNumber` | VARCHAR(15) | string |
+| `vod_us_nm_dl_id_number` | `Document\US\DlId\NmDlIdNumber` | VARCHAR(9) | string |
+| `vod_us_ny_dl_id_number` | `Document\US\DlId\NyDlIdNumber` | VARCHAR(9) | string |
+| `vod_us_ok_dl_id_number` | `Document\US\DlId\OkDlIdNumber` | VARCHAR(10) | string |
+| `vod_us_pa_dl_id_number` | `Document\US\DlId\PaDlIdNumber` | VARCHAR(8) | string |
+| `vod_us_passport_book_number` | `Document\US\PassportBookNumber` | VARCHAR(9) | string |
+| `vod_us_passport_card_number` | `Document\US\PassportCardNumber` | VARCHAR(9) | string |
+| `vod_us_person_name` | `Name\US\PersonName` | CLOB (JSON) | sub-document |
+| `vod_us_ri_dl_id_number` | `Document\US\DlId\RiDlIdNumber` | VARCHAR(8) | string |
+| `vod_us_social_security_number` | `Document\US\SocialSecurityNumber` | VARCHAR(9) | string |
+| `vod_us_tx_dl_id_number` | `Document\US\DlId\TxDlIdNumber` | VARCHAR(8) | string |
+| `vod_us_vt_dl_id_number` | `Document\US\DlId\VtDlIdNumber` | VARCHAR(8) | string |
+| `vod_us_wa_dl_id_number` | `Document\US\DlId\WaDlIdNumber` | VARCHAR(12) | string |
+| `vod_us_wi_dl_id_number` | `Document\US\DlId\WiDlIdNumber` | VARCHAR(14) | string |
+| `vod_us_wy_dl_id_number` | `Document\US\DlId\WyDlIdNumber` | VARCHAR(9) | string |
 
 Column lengths: string types use the longest accepted form; name columns use `AbstractNamePart::MAX_LENGTH` (100) for
 name parts and `Icao\PersonName::MAX_LENGTH` (255) for the ICAO name.
+
+**Ontario health card.** `Document\CA\HealthCard\OnHealthCardNumber` accepts a trailing version code (`9876543217 YM`),
+but `value()` is the ten-digit number and that is all `vod_ca_on_health_card_number` stores. The version code is not
+stored and comes back as `null` after a reload; two cards of one person are equal. If you need the code, keep it in a
+column of your own.
 
 **Collation of name columns with a unique index.** Name parts keep their letter case and diacritics (`Müller` and
 `Muller`, `de Vries` and `De Vries` are different names). A case- or accent-insensitive collation makes such names

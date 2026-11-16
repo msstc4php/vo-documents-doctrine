@@ -9,16 +9,20 @@ use Doctrine\DBAL\Types\Type;
 use InvalidArgumentException;
 use MSSTC4PHP\ValueObject\Contract\ValueObject;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\AuPersonNameType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\BrPersonNameType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\CaPersonNameType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\ChPersonNameType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\DePersonNameType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\EsPersonNameType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\FrPersonNameType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\GbPersonNameType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\ItPersonNameType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\MxPersonNameType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\NlPersonNameType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\RuPersonNameType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\TrPersonNameType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\TypeRegistrar;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\UsPersonNameType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Tests\Support\Samples;
 use MSSTC4PHP\ValueObject\Documents\Document\RU\Snils;
 use MSSTC4PHP\ValueObject\Documents\Exception\InvalidPersonNameException;
@@ -38,6 +42,10 @@ use PHPUnit\Framework\TestCase;
 #[CoversClass(ChPersonNameType::class)]
 #[CoversClass(GbPersonNameType::class)]
 #[CoversClass(TrPersonNameType::class)]
+#[CoversClass(BrPersonNameType::class)]
+#[CoversClass(CaPersonNameType::class)]
+#[CoversClass(MxPersonNameType::class)]
+#[CoversClass(UsPersonNameType::class)]
 #[CoversClass(TypeRegistrar::class)]
 final class CompositeTypesTest extends TestCase
 {
