@@ -168,7 +168,7 @@ final class OrmRoundTripTest extends TestCase
 
         self::assertInstanceOf(AmericasPerson::class, $person);
         self::assertSame(['9876543217'], $this->connection->fetchFirstColumn('SELECT healthCard FROM americas_person'));
-        self::assertTrue($person->healthCard->equals(OnHealthCardNumber::from('9876543217 YM')));
+        self::assertTrue($person->healthCard->equals(OnHealthCardNumber::from('9876543217')));
         self::assertNull($person->healthCard->versionCode());
     }
 }
