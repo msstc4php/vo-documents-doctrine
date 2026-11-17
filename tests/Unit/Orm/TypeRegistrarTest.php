@@ -26,7 +26,7 @@ final class TypeRegistrarTest extends TestCase
     public function testNamesFollowThePrefixConvention(): void
     {
         foreach (TypeRegistrar::types() as $name => $class) {
-            self::assertMatchesRegularExpression('/^vod_(?:ru|au|de|fr|it|es|nl|ch|gb|tr|us|ca|mx|br|icao)_[a-z]+(?:_[a-z]+)*$/', $name);
+            self::assertMatchesRegularExpression('/^vod_(?:ru|au|de|fr|it|es|nl|ch|gb|tr|us|ca|mx|br|cn|jp|kr|in|id|sa|icao)_[a-z]+(?:_[a-z]+)*$/', $name);
             self::assertSame($name, $class::NAME);
         }
     }

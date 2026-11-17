@@ -64,6 +64,15 @@ use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\ChFamilyNameType as OdmChFamily
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\ChGivenNameType as OdmChGivenNameType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\ChIdentityDocumentNumberType as OdmChIdentityDocumentNumberType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\ChPersonNameType as OdmChPersonNameType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\CnCitizenIdentityNumberType as OdmCnCitizenIdentityNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\CnExitEntryPermitToHongKongMacauNumberType as OdmCnExitEntryPermitToHongKongMacauNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\CnExitEntryPermitToTaiwanNumberType as OdmCnExitEntryPermitToTaiwanNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\CnFamilyNameType as OdmCnFamilyNameType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\CnForeignerPermanentResidenceNumberType as OdmCnForeignerPermanentResidenceNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\CnGivenNameType as OdmCnGivenNameType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\CnLegacyForeignerPermanentResidenceNumberType as OdmCnLegacyForeignerPermanentResidenceNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\CnOrdinaryPassportNumberType as OdmCnOrdinaryPassportNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\CnPersonNameType as OdmCnPersonNameType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\DeFamilyNameType as OdmDeFamilyNameType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\DeGivenNameType as OdmDeGivenNameType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\DeIdentityCardNumberType as OdmDeIdentityCardNumberType;
@@ -96,11 +105,43 @@ use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\GbNorthernIrelandDriverLicenceN
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\GbPassportNumberType as OdmGbPassportNumberType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\GbPersonNameType as OdmGbPersonNameType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\IcaoPersonNameType as OdmIcaoPersonNameType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\IdFamilyCardNumberType as OdmIdFamilyCardNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\IdFullNameType as OdmIdFullNameType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\IdNationalIdentityNumberType as OdmIdNationalIdentityNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\IdPersonNameType as OdmIdPersonNameType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\IdTaxpayerNumberType as OdmIdTaxpayerNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\InAadhaarNumberType as OdmInAadhaarNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\InAbhaNumberType as OdmInAbhaNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\InDevanagariGivenNameType as OdmInDevanagariGivenNameType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\InDevanagariPersonNameType as OdmInDevanagariPersonNameType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\InDevanagariSurnameType as OdmInDevanagariSurnameType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\InGivenNameType as OdmInGivenNameType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\InPassportNumberType as OdmInPassportNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\InPermanentAccountNumberType as OdmInPermanentAccountNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\InPersonNameType as OdmInPersonNameType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\InSurnameType as OdmInSurnameType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\ItFamilyNameType as OdmItFamilyNameType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\ItFiscalCodeType as OdmItFiscalCodeType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\ItGivenNameType as OdmItGivenNameType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\ItPassportNumberType as OdmItPassportNumberType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\ItPersonNameType as OdmItPersonNameType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\JpBasicPensionNumberType as OdmJpBasicPensionNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\JpDrivingLicenceNumberType as OdmJpDrivingLicenceNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\JpFamilyNameReadingType as OdmJpFamilyNameReadingType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\JpFamilyNameType as OdmJpFamilyNameType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\JpGivenNameReadingType as OdmJpGivenNameReadingType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\JpGivenNameType as OdmJpGivenNameType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\JpMyNumberType as OdmJpMyNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\JpPassportNumberType as OdmJpPassportNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\JpPersonNameType as OdmJpPersonNameType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\JpResidenceCardNumberType as OdmJpResidenceCardNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\KrDrivingLicenceNumberType as OdmKrDrivingLicenceNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\KrFamilyNameType as OdmKrFamilyNameType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\KrForeignerRegistrationNumberType as OdmKrForeignerRegistrationNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\KrGivenNameType as OdmKrGivenNameType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\KrOrdinaryPassportNumberType as OdmKrOrdinaryPassportNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\KrPersonNameType as OdmKrPersonNameType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\KrResidentRegistrationNumberType as OdmKrResidentRegistrationNumberType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\MxCurpType as OdmMxCurpType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\MxElectorKeyType as OdmMxElectorKeyType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\MxFamilyNameType as OdmMxFamilyNameType;
@@ -125,6 +166,13 @@ use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\RuPassportIssuingUnitCodeType a
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\RuPatronymicType as OdmRuPatronymicType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\RuPersonNameType as OdmRuPersonNameType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\RuSnilsType as OdmRuSnilsType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\SaFamilyNameType as OdmSaFamilyNameType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\SaFatherNameType as OdmSaFatherNameType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\SaGivenNameType as OdmSaGivenNameType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\SaGrandfatherNameType as OdmSaGrandfatherNameType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\SaIqamaNumberType as OdmSaIqamaNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\SaNationalIdentityNumberType as OdmSaNationalIdentityNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\SaPersonNameType as OdmSaPersonNameType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\TrFamilyNameType as OdmTrFamilyNameType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\TrGivenNameType as OdmTrGivenNameType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\TrIdentityNumberType as OdmTrIdentityNumberType;
@@ -224,6 +272,15 @@ use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\ChFamilyNameType as OrmChFamily
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\ChGivenNameType as OrmChGivenNameType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\ChIdentityDocumentNumberType as OrmChIdentityDocumentNumberType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\ChPersonNameType as OrmChPersonNameType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\CnCitizenIdentityNumberType as OrmCnCitizenIdentityNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\CnExitEntryPermitToHongKongMacauNumberType as OrmCnExitEntryPermitToHongKongMacauNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\CnExitEntryPermitToTaiwanNumberType as OrmCnExitEntryPermitToTaiwanNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\CnFamilyNameType as OrmCnFamilyNameType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\CnForeignerPermanentResidenceNumberType as OrmCnForeignerPermanentResidenceNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\CnGivenNameType as OrmCnGivenNameType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\CnLegacyForeignerPermanentResidenceNumberType as OrmCnLegacyForeignerPermanentResidenceNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\CnOrdinaryPassportNumberType as OrmCnOrdinaryPassportNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\CnPersonNameType as OrmCnPersonNameType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\DeFamilyNameType as OrmDeFamilyNameType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\DeGivenNameType as OrmDeGivenNameType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\DeIdentityCardNumberType as OrmDeIdentityCardNumberType;
@@ -256,11 +313,43 @@ use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\GbNorthernIrelandDriverLicenceN
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\GbPassportNumberType as OrmGbPassportNumberType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\GbPersonNameType as OrmGbPersonNameType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\IcaoPersonNameType as OrmIcaoPersonNameType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\IdFamilyCardNumberType as OrmIdFamilyCardNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\IdFullNameType as OrmIdFullNameType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\IdNationalIdentityNumberType as OrmIdNationalIdentityNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\IdPersonNameType as OrmIdPersonNameType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\IdTaxpayerNumberType as OrmIdTaxpayerNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\InAadhaarNumberType as OrmInAadhaarNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\InAbhaNumberType as OrmInAbhaNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\InDevanagariGivenNameType as OrmInDevanagariGivenNameType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\InDevanagariPersonNameType as OrmInDevanagariPersonNameType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\InDevanagariSurnameType as OrmInDevanagariSurnameType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\InGivenNameType as OrmInGivenNameType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\InPassportNumberType as OrmInPassportNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\InPermanentAccountNumberType as OrmInPermanentAccountNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\InPersonNameType as OrmInPersonNameType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\InSurnameType as OrmInSurnameType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\ItFamilyNameType as OrmItFamilyNameType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\ItFiscalCodeType as OrmItFiscalCodeType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\ItGivenNameType as OrmItGivenNameType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\ItPassportNumberType as OrmItPassportNumberType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\ItPersonNameType as OrmItPersonNameType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\JpBasicPensionNumberType as OrmJpBasicPensionNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\JpDrivingLicenceNumberType as OrmJpDrivingLicenceNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\JpFamilyNameReadingType as OrmJpFamilyNameReadingType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\JpFamilyNameType as OrmJpFamilyNameType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\JpGivenNameReadingType as OrmJpGivenNameReadingType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\JpGivenNameType as OrmJpGivenNameType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\JpMyNumberType as OrmJpMyNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\JpPassportNumberType as OrmJpPassportNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\JpPersonNameType as OrmJpPersonNameType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\JpResidenceCardNumberType as OrmJpResidenceCardNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\KrDrivingLicenceNumberType as OrmKrDrivingLicenceNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\KrFamilyNameType as OrmKrFamilyNameType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\KrForeignerRegistrationNumberType as OrmKrForeignerRegistrationNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\KrGivenNameType as OrmKrGivenNameType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\KrOrdinaryPassportNumberType as OrmKrOrdinaryPassportNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\KrPersonNameType as OrmKrPersonNameType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\KrResidentRegistrationNumberType as OrmKrResidentRegistrationNumberType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\MxCurpType as OrmMxCurpType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\MxElectorKeyType as OrmMxElectorKeyType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\MxFamilyNameType as OrmMxFamilyNameType;
@@ -285,6 +374,13 @@ use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\RuPassportIssuingUnitCodeType a
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\RuPatronymicType as OrmRuPatronymicType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\RuPersonNameType as OrmRuPersonNameType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\RuSnilsType as OrmRuSnilsType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\SaFamilyNameType as OrmSaFamilyNameType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\SaFatherNameType as OrmSaFatherNameType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\SaGivenNameType as OrmSaGivenNameType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\SaGrandfatherNameType as OrmSaGrandfatherNameType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\SaIqamaNumberType as OrmSaIqamaNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\SaNationalIdentityNumberType as OrmSaNationalIdentityNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\SaPersonNameType as OrmSaPersonNameType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\TrFamilyNameType as OrmTrFamilyNameType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\TrGivenNameType as OrmTrGivenNameType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\TrIdentityNumberType as OrmTrIdentityNumberType;
@@ -662,6 +758,102 @@ use SplFileInfo;
 #[UsesClass(OdmUsGivenNameType::class)]
 #[UsesClass(OdmUsMiddleNameType::class)]
 #[UsesClass(OdmUsPersonNameType::class)]
+#[UsesClass(OrmCnCitizenIdentityNumberType::class)]
+#[UsesClass(OrmCnExitEntryPermitToHongKongMacauNumberType::class)]
+#[UsesClass(OrmCnExitEntryPermitToTaiwanNumberType::class)]
+#[UsesClass(OrmCnForeignerPermanentResidenceNumberType::class)]
+#[UsesClass(OrmCnLegacyForeignerPermanentResidenceNumberType::class)]
+#[UsesClass(OrmCnOrdinaryPassportNumberType::class)]
+#[UsesClass(OrmIdFamilyCardNumberType::class)]
+#[UsesClass(OrmIdNationalIdentityNumberType::class)]
+#[UsesClass(OrmIdTaxpayerNumberType::class)]
+#[UsesClass(OrmInAadhaarNumberType::class)]
+#[UsesClass(OrmInAbhaNumberType::class)]
+#[UsesClass(OrmInPassportNumberType::class)]
+#[UsesClass(OrmInPermanentAccountNumberType::class)]
+#[UsesClass(OrmJpBasicPensionNumberType::class)]
+#[UsesClass(OrmJpDrivingLicenceNumberType::class)]
+#[UsesClass(OrmJpMyNumberType::class)]
+#[UsesClass(OrmJpPassportNumberType::class)]
+#[UsesClass(OrmJpResidenceCardNumberType::class)]
+#[UsesClass(OrmKrDrivingLicenceNumberType::class)]
+#[UsesClass(OrmKrForeignerRegistrationNumberType::class)]
+#[UsesClass(OrmKrOrdinaryPassportNumberType::class)]
+#[UsesClass(OrmKrResidentRegistrationNumberType::class)]
+#[UsesClass(OrmSaIqamaNumberType::class)]
+#[UsesClass(OrmSaNationalIdentityNumberType::class)]
+#[UsesClass(OrmCnFamilyNameType::class)]
+#[UsesClass(OrmCnGivenNameType::class)]
+#[UsesClass(OrmIdFullNameType::class)]
+#[UsesClass(OrmInGivenNameType::class)]
+#[UsesClass(OrmInSurnameType::class)]
+#[UsesClass(OrmInDevanagariGivenNameType::class)]
+#[UsesClass(OrmInDevanagariSurnameType::class)]
+#[UsesClass(OrmJpFamilyNameType::class)]
+#[UsesClass(OrmJpGivenNameType::class)]
+#[UsesClass(OrmJpFamilyNameReadingType::class)]
+#[UsesClass(OrmJpGivenNameReadingType::class)]
+#[UsesClass(OrmKrFamilyNameType::class)]
+#[UsesClass(OrmKrGivenNameType::class)]
+#[UsesClass(OrmSaGivenNameType::class)]
+#[UsesClass(OrmSaFatherNameType::class)]
+#[UsesClass(OrmSaGrandfatherNameType::class)]
+#[UsesClass(OrmSaFamilyNameType::class)]
+#[UsesClass(OrmCnPersonNameType::class)]
+#[UsesClass(OrmIdPersonNameType::class)]
+#[UsesClass(OrmInPersonNameType::class)]
+#[UsesClass(OrmInDevanagariPersonNameType::class)]
+#[UsesClass(OrmJpPersonNameType::class)]
+#[UsesClass(OrmKrPersonNameType::class)]
+#[UsesClass(OrmSaPersonNameType::class)]
+#[UsesClass(OdmCnCitizenIdentityNumberType::class)]
+#[UsesClass(OdmCnExitEntryPermitToHongKongMacauNumberType::class)]
+#[UsesClass(OdmCnExitEntryPermitToTaiwanNumberType::class)]
+#[UsesClass(OdmCnForeignerPermanentResidenceNumberType::class)]
+#[UsesClass(OdmCnLegacyForeignerPermanentResidenceNumberType::class)]
+#[UsesClass(OdmCnOrdinaryPassportNumberType::class)]
+#[UsesClass(OdmIdFamilyCardNumberType::class)]
+#[UsesClass(OdmIdNationalIdentityNumberType::class)]
+#[UsesClass(OdmIdTaxpayerNumberType::class)]
+#[UsesClass(OdmInAadhaarNumberType::class)]
+#[UsesClass(OdmInAbhaNumberType::class)]
+#[UsesClass(OdmInPassportNumberType::class)]
+#[UsesClass(OdmInPermanentAccountNumberType::class)]
+#[UsesClass(OdmJpBasicPensionNumberType::class)]
+#[UsesClass(OdmJpDrivingLicenceNumberType::class)]
+#[UsesClass(OdmJpMyNumberType::class)]
+#[UsesClass(OdmJpPassportNumberType::class)]
+#[UsesClass(OdmJpResidenceCardNumberType::class)]
+#[UsesClass(OdmKrDrivingLicenceNumberType::class)]
+#[UsesClass(OdmKrForeignerRegistrationNumberType::class)]
+#[UsesClass(OdmKrOrdinaryPassportNumberType::class)]
+#[UsesClass(OdmKrResidentRegistrationNumberType::class)]
+#[UsesClass(OdmSaIqamaNumberType::class)]
+#[UsesClass(OdmSaNationalIdentityNumberType::class)]
+#[UsesClass(OdmCnFamilyNameType::class)]
+#[UsesClass(OdmCnGivenNameType::class)]
+#[UsesClass(OdmIdFullNameType::class)]
+#[UsesClass(OdmInGivenNameType::class)]
+#[UsesClass(OdmInSurnameType::class)]
+#[UsesClass(OdmInDevanagariGivenNameType::class)]
+#[UsesClass(OdmInDevanagariSurnameType::class)]
+#[UsesClass(OdmJpFamilyNameType::class)]
+#[UsesClass(OdmJpGivenNameType::class)]
+#[UsesClass(OdmJpFamilyNameReadingType::class)]
+#[UsesClass(OdmJpGivenNameReadingType::class)]
+#[UsesClass(OdmKrFamilyNameType::class)]
+#[UsesClass(OdmKrGivenNameType::class)]
+#[UsesClass(OdmSaGivenNameType::class)]
+#[UsesClass(OdmSaFatherNameType::class)]
+#[UsesClass(OdmSaGrandfatherNameType::class)]
+#[UsesClass(OdmSaFamilyNameType::class)]
+#[UsesClass(OdmCnPersonNameType::class)]
+#[UsesClass(OdmIdPersonNameType::class)]
+#[UsesClass(OdmInPersonNameType::class)]
+#[UsesClass(OdmInDevanagariPersonNameType::class)]
+#[UsesClass(OdmJpPersonNameType::class)]
+#[UsesClass(OdmKrPersonNameType::class)]
+#[UsesClass(OdmSaPersonNameType::class)]
 final class EveryDocumentClassHasATypeTest extends TestCase
 {
     /**

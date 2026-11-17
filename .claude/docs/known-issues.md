@@ -9,7 +9,7 @@ tags a release, every Composer-based CI job fails at `composer update`. Locally 
 `COMPOSER=composer-local.json composer update --ignore-platform-req=php` (path repositories, gitignored profile).
 
 **Release note (owner):** the bridge maps the DE, FR, IT, ES, NL, CH, GB and TR classes (plan 2), the US, CA, MX and BR
-classes (plan 3) and the shared `Name\Latin` bases, so its lower bound on `msstc4php/vo-documents` must be the first
+classes (plan 3), the CN, JP, KR, IN, ID and SA classes (plan 4) and the shared `Name\Latin` bases, so its lower bound on `msstc4php/vo-documents` must be the first
 tag that contains them. If `v0.1.0` is tagged without them, tag them as `v0.2.0` and raise `composer.json` (and the
 `dev-main as …` alias of `composer-ci.json`) to `^0.2` in the same change; otherwise `composer update --prefer-lowest`
 resolves a release without the classes and the types fail to load.
@@ -67,3 +67,15 @@ platform-specific.
   BR `family` and `given` (see `Samples::compositeRequiredKeys()`).
 - **Optional given name.** `Name\NL`, `Name\CH` and `Name\GB` `PersonName` accept a null `given`, so `{"family":"X"}`
   is a valid payload for them; the wrong-shape tests use an unknown key (`surname`) instead.
+- **Asian names (plan 4).** Required payload keys: CN and KR `family` and `given` (a missing `given` key is refused, a
+  null one is a mononym), ID `name` and `latin`, IN `given` (`surname` and `latin` may be absent), JP `family`, `given`,
+  `familyReading` and `givenReading`, SA `given` and `latin`. CN, KR, ID, SA and IN-Devanagari store the Latin form
+  (required); IN-Latin and JP store only an override (a JP override equal to the derived Hepburn form is dropped, so
+  the sample uses `YAMADA<<TAROH`).
+- **Same short names in two namespaces.** `Name\IN\GivenName` / `Surname` / `PersonName` and
+  `Name\IN\Devanagari\*` get distinct types: `vod_in_given_name` and `vod_in_devanagari_given_name`, class prefix
+  `InDevanagari`.
+- **Column widths in characters.** CJK, Hangul, Arabic and Devanagari name parts are bounded by `MAX_LENGTH` (100)
+  characters, not bytes; VARCHAR(100) is a character count on MySQL and PostgreSQL. `vod_kr_driving_licence_number` is
+  VARCHAR(15): the longest stored shape is the old Hangul form `서울 95-255933-61`, the numbered form is 12 digits.
+  `vod_id_taxpayer_number` is VARCHAR(16) (stored as 15 or 16 digits, never dotted).

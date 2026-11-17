@@ -48,6 +48,12 @@ use MSSTC4PHP\ValueObject\Documents\Document\CA\SocialInsuranceNumber as CaSocia
 use MSSTC4PHP\ValueObject\Documents\Document\CH\AhvNumber as ChAhvNumber;
 use MSSTC4PHP\ValueObject\Documents\Document\CH\DriverLicenceNumber as ChDriverLicenceNumber;
 use MSSTC4PHP\ValueObject\Documents\Document\CH\IdentityDocumentNumber as ChIdentityDocumentNumber;
+use MSSTC4PHP\ValueObject\Documents\Document\CN\CitizenIdentityNumber as CnCitizenIdentityNumber;
+use MSSTC4PHP\ValueObject\Documents\Document\CN\ExitEntryPermitToHongKongMacauNumber as CnExitEntryPermitToHongKongMacauNumber;
+use MSSTC4PHP\ValueObject\Documents\Document\CN\ExitEntryPermitToTaiwanNumber as CnExitEntryPermitToTaiwanNumber;
+use MSSTC4PHP\ValueObject\Documents\Document\CN\ForeignerPermanentResidenceNumber as CnForeignerPermanentResidenceNumber;
+use MSSTC4PHP\ValueObject\Documents\Document\CN\LegacyForeignerPermanentResidenceNumber as CnLegacyForeignerPermanentResidenceNumber;
+use MSSTC4PHP\ValueObject\Documents\Document\CN\OrdinaryPassportNumber as CnOrdinaryPassportNumber;
 use MSSTC4PHP\ValueObject\Documents\Document\DE\IdentityCardNumber as DeIdentityCardNumber;
 use MSSTC4PHP\ValueObject\Documents\Document\DE\PassportNumber as DePassportNumber;
 use MSSTC4PHP\ValueObject\Documents\Document\DE\PensionInsuranceNumber as DePensionInsuranceNumber;
@@ -67,8 +73,24 @@ use MSSTC4PHP\ValueObject\Documents\Document\GB\NationalInsuranceNumber as GbNat
 use MSSTC4PHP\ValueObject\Documents\Document\GB\NhsNumber as GbNhsNumber;
 use MSSTC4PHP\ValueObject\Documents\Document\GB\NorthernIrelandDriverLicenceNumber as GbNorthernIrelandDriverLicenceNumber;
 use MSSTC4PHP\ValueObject\Documents\Document\GB\PassportNumber as GbPassportNumber;
+use MSSTC4PHP\ValueObject\Documents\Document\ID\FamilyCardNumber as IdFamilyCardNumber;
+use MSSTC4PHP\ValueObject\Documents\Document\ID\NationalIdentityNumber as IdNationalIdentityNumber;
+use MSSTC4PHP\ValueObject\Documents\Document\ID\TaxpayerNumber as IdTaxpayerNumber;
+use MSSTC4PHP\ValueObject\Documents\Document\IN\AadhaarNumber as InAadhaarNumber;
+use MSSTC4PHP\ValueObject\Documents\Document\IN\AbhaNumber as InAbhaNumber;
+use MSSTC4PHP\ValueObject\Documents\Document\IN\PassportNumber as InPassportNumber;
+use MSSTC4PHP\ValueObject\Documents\Document\IN\PermanentAccountNumber as InPermanentAccountNumber;
 use MSSTC4PHP\ValueObject\Documents\Document\IT\FiscalCode as ItFiscalCode;
 use MSSTC4PHP\ValueObject\Documents\Document\IT\PassportNumber as ItPassportNumber;
+use MSSTC4PHP\ValueObject\Documents\Document\JP\BasicPensionNumber as JpBasicPensionNumber;
+use MSSTC4PHP\ValueObject\Documents\Document\JP\DrivingLicenceNumber as JpDrivingLicenceNumber;
+use MSSTC4PHP\ValueObject\Documents\Document\JP\MyNumber as JpMyNumber;
+use MSSTC4PHP\ValueObject\Documents\Document\JP\PassportNumber as JpPassportNumber;
+use MSSTC4PHP\ValueObject\Documents\Document\JP\ResidenceCardNumber as JpResidenceCardNumber;
+use MSSTC4PHP\ValueObject\Documents\Document\KR\DrivingLicenceNumber as KrDrivingLicenceNumber;
+use MSSTC4PHP\ValueObject\Documents\Document\KR\ForeignerRegistrationNumber as KrForeignerRegistrationNumber;
+use MSSTC4PHP\ValueObject\Documents\Document\KR\OrdinaryPassportNumber as KrOrdinaryPassportNumber;
+use MSSTC4PHP\ValueObject\Documents\Document\KR\ResidentRegistrationNumber as KrResidentRegistrationNumber;
 use MSSTC4PHP\ValueObject\Documents\Document\MX\Curp as MxCurp;
 use MSSTC4PHP\ValueObject\Documents\Document\MX\DriverLicence\MexDriverLicenceNumber as MxMexDriverLicenceNumber;
 use MSSTC4PHP\ValueObject\Documents\Document\MX\ElectorKey as MxElectorKey;
@@ -83,6 +105,8 @@ use MSSTC4PHP\ValueObject\Documents\Document\RU\InternationalPassportNumber;
 use MSSTC4PHP\ValueObject\Documents\Document\RU\OmsPolicyNumber;
 use MSSTC4PHP\ValueObject\Documents\Document\RU\PassportIssuingUnitCode;
 use MSSTC4PHP\ValueObject\Documents\Document\RU\Snils;
+use MSSTC4PHP\ValueObject\Documents\Document\SA\IqamaNumber as SaIqamaNumber;
+use MSSTC4PHP\ValueObject\Documents\Document\SA\NationalIdentityNumber as SaNationalIdentityNumber;
 use MSSTC4PHP\ValueObject\Documents\Document\TR\IdentityNumber as TrIdentityNumber;
 use MSSTC4PHP\ValueObject\Documents\Document\TR\PassportNumber as TrPassportNumber;
 use MSSTC4PHP\ValueObject\Documents\Document\US\DlId\AlDlIdNumber as UsAlDlIdNumber;
@@ -134,6 +158,9 @@ use MSSTC4PHP\ValueObject\Documents\Name\CA\PersonName as CaPersonName;
 use MSSTC4PHP\ValueObject\Documents\Name\CH\FamilyName as ChFamilyName;
 use MSSTC4PHP\ValueObject\Documents\Name\CH\GivenName as ChGivenName;
 use MSSTC4PHP\ValueObject\Documents\Name\CH\PersonName as ChPersonName;
+use MSSTC4PHP\ValueObject\Documents\Name\CN\FamilyName as CnFamilyName;
+use MSSTC4PHP\ValueObject\Documents\Name\CN\GivenName as CnGivenName;
+use MSSTC4PHP\ValueObject\Documents\Name\CN\PersonName as CnPersonName;
 use MSSTC4PHP\ValueObject\Documents\Name\DE\FamilyName as DeFamilyName;
 use MSSTC4PHP\ValueObject\Documents\Name\DE\GivenName as DeGivenName;
 use MSSTC4PHP\ValueObject\Documents\Name\DE\PersonName as DePersonName;
@@ -146,9 +173,25 @@ use MSSTC4PHP\ValueObject\Documents\Name\FR\PersonName as FrPersonName;
 use MSSTC4PHP\ValueObject\Documents\Name\GB\FamilyName as GbFamilyName;
 use MSSTC4PHP\ValueObject\Documents\Name\GB\GivenName as GbGivenName;
 use MSSTC4PHP\ValueObject\Documents\Name\GB\PersonName as GbPersonName;
+use MSSTC4PHP\ValueObject\Documents\Name\ID\FullName as IdFullName;
+use MSSTC4PHP\ValueObject\Documents\Name\ID\PersonName as IdPersonName;
+use MSSTC4PHP\ValueObject\Documents\Name\IN\Devanagari\GivenName as InDevanagariGivenName;
+use MSSTC4PHP\ValueObject\Documents\Name\IN\Devanagari\PersonName as InDevanagariPersonName;
+use MSSTC4PHP\ValueObject\Documents\Name\IN\Devanagari\Surname as InDevanagariSurname;
+use MSSTC4PHP\ValueObject\Documents\Name\IN\GivenName as InGivenName;
+use MSSTC4PHP\ValueObject\Documents\Name\IN\PersonName as InPersonName;
+use MSSTC4PHP\ValueObject\Documents\Name\IN\Surname as InSurname;
 use MSSTC4PHP\ValueObject\Documents\Name\IT\FamilyName as ItFamilyName;
 use MSSTC4PHP\ValueObject\Documents\Name\IT\GivenName as ItGivenName;
 use MSSTC4PHP\ValueObject\Documents\Name\IT\PersonName as ItPersonName;
+use MSSTC4PHP\ValueObject\Documents\Name\JP\FamilyName as JpFamilyName;
+use MSSTC4PHP\ValueObject\Documents\Name\JP\FamilyNameReading as JpFamilyNameReading;
+use MSSTC4PHP\ValueObject\Documents\Name\JP\GivenName as JpGivenName;
+use MSSTC4PHP\ValueObject\Documents\Name\JP\GivenNameReading as JpGivenNameReading;
+use MSSTC4PHP\ValueObject\Documents\Name\JP\PersonName as JpPersonName;
+use MSSTC4PHP\ValueObject\Documents\Name\KR\FamilyName as KrFamilyName;
+use MSSTC4PHP\ValueObject\Documents\Name\KR\GivenName as KrGivenName;
+use MSSTC4PHP\ValueObject\Documents\Name\KR\PersonName as KrPersonName;
 use MSSTC4PHP\ValueObject\Documents\Name\MX\FamilyName as MxFamilyName;
 use MSSTC4PHP\ValueObject\Documents\Name\MX\GivenName as MxGivenName;
 use MSSTC4PHP\ValueObject\Documents\Name\MX\PersonName as MxPersonName;
@@ -159,6 +202,11 @@ use MSSTC4PHP\ValueObject\Documents\Name\RU\FamilyName as RuFamilyName;
 use MSSTC4PHP\ValueObject\Documents\Name\RU\GivenName as RuGivenName;
 use MSSTC4PHP\ValueObject\Documents\Name\RU\Patronymic;
 use MSSTC4PHP\ValueObject\Documents\Name\RU\PersonName as RuPersonName;
+use MSSTC4PHP\ValueObject\Documents\Name\SA\FamilyName as SaFamilyName;
+use MSSTC4PHP\ValueObject\Documents\Name\SA\FatherName as SaFatherName;
+use MSSTC4PHP\ValueObject\Documents\Name\SA\GivenName as SaGivenName;
+use MSSTC4PHP\ValueObject\Documents\Name\SA\GrandfatherName as SaGrandfatherName;
+use MSSTC4PHP\ValueObject\Documents\Name\SA\PersonName as SaPersonName;
 use MSSTC4PHP\ValueObject\Documents\Name\TR\FamilyName as TrFamilyName;
 use MSSTC4PHP\ValueObject\Documents\Name\TR\GivenName as TrGivenName;
 use MSSTC4PHP\ValueObject\Documents\Name\TR\PersonName as TrPersonName;
@@ -330,6 +378,47 @@ final class Samples
         yield 'us family name' => ['vod_us_family_name', UsFamilyName::from('S' . \str_repeat('m', AbstractNamePart::MAX_LENGTH - 1)), AbstractNamePart::MAX_LENGTH, self::BAD_NAME];
         yield 'us given name' => ['vod_us_given_name', UsGivenName::from('S' . \str_repeat('m', AbstractNamePart::MAX_LENGTH - 1)), AbstractNamePart::MAX_LENGTH, self::BAD_NAME];
         yield 'us middle name' => ['vod_us_middle_name', UsMiddleName::from('S' . \str_repeat('m', AbstractNamePart::MAX_LENGTH - 1)), AbstractNamePart::MAX_LENGTH, self::BAD_NAME];
+        yield 'cn citizen identity number' => ['vod_cn_citizen_identity_number', CnCitizenIdentityNumber::from('110105199003071239'), 18, self::BAD_DOCUMENT];
+        yield 'cn exit entry permit to hong kong macau number' => ['vod_cn_exit_entry_permit_to_hong_kong_macau_number', CnExitEntryPermitToHongKongMacauNumber::from('CJ1234567'), 9, self::BAD_DOCUMENT];
+        yield 'cn exit entry permit to taiwan number' => ['vod_cn_exit_entry_permit_to_taiwan_number', CnExitEntryPermitToTaiwanNumber::from('T12345678'), 9, self::BAD_DOCUMENT];
+        yield 'cn foreigner permanent residence number' => ['vod_cn_foreigner_permanent_residence_number', CnForeignerPermanentResidenceNumber::from('910105199003071238'), 18, self::BAD_DOCUMENT];
+        yield 'cn legacy foreigner permanent residence number' => ['vod_cn_legacy_foreigner_permanent_residence_number', CnLegacyForeignerPermanentResidenceNumber::from('USA123456789012'), 15, self::BAD_DOCUMENT];
+        yield 'cn ordinary passport number' => ['vod_cn_ordinary_passport_number', CnOrdinaryPassportNumber::from('EJ1234567'), 9, self::BAD_DOCUMENT];
+        yield 'id family card number' => ['vod_id_family_card_number', IdFamilyCardNumber::from('3171234567890001'), 16, self::BAD_DOCUMENT];
+        yield 'id national identity number' => ['vod_id_national_identity_number', IdNationalIdentityNumber::from('3171010101900001'), 16, self::BAD_DOCUMENT];
+        yield 'id taxpayer number' => ['vod_id_taxpayer_number', IdTaxpayerNumber::from('0123456789012345'), 16, self::BAD_DOCUMENT];
+        yield 'in aadhaar number' => ['vod_in_aadhaar_number', InAadhaarNumber::from('234567890124'), 12, self::BAD_DOCUMENT];
+        yield 'in abha number' => ['vod_in_abha_number', InAbhaNumber::from('12345678901234'), 14, self::BAD_DOCUMENT];
+        yield 'in passport number' => ['vod_in_passport_number', InPassportNumber::from('A1234567'), 8, self::BAD_DOCUMENT];
+        yield 'in permanent account number' => ['vod_in_permanent_account_number', InPermanentAccountNumber::from('ABCPE1234F'), 10, self::BAD_DOCUMENT];
+        yield 'jp basic pension number' => ['vod_jp_basic_pension_number', JpBasicPensionNumber::from('1234567890'), 10, self::BAD_DOCUMENT];
+        yield 'jp driving licence number' => ['vod_jp_driving_licence_number', JpDrivingLicenceNumber::from('123456789012'), 12, self::BAD_DOCUMENT];
+        yield 'jp my number' => ['vod_jp_my_number', JpMyNumber::from('123456789018'), 12, self::BAD_DOCUMENT];
+        yield 'jp passport number' => ['vod_jp_passport_number', JpPassportNumber::from('TK1234567'), 9, self::BAD_DOCUMENT];
+        yield 'jp residence card number' => ['vod_jp_residence_card_number', JpResidenceCardNumber::from('AB12345678CD'), 12, self::BAD_DOCUMENT];
+        yield 'kr driving licence number' => ['vod_kr_driving_licence_number', KrDrivingLicenceNumber::from('서울 95-255933-61'), 15, self::BAD_DOCUMENT];
+        yield 'kr foreigner registration number' => ['vod_kr_foreigner_registration_number', KrForeignerRegistrationNumber::from('9001015123456'), 13, self::BAD_DOCUMENT];
+        yield 'kr ordinary passport number' => ['vod_kr_ordinary_passport_number', KrOrdinaryPassportNumber::from('M12345678'), 9, self::BAD_DOCUMENT];
+        yield 'kr resident registration number' => ['vod_kr_resident_registration_number', KrResidentRegistrationNumber::from('9001011234567'), 13, self::BAD_DOCUMENT];
+        yield 'sa iqama number' => ['vod_sa_iqama_number', SaIqamaNumber::from('2123456789'), 10, self::BAD_DOCUMENT];
+        yield 'sa national identity number' => ['vod_sa_national_identity_number', SaNationalIdentityNumber::from('1123456789'), 10, self::BAD_DOCUMENT];
+        yield 'cn family name' => ['vod_cn_family_name', CnFamilyName::from('王' . \str_repeat('小', AbstractNamePart::MAX_LENGTH - 1)), AbstractNamePart::MAX_LENGTH, self::BAD_NAME];
+        yield 'cn given name' => ['vod_cn_given_name', CnGivenName::from('王' . \str_repeat('小', AbstractNamePart::MAX_LENGTH - 1)), AbstractNamePart::MAX_LENGTH, self::BAD_NAME];
+        yield 'id full name' => ['vod_id_full_name', IdFullName::from('S' . \str_repeat('m', AbstractNamePart::MAX_LENGTH - 1)), AbstractNamePart::MAX_LENGTH, self::BAD_NAME];
+        yield 'in given name' => ['vod_in_given_name', InGivenName::from('S' . \str_repeat('m', AbstractNamePart::MAX_LENGTH - 1)), AbstractNamePart::MAX_LENGTH, self::BAD_NAME];
+        yield 'in surname' => ['vod_in_surname', InSurname::from('S' . \str_repeat('m', AbstractNamePart::MAX_LENGTH - 1)), AbstractNamePart::MAX_LENGTH, self::BAD_NAME];
+        yield 'in devanagari given name' => ['vod_in_devanagari_given_name', InDevanagariGivenName::from('अ' . \str_repeat('म', AbstractNamePart::MAX_LENGTH - 1)), AbstractNamePart::MAX_LENGTH, self::BAD_NAME];
+        yield 'in devanagari surname' => ['vod_in_devanagari_surname', InDevanagariSurname::from('अ' . \str_repeat('म', AbstractNamePart::MAX_LENGTH - 1)), AbstractNamePart::MAX_LENGTH, self::BAD_NAME];
+        yield 'jp family name' => ['vod_jp_family_name', JpFamilyName::from('山' . \str_repeat('田', AbstractNamePart::MAX_LENGTH - 1)), AbstractNamePart::MAX_LENGTH, self::BAD_NAME];
+        yield 'jp given name' => ['vod_jp_given_name', JpGivenName::from('太' . \str_repeat('郎', AbstractNamePart::MAX_LENGTH - 1)), AbstractNamePart::MAX_LENGTH, self::BAD_NAME];
+        yield 'jp family name reading' => ['vod_jp_family_name_reading', JpFamilyNameReading::from('ヤ' . \str_repeat('マ', AbstractNamePart::MAX_LENGTH - 1)), AbstractNamePart::MAX_LENGTH, self::BAD_NAME];
+        yield 'jp given name reading' => ['vod_jp_given_name_reading', JpGivenNameReading::from('た' . \str_repeat('ろ', AbstractNamePart::MAX_LENGTH - 1)), AbstractNamePart::MAX_LENGTH, self::BAD_NAME];
+        yield 'kr family name' => ['vod_kr_family_name', KrFamilyName::from('김' . \str_repeat('김', AbstractNamePart::MAX_LENGTH - 1)), AbstractNamePart::MAX_LENGTH, self::BAD_NAME];
+        yield 'kr given name' => ['vod_kr_given_name', KrGivenName::from('민' . \str_repeat('수', AbstractNamePart::MAX_LENGTH - 1)), AbstractNamePart::MAX_LENGTH, self::BAD_NAME];
+        yield 'sa given name' => ['vod_sa_given_name', SaGivenName::from('م' . \str_repeat('ح', AbstractNamePart::MAX_LENGTH - 1)), AbstractNamePart::MAX_LENGTH, self::BAD_NAME];
+        yield 'sa father name' => ['vod_sa_father_name', SaFatherName::from('م' . \str_repeat('ح', AbstractNamePart::MAX_LENGTH - 1)), AbstractNamePart::MAX_LENGTH, self::BAD_NAME];
+        yield 'sa grandfather name' => ['vod_sa_grandfather_name', SaGrandfatherName::from('م' . \str_repeat('ح', AbstractNamePart::MAX_LENGTH - 1)), AbstractNamePart::MAX_LENGTH, self::BAD_NAME];
+        yield 'sa family name' => ['vod_sa_family_name', SaFamilyName::from('م' . \str_repeat('ح', AbstractNamePart::MAX_LENGTH - 1)), AbstractNamePart::MAX_LENGTH, self::BAD_NAME];
         yield 'icao person name' => ['vod_icao_person_name', IcaoPersonName::from(\str_repeat('A', 127) . '<<' . \str_repeat('B', IcaoPersonName::MAX_LENGTH - 129)), IcaoPersonName::MAX_LENGTH, self::BAD_NAME];
     }
 
@@ -533,6 +622,61 @@ final class Samples
             new BrPersonName(BrFamilyName::from('Gonçalves'), BrGivenName::from('João'), IcaoPersonName::from('GONSALVES<<JOAO')),
             ['family' => 'Gonçalves', 'given' => 'João', 'latin' => 'GONSALVES<<JOAO'],
         ];
+        yield 'cn person name' => [
+            'vod_cn_person_name',
+            new CnPersonName(CnFamilyName::from('王'), CnGivenName::from('小明'), IcaoPersonName::from('WANG<<XIAOMING')),
+            ['family' => '王', 'given' => '小明', 'latin' => 'WANG<<XIAOMING'],
+        ];
+        yield 'cn person name without given name' => [
+            'vod_cn_person_name',
+            new CnPersonName(CnFamilyName::from('王'), null, IcaoPersonName::from('WANG')),
+            ['family' => '王', 'given' => null, 'latin' => 'WANG'],
+        ];
+        yield 'id person name' => [
+            'vod_id_person_name',
+            new IdPersonName(IdFullName::from('Budi Santoso'), IcaoPersonName::from('SANTOSO<<BUDI')),
+            ['name' => 'Budi Santoso', 'latin' => 'SANTOSO<<BUDI'],
+        ];
+        yield 'in person name' => [
+            'vod_in_person_name',
+            new InPersonName(InGivenName::from('Anil'), InSurname::from('Kumar')),
+            ['given' => 'Anil', 'surname' => 'Kumar', 'latin' => null],
+        ];
+        yield 'in person name without surname' => [
+            'vod_in_person_name',
+            new InPersonName(InGivenName::from('Anil')),
+            ['given' => 'Anil', 'surname' => null, 'latin' => null],
+        ];
+        yield 'in devanagari person name' => [
+            'vod_in_devanagari_person_name',
+            new InDevanagariPersonName(InDevanagariGivenName::from('अनिल'), InDevanagariSurname::from('कुमार'), IcaoPersonName::from('KUMAR<<ANIL')),
+            ['given' => 'अनिल', 'surname' => 'कुमार', 'latin' => 'KUMAR<<ANIL'],
+        ];
+        yield 'jp person name' => [
+            'vod_jp_person_name',
+            new JpPersonName(JpFamilyName::from('山田'), JpGivenName::from('太郎'), JpFamilyNameReading::from('ヤマダ'), JpGivenNameReading::from('タロウ')),
+            ['family' => '山田', 'given' => '太郎', 'familyReading' => 'ヤマダ', 'givenReading' => 'タロウ', 'latin' => null],
+        ];
+        yield 'jp person name with latin override' => [
+            'vod_jp_person_name',
+            new JpPersonName(JpFamilyName::from('山田'), JpGivenName::from('太郎'), JpFamilyNameReading::from('ヤマダ'), JpGivenNameReading::from('タロウ'), IcaoPersonName::from('YAMADA<<TAROH')),
+            ['family' => '山田', 'given' => '太郎', 'familyReading' => 'ヤマダ', 'givenReading' => 'タロウ', 'latin' => 'YAMADA<<TAROH'],
+        ];
+        yield 'kr person name' => [
+            'vod_kr_person_name',
+            new KrPersonName(KrFamilyName::from('김'), KrGivenName::from('민수'), IcaoPersonName::from('KIM<<MINSU')),
+            ['family' => '김', 'given' => '민수', 'latin' => 'KIM<<MINSU'],
+        ];
+        yield 'sa person name' => [
+            'vod_sa_person_name',
+            new SaPersonName(SaGivenName::from('محمد'), SaFatherName::from('أحمد'), SaGrandfatherName::from('علي'), SaFamilyName::from('العتيبي'), IcaoPersonName::from('ALOTAIBI<<MOHAMMED<AHMED<ALI')),
+            ['given' => 'محمد', 'father' => 'أحمد', 'grandfather' => 'علي', 'family' => 'العتيبي', 'latin' => 'ALOTAIBI<<MOHAMMED<AHMED<ALI'],
+        ];
+        yield 'sa person name with given name only' => [
+            'vod_sa_person_name',
+            new SaPersonName(SaGivenName::from('محمد'), null, null, null, IcaoPersonName::from('MOHAMMED')),
+            ['given' => 'محمد', 'father' => null, 'grandfather' => null, 'family' => null, 'latin' => 'MOHAMMED'],
+        ];
     }
 
     /**
@@ -551,6 +695,11 @@ final class Samples
             'vod_us_person_name' => ['family'],
             'vod_ca_person_name' => ['family'],
             'vod_mx_person_name' => ['given'],
+            'vod_id_person_name' => ['name', 'latin'],
+            'vod_in_person_name' => ['given'],
+            'vod_in_devanagari_person_name' => ['given'],
+            'vod_jp_person_name' => ['family', 'given', 'familyReading', 'givenReading'],
+            'vod_sa_person_name' => ['given', 'latin'],
         ];
         foreach (self::composites() as $label => [$name, , $payload]) {
             foreach ($required[$name] ?? ['family', 'given'] as $key) {

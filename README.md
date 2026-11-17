@@ -1,8 +1,8 @@
 # msstc4php/vo-documents-doctrine
 
 Doctrine ORM and MongoDB ODM types for [`msstc4php/vo-documents`](https://github.com/msstc4php/vo-documents):
-159 types per branch: identity document numbers, name parts, Latin ICAO names, and the composite person name of each
-country (RU, AU, DE, FR, IT, ES, NL, CH, GB, TR, US, CA, MX and BR).
+207 types per branch: identity document numbers, name parts, Latin ICAO names, and the composite person name of each
+country (RU, AU, DE, FR, IT, ES, NL, CH, GB, TR, US, CA, MX, BR, CN, JP, KR, IN, ID and SA).
 Backed enums (`DriverLicenceCategory`, `Jurisdiction`, `Sex`, `Name\US\NameSuffix`) need no type: map them with `enumType`.
 
 No framework is a runtime dependency. Install the Doctrine stack you actually use; the other branch never loads.
@@ -122,6 +122,15 @@ the value object's own exception, whose message never contains it.
 | `vod_ch_given_name` | `Name\CH\GivenName` | VARCHAR(100) | string |
 | `vod_ch_identity_document_number` | `Document\CH\IdentityDocumentNumber` | VARCHAR(8) | string |
 | `vod_ch_person_name` | `Name\CH\PersonName` | CLOB (JSON) | sub-document |
+| `vod_cn_citizen_identity_number` | `Document\CN\CitizenIdentityNumber` | VARCHAR(18) | string |
+| `vod_cn_exit_entry_permit_to_hong_kong_macau_number` | `Document\CN\ExitEntryPermitToHongKongMacauNumber` | VARCHAR(9) | string |
+| `vod_cn_exit_entry_permit_to_taiwan_number` | `Document\CN\ExitEntryPermitToTaiwanNumber` | VARCHAR(9) | string |
+| `vod_cn_family_name` | `Name\CN\FamilyName` | VARCHAR(100) | string |
+| `vod_cn_foreigner_permanent_residence_number` | `Document\CN\ForeignerPermanentResidenceNumber` | VARCHAR(18) | string |
+| `vod_cn_given_name` | `Name\CN\GivenName` | VARCHAR(100) | string |
+| `vod_cn_legacy_foreigner_permanent_residence_number` | `Document\CN\LegacyForeignerPermanentResidenceNumber` | VARCHAR(15) | string |
+| `vod_cn_ordinary_passport_number` | `Document\CN\OrdinaryPassportNumber` | VARCHAR(9) | string |
+| `vod_cn_person_name` | `Name\CN\PersonName` | CLOB (JSON) | sub-document |
 | `vod_de_family_name` | `Name\DE\FamilyName` | VARCHAR(100) | string |
 | `vod_de_given_name` | `Name\DE\GivenName` | VARCHAR(100) | string |
 | `vod_de_identity_card_number` | `Document\DE\IdentityCardNumber` | VARCHAR(9) | string |
@@ -154,11 +163,43 @@ the value object's own exception, whose message never contains it.
 | `vod_gb_passport_number` | `Document\GB\PassportNumber` | VARCHAR(9) | string |
 | `vod_gb_person_name` | `Name\GB\PersonName` | CLOB (JSON) | sub-document |
 | `vod_icao_person_name` | `Icao\PersonName` | VARCHAR(255) | string |
+| `vod_id_family_card_number` | `Document\ID\FamilyCardNumber` | VARCHAR(16) | string |
+| `vod_id_full_name` | `Name\ID\FullName` | VARCHAR(100) | string |
+| `vod_id_national_identity_number` | `Document\ID\NationalIdentityNumber` | VARCHAR(16) | string |
+| `vod_id_person_name` | `Name\ID\PersonName` | CLOB (JSON) | sub-document |
+| `vod_id_taxpayer_number` | `Document\ID\TaxpayerNumber` | VARCHAR(16) | string |
+| `vod_in_aadhaar_number` | `Document\IN\AadhaarNumber` | VARCHAR(12) | string |
+| `vod_in_abha_number` | `Document\IN\AbhaNumber` | VARCHAR(14) | string |
+| `vod_in_devanagari_given_name` | `Name\IN\Devanagari\GivenName` | VARCHAR(100) | string |
+| `vod_in_devanagari_person_name` | `Name\IN\Devanagari\PersonName` | CLOB (JSON) | sub-document |
+| `vod_in_devanagari_surname` | `Name\IN\Devanagari\Surname` | VARCHAR(100) | string |
+| `vod_in_given_name` | `Name\IN\GivenName` | VARCHAR(100) | string |
+| `vod_in_passport_number` | `Document\IN\PassportNumber` | VARCHAR(8) | string |
+| `vod_in_permanent_account_number` | `Document\IN\PermanentAccountNumber` | VARCHAR(10) | string |
+| `vod_in_person_name` | `Name\IN\PersonName` | CLOB (JSON) | sub-document |
+| `vod_in_surname` | `Name\IN\Surname` | VARCHAR(100) | string |
 | `vod_it_family_name` | `Name\IT\FamilyName` | VARCHAR(100) | string |
 | `vod_it_fiscal_code` | `Document\IT\FiscalCode` | VARCHAR(16) | string |
 | `vod_it_given_name` | `Name\IT\GivenName` | VARCHAR(100) | string |
 | `vod_it_passport_number` | `Document\IT\PassportNumber` | VARCHAR(9) | string |
 | `vod_it_person_name` | `Name\IT\PersonName` | CLOB (JSON) | sub-document |
+| `vod_jp_basic_pension_number` | `Document\JP\BasicPensionNumber` | VARCHAR(10) | string |
+| `vod_jp_driving_licence_number` | `Document\JP\DrivingLicenceNumber` | VARCHAR(12) | string |
+| `vod_jp_family_name` | `Name\JP\FamilyName` | VARCHAR(100) | string |
+| `vod_jp_family_name_reading` | `Name\JP\FamilyNameReading` | VARCHAR(100) | string |
+| `vod_jp_given_name` | `Name\JP\GivenName` | VARCHAR(100) | string |
+| `vod_jp_given_name_reading` | `Name\JP\GivenNameReading` | VARCHAR(100) | string |
+| `vod_jp_my_number` | `Document\JP\MyNumber` | VARCHAR(12) | string |
+| `vod_jp_passport_number` | `Document\JP\PassportNumber` | VARCHAR(9) | string |
+| `vod_jp_person_name` | `Name\JP\PersonName` | CLOB (JSON) | sub-document |
+| `vod_jp_residence_card_number` | `Document\JP\ResidenceCardNumber` | VARCHAR(12) | string |
+| `vod_kr_driving_licence_number` | `Document\KR\DrivingLicenceNumber` | VARCHAR(15) | string |
+| `vod_kr_family_name` | `Name\KR\FamilyName` | VARCHAR(100) | string |
+| `vod_kr_foreigner_registration_number` | `Document\KR\ForeignerRegistrationNumber` | VARCHAR(13) | string |
+| `vod_kr_given_name` | `Name\KR\GivenName` | VARCHAR(100) | string |
+| `vod_kr_ordinary_passport_number` | `Document\KR\OrdinaryPassportNumber` | VARCHAR(9) | string |
+| `vod_kr_person_name` | `Name\KR\PersonName` | CLOB (JSON) | sub-document |
+| `vod_kr_resident_registration_number` | `Document\KR\ResidentRegistrationNumber` | VARCHAR(13) | string |
 | `vod_mx_curp` | `Document\MX\Curp` | VARCHAR(18) | string |
 | `vod_mx_elector_key` | `Document\MX\ElectorKey` | VARCHAR(18) | string |
 | `vod_mx_family_name` | `Name\MX\FamilyName` | VARCHAR(100) | string |
@@ -183,6 +224,13 @@ the value object's own exception, whose message never contains it.
 | `vod_ru_patronymic` | `Name\RU\Patronymic` | VARCHAR(100) | string |
 | `vod_ru_person_name` | `Name\RU\PersonName` | CLOB (JSON) | sub-document |
 | `vod_ru_snils` | `Document\RU\Snils` | VARCHAR(11) | string |
+| `vod_sa_family_name` | `Name\SA\FamilyName` | VARCHAR(100) | string |
+| `vod_sa_father_name` | `Name\SA\FatherName` | VARCHAR(100) | string |
+| `vod_sa_given_name` | `Name\SA\GivenName` | VARCHAR(100) | string |
+| `vod_sa_grandfather_name` | `Name\SA\GrandfatherName` | VARCHAR(100) | string |
+| `vod_sa_iqama_number` | `Document\SA\IqamaNumber` | VARCHAR(10) | string |
+| `vod_sa_national_identity_number` | `Document\SA\NationalIdentityNumber` | VARCHAR(10) | string |
+| `vod_sa_person_name` | `Name\SA\PersonName` | CLOB (JSON) | sub-document |
 | `vod_tr_family_name` | `Name\TR\FamilyName` | VARCHAR(100) | string |
 | `vod_tr_given_name` | `Name\TR\GivenName` | VARCHAR(100) | string |
 | `vod_tr_identity_number` | `Document\TR\IdentityNumber` | VARCHAR(11) | string |

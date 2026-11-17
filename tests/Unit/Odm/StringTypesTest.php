@@ -57,6 +57,14 @@ use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\ChDriverLicenceNumberType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\ChFamilyNameType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\ChGivenNameType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\ChIdentityDocumentNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\CnCitizenIdentityNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\CnExitEntryPermitToHongKongMacauNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\CnExitEntryPermitToTaiwanNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\CnFamilyNameType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\CnForeignerPermanentResidenceNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\CnGivenNameType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\CnLegacyForeignerPermanentResidenceNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\CnOrdinaryPassportNumberType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\DeFamilyNameType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\DeGivenNameType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\DeIdentityCardNumberType;
@@ -85,10 +93,37 @@ use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\GbNhsNumberType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\GbNorthernIrelandDriverLicenceNumberType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\GbPassportNumberType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\IcaoPersonNameType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\IdFamilyCardNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\IdFullNameType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\IdNationalIdentityNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\IdTaxpayerNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\InAadhaarNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\InAbhaNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\InDevanagariGivenNameType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\InDevanagariSurnameType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\InGivenNameType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\InPassportNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\InPermanentAccountNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\InSurnameType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\ItFamilyNameType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\ItFiscalCodeType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\ItGivenNameType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\ItPassportNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\JpBasicPensionNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\JpDrivingLicenceNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\JpFamilyNameReadingType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\JpFamilyNameType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\JpGivenNameReadingType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\JpGivenNameType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\JpMyNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\JpPassportNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\JpResidenceCardNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\KrDrivingLicenceNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\KrFamilyNameType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\KrForeignerRegistrationNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\KrGivenNameType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\KrOrdinaryPassportNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\KrResidentRegistrationNumberType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\MxCurpType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\MxElectorKeyType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\MxFamilyNameType;
@@ -110,6 +145,12 @@ use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\RuOmsPolicyNumberType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\RuPassportIssuingUnitCodeType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\RuPatronymicType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\RuSnilsType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\SaFamilyNameType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\SaFatherNameType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\SaGivenNameType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\SaGrandfatherNameType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\SaIqamaNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\SaNationalIdentityNumberType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\TrFamilyNameType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\TrGivenNameType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\TrIdentityNumberType;
@@ -308,6 +349,47 @@ use PHPUnit\Framework\TestCase;
 #[CoversClass(UsGivenNameType::class)]
 #[CoversClass(UsMiddleNameType::class)]
 #[CoversClass(TypeRegistrar::class)]
+#[CoversClass(CnCitizenIdentityNumberType::class)]
+#[CoversClass(CnExitEntryPermitToHongKongMacauNumberType::class)]
+#[CoversClass(CnExitEntryPermitToTaiwanNumberType::class)]
+#[CoversClass(CnForeignerPermanentResidenceNumberType::class)]
+#[CoversClass(CnLegacyForeignerPermanentResidenceNumberType::class)]
+#[CoversClass(CnOrdinaryPassportNumberType::class)]
+#[CoversClass(IdFamilyCardNumberType::class)]
+#[CoversClass(IdNationalIdentityNumberType::class)]
+#[CoversClass(IdTaxpayerNumberType::class)]
+#[CoversClass(InAadhaarNumberType::class)]
+#[CoversClass(InAbhaNumberType::class)]
+#[CoversClass(InPassportNumberType::class)]
+#[CoversClass(InPermanentAccountNumberType::class)]
+#[CoversClass(JpBasicPensionNumberType::class)]
+#[CoversClass(JpDrivingLicenceNumberType::class)]
+#[CoversClass(JpMyNumberType::class)]
+#[CoversClass(JpPassportNumberType::class)]
+#[CoversClass(JpResidenceCardNumberType::class)]
+#[CoversClass(KrDrivingLicenceNumberType::class)]
+#[CoversClass(KrForeignerRegistrationNumberType::class)]
+#[CoversClass(KrOrdinaryPassportNumberType::class)]
+#[CoversClass(KrResidentRegistrationNumberType::class)]
+#[CoversClass(SaIqamaNumberType::class)]
+#[CoversClass(SaNationalIdentityNumberType::class)]
+#[CoversClass(CnFamilyNameType::class)]
+#[CoversClass(CnGivenNameType::class)]
+#[CoversClass(IdFullNameType::class)]
+#[CoversClass(InGivenNameType::class)]
+#[CoversClass(InSurnameType::class)]
+#[CoversClass(InDevanagariGivenNameType::class)]
+#[CoversClass(InDevanagariSurnameType::class)]
+#[CoversClass(JpFamilyNameType::class)]
+#[CoversClass(JpGivenNameType::class)]
+#[CoversClass(JpFamilyNameReadingType::class)]
+#[CoversClass(JpGivenNameReadingType::class)]
+#[CoversClass(KrFamilyNameType::class)]
+#[CoversClass(KrGivenNameType::class)]
+#[CoversClass(SaGivenNameType::class)]
+#[CoversClass(SaFatherNameType::class)]
+#[CoversClass(SaGrandfatherNameType::class)]
+#[CoversClass(SaFamilyNameType::class)]
 final class StringTypesTest extends TestCase
 {
     #[Override]
