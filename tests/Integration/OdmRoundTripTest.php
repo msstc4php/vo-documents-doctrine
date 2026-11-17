@@ -102,10 +102,16 @@ final class OdmRoundTripTest extends TestCase
         $this->documentManager->persist(new Person(Snils::from('112-233-445 95'), $name));
         $this->documentManager->flush();
 
-        $raw = $this->client->selectCollection(self::DATABASE, 'person')->findOne([], ['typeMap' => ['root' => 'array', 'document' => 'array']]);
+        $raw = $this->client->selectCollection(
+            self::DATABASE,
+            'person',
+        )->findOne([], ['typeMap' => ['root' => 'array', 'document' => 'array']]);
 
         self::assertIsArray($raw);
         self::assertSame('11223344595', $raw['snils']);
-        self::assertSame(['family' => 'Иванов', 'given' => 'Иван', 'patronymic' => null, 'latin' => null], $raw['name']);
+        self::assertSame(
+            ['family' => 'Иванов', 'given' => 'Иван', 'patronymic' => null, 'latin' => null],
+            $raw['name'],
+        );
     }
 }

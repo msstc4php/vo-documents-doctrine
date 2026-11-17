@@ -75,7 +75,13 @@ final class OrmRoundTripTest extends TestCase
         }
 
         $this->entityManager = new EntityManager($this->connection, $config);
-        new SchemaTool($this->entityManager)->createSchema([$this->entityManager->getClassMetadata(Person::class), $this->entityManager->getClassMetadata(AuPerson::class), $this->entityManager->getClassMetadata(AmericasPerson::class)]);
+        new SchemaTool($this->entityManager)->createSchema(
+            [
+                $this->entityManager->getClassMetadata(Person::class),
+                $this->entityManager->getClassMetadata(AuPerson::class),
+                $this->entityManager->getClassMetadata(AmericasPerson::class),
+            ],
+        );
     }
 
     public function testSnilsAndPersonNameSurviveAFlushAndReload(): void
@@ -132,7 +138,11 @@ final class OrmRoundTripTest extends TestCase
 
     public function testAustralianLicenceAndPersonNameSurviveAFlushAndReload(): void
     {
-        $name = new AuPersonName(AuFamilyName::from('Müller'), AuGivenName::from('Zoë'), IcaoPersonName::from('MULLER<<ZOE'));
+        $name = new AuPersonName(
+            AuFamilyName::from('Müller'),
+            AuGivenName::from('Zoë'),
+            IcaoPersonName::from('MULLER<<ZOE'),
+        );
         $this->entityManager->persist(new AuPerson(NswDriverLicenceNumber::from('ab123456'), $name));
         $this->entityManager->flush();
         $this->entityManager->clear();
@@ -149,7 +159,13 @@ final class OrmRoundTripTest extends TestCase
     public function testAmericanDocumentsAndNameSurviveAFlushAndReload(): void
     {
         $name = new UsPersonName(UsFamilyName::from('Smith'), null);
-        $this->entityManager->persist(new AmericasPerson(SocialSecurityNumber::from('123-45-6789'), $name, OnHealthCardNumber::from('9876543217')));
+        $this->entityManager->persist(
+            new AmericasPerson(
+                SocialSecurityNumber::from('123-45-6789'),
+                $name,
+                OnHealthCardNumber::from('9876543217'),
+            ),
+        );
         $this->entityManager->flush();
         $this->entityManager->clear();
 
@@ -164,14 +180,24 @@ final class OrmRoundTripTest extends TestCase
     public function testOntarioCardSurvivesAsTheNumberAndTheVersionCode(): void
     {
         $card = OnHealthCardNumber::fromCard('9876543217 YM');
-        $this->entityManager->persist(new AmericasPerson(SocialSecurityNumber::from('123456789'), new UsPersonName(UsFamilyName::from('Smith'), UsGivenName::from('Jane')), $card->number(), $card->versionCode()));
+        $this->entityManager->persist(
+            new AmericasPerson(
+                SocialSecurityNumber::from('123456789'),
+                new UsPersonName(UsFamilyName::from('Smith'), UsGivenName::from('Jane')),
+                $card->number(),
+                $card->versionCode(),
+            ),
+        );
         $this->entityManager->flush();
         $this->entityManager->clear();
 
         $person = $this->entityManager->getRepository(AmericasPerson::class)->findOneBy([]);
 
         self::assertInstanceOf(AmericasPerson::class, $person);
-        self::assertSame([['healthCard' => '9876543217', 'healthCardVersionCode' => 'YM']], $this->connection->fetchAllAssociative('SELECT healthCard, healthCardVersionCode FROM americas_person'));
+        self::assertSame(
+            [['healthCard' => '9876543217', 'healthCardVersionCode' => 'YM']],
+            $this->connection->fetchAllAssociative('SELECT healthCard, healthCardVersionCode FROM americas_person'),
+        );
         self::assertTrue($person->healthCard->equals($card->number()));
         self::assertTrue($person->healthCardVersionCode?->equals(OnHealthCardVersionCode::from('YM')));
     }

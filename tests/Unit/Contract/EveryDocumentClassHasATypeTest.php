@@ -890,7 +890,11 @@ final class EveryDocumentClassHasATypeTest extends TestCase
         $expected = $this->valueObjectClasses();
 
         foreach ($this->typeValueObjectClasses($branch) as $name => $class) {
-            self::assertContains($class, $expected, \sprintf('Type "%s" maps %s, which is not a document value object.', $name, $class));
+            self::assertContains(
+                $class,
+                $expected,
+                \sprintf('Type "%s" maps %s, which is not a document value object.', $name, $class),
+            );
         }
     }
 
@@ -917,7 +921,11 @@ final class EveryDocumentClassHasATypeTest extends TestCase
 
             $class = $reflection->getName();
             if (!$reflection->implementsInterface(StringConvertible::class)) {
-                self::assertContains($class, $composites, \sprintf('Composite %s has no codec in Codecs::all().', $class));
+                self::assertContains(
+                    $class,
+                    $composites,
+                    \sprintf('Composite %s has no codec in Codecs::all().', $class),
+                );
             }
 
             $classes[] = $class;
@@ -945,7 +953,11 @@ final class EveryDocumentClassHasATypeTest extends TestCase
                 continue;
             }
 
-            $class = 'MSSTC4PHP\\ValueObject\\Documents\\' . \str_replace('/', '\\', \substr($path, \strlen($source) + 1, -4));
+            $class = 'MSSTC4PHP\\ValueObject\\Documents\\' . \str_replace(
+                '/',
+                '\\',
+                \substr($path, \strlen($source) + 1, -4),
+            );
             if (\str_starts_with($class, 'MSSTC4PHP\\ValueObject\\Documents\\Internal\\') || !\class_exists($class)) {
                 continue;
             }
