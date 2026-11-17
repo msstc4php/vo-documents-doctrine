@@ -726,6 +726,8 @@ final class Samples
         foreach (self::strings() as $label => [$name, $vo]) {
             yield $label => [$name, $vo];
         }
+
+        yield 'id taxpayer number, fifteen digits' => ['vod_id_taxpayer_number', IdTaxpayerNumber::from('012345678901234')];
     }
 
     /**
