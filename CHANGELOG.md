@@ -14,6 +14,9 @@
   `PersonName` per country, 48 types per branch. The Indian Devanagari names are `vod_in_devanagari_*`.
 - In all, 207 types per branch (ORM and ODM), one per non-abstract `vo-documents` class that is a value object.
   Interfaces, factories and enums (`Jurisdiction`, `Sex`, `Name\US\NameSuffix`) get none.
+- The composite names of CN, KR, ID, SA and the Devanagari IN store the required Latin form of the passport
+  (`latin`); JP and IN in Latin letters store only an override. Document numbers are stored in the folded ASCII form
+  (`vo-documents` folds fullwidth and Arabic-Indic digits before parsing).
 - `vod_ca_on_health_card_number` stores the ten-digit Ontario health number and `vod_ca_on_health_card_version_code`
   the card's version code (one or two letters); `OnHealthCardNumber::fromCard()` splits a printed card into both.
 - `TypeRegistrar::registerAll()` (idempotent) and `types()` (name => class) for Symfony `doctrine.yaml`.
