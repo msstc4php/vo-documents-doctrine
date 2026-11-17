@@ -41,7 +41,8 @@ final class OdmRoundTripTest extends TestCase
     protected function setUp(): void
     {
         $uri = \getenv('MONGODB_URI');
-        $this->client = new Client($uri !== false && $uri !== '' ? $uri : 'mongodb://127.0.0.1:27017', ['serverSelectionTimeoutMS' => 1000]);
+        $server = $uri !== false && $uri !== '' ? $uri : 'mongodb://127.0.0.1:27017';
+        $this->client = new Client($server, ['serverSelectionTimeoutMS' => 1000]);
 
         try {
             $this->client->selectDatabase('admin')->command(['ping' => 1]);

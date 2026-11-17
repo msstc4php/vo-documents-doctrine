@@ -8,7 +8,8 @@ use Doctrine\DBAL\Types\Type;
 
 /**
  * Registers every document value-object type. Call once at bootstrap for bare Doctrine; under Symfony map
- * {@see types()} under `doctrine.dbal.types` instead. Registration is idempotent, so it is safe in long-running workers.
+ * {@see types()} under `doctrine.dbal.types` instead. Registration is idempotent, so it is safe in long-running
+ * workers.
  */
 final class TypeRegistrar
 {
