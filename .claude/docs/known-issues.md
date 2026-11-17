@@ -88,7 +88,7 @@ platform-specific.
   rows hydrate.
   Relaxing is safe; tightening needs a major version there.
 - **Tightened before 0.1.0 (code review of plan 4).** `vo-documents` now refuses non-letters in CN/KR/JP names (Han
-  radicals, Hangzhou numerals, `〇`, Hangul tone marks, a leading `ー` or iteration mark), a Devanagari ZWJ/ZWNJ not
-  after a virama, and folds the Persian kaf/yeh (SA) and `・`/`•` (KR) on parse. Nothing was released, so no stored row
-  is affected; a row written by a pre-release build with such a value no longer hydrates (folded ones hydrate to the
-  folded value, which differs from the stored text until it is written again).
+  radicals, Hangzhou numerals, Hangul tone marks, a leading `ー` or iteration mark; `〇` U+3007 stays accepted in CN and
+  JP), a Devanagari ZWJ/ZWNJ not after a virama, and folds the Persian kaf/yeh (SA) and `・`/`•` (KR) on parse. Nothing
+  was released, so no stored row is affected; a row written by a pre-release build with such a value no longer hydrates
+  (folded ones hydrate to the folded value, which differs from the stored text until it is written again).
