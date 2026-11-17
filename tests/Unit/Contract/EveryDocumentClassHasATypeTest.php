@@ -126,7 +126,7 @@ use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\ItGivenNameType as OdmItGivenNa
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\ItPassportNumberType as OdmItPassportNumberType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\ItPersonNameType as OdmItPersonNameType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\JpBasicPensionNumberType as OdmJpBasicPensionNumberType;
-use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\JpDrivingLicenceNumberType as OdmJpDrivingLicenceNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\JpDriverLicenceNumberType as OdmJpDriverLicenceNumberType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\JpFamilyNameReadingType as OdmJpFamilyNameReadingType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\JpFamilyNameType as OdmJpFamilyNameType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\JpGivenNameReadingType as OdmJpGivenNameReadingType;
@@ -135,11 +135,11 @@ use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\JpMyNumberType as OdmJpMyNumber
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\JpPassportNumberType as OdmJpPassportNumberType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\JpPersonNameType as OdmJpPersonNameType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\JpResidenceCardNumberType as OdmJpResidenceCardNumberType;
-use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\KrDrivingLicenceNumberType as OdmKrDrivingLicenceNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\KrDriverLicenceNumberType as OdmKrDriverLicenceNumberType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\KrFamilyNameType as OdmKrFamilyNameType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\KrForeignerRegistrationNumberType as OdmKrForeignerRegistrationNumberType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\KrGivenNameType as OdmKrGivenNameType;
-use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\KrOrdinaryPassportNumberType as OdmKrOrdinaryPassportNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\KrMultipleEntryPassportNumberType as OdmKrMultipleEntryPassportNumberType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\KrPersonNameType as OdmKrPersonNameType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\KrResidentRegistrationNumberType as OdmKrResidentRegistrationNumberType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\MxCurpType as OdmMxCurpType;
@@ -334,7 +334,7 @@ use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\ItGivenNameType as OrmItGivenNa
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\ItPassportNumberType as OrmItPassportNumberType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\ItPersonNameType as OrmItPersonNameType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\JpBasicPensionNumberType as OrmJpBasicPensionNumberType;
-use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\JpDrivingLicenceNumberType as OrmJpDrivingLicenceNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\JpDriverLicenceNumberType as OrmJpDriverLicenceNumberType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\JpFamilyNameReadingType as OrmJpFamilyNameReadingType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\JpFamilyNameType as OrmJpFamilyNameType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\JpGivenNameReadingType as OrmJpGivenNameReadingType;
@@ -343,11 +343,11 @@ use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\JpMyNumberType as OrmJpMyNumber
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\JpPassportNumberType as OrmJpPassportNumberType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\JpPersonNameType as OrmJpPersonNameType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\JpResidenceCardNumberType as OrmJpResidenceCardNumberType;
-use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\KrDrivingLicenceNumberType as OrmKrDrivingLicenceNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\KrDriverLicenceNumberType as OrmKrDriverLicenceNumberType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\KrFamilyNameType as OrmKrFamilyNameType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\KrForeignerRegistrationNumberType as OrmKrForeignerRegistrationNumberType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\KrGivenNameType as OrmKrGivenNameType;
-use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\KrOrdinaryPassportNumberType as OrmKrOrdinaryPassportNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\KrMultipleEntryPassportNumberType as OrmKrMultipleEntryPassportNumberType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\KrPersonNameType as OrmKrPersonNameType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\KrResidentRegistrationNumberType as OrmKrResidentRegistrationNumberType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\MxCurpType as OrmMxCurpType;
@@ -772,13 +772,13 @@ use SplFileInfo;
 #[UsesClass(OrmInPassportNumberType::class)]
 #[UsesClass(OrmInPermanentAccountNumberType::class)]
 #[UsesClass(OrmJpBasicPensionNumberType::class)]
-#[UsesClass(OrmJpDrivingLicenceNumberType::class)]
+#[UsesClass(OrmJpDriverLicenceNumberType::class)]
 #[UsesClass(OrmJpMyNumberType::class)]
 #[UsesClass(OrmJpPassportNumberType::class)]
 #[UsesClass(OrmJpResidenceCardNumberType::class)]
-#[UsesClass(OrmKrDrivingLicenceNumberType::class)]
+#[UsesClass(OrmKrDriverLicenceNumberType::class)]
 #[UsesClass(OrmKrForeignerRegistrationNumberType::class)]
-#[UsesClass(OrmKrOrdinaryPassportNumberType::class)]
+#[UsesClass(OrmKrMultipleEntryPassportNumberType::class)]
 #[UsesClass(OrmKrResidentRegistrationNumberType::class)]
 #[UsesClass(OrmSaIqamaNumberType::class)]
 #[UsesClass(OrmSaNationalIdentityNumberType::class)]
@@ -820,13 +820,13 @@ use SplFileInfo;
 #[UsesClass(OdmInPassportNumberType::class)]
 #[UsesClass(OdmInPermanentAccountNumberType::class)]
 #[UsesClass(OdmJpBasicPensionNumberType::class)]
-#[UsesClass(OdmJpDrivingLicenceNumberType::class)]
+#[UsesClass(OdmJpDriverLicenceNumberType::class)]
 #[UsesClass(OdmJpMyNumberType::class)]
 #[UsesClass(OdmJpPassportNumberType::class)]
 #[UsesClass(OdmJpResidenceCardNumberType::class)]
-#[UsesClass(OdmKrDrivingLicenceNumberType::class)]
+#[UsesClass(OdmKrDriverLicenceNumberType::class)]
 #[UsesClass(OdmKrForeignerRegistrationNumberType::class)]
-#[UsesClass(OdmKrOrdinaryPassportNumberType::class)]
+#[UsesClass(OdmKrMultipleEntryPassportNumberType::class)]
 #[UsesClass(OdmKrResidentRegistrationNumberType::class)]
 #[UsesClass(OdmSaIqamaNumberType::class)]
 #[UsesClass(OdmSaNationalIdentityNumberType::class)]

@@ -76,7 +76,7 @@ platform-specific.
   `Name\IN\Devanagari\*` get distinct types: `vod_in_given_name` and `vod_in_devanagari_given_name`, class prefix
   `InDevanagari`.
 - **Column widths in characters.** CJK, Hangul, Arabic and Devanagari name parts are bounded by `MAX_LENGTH` (100)
-  characters, not bytes; VARCHAR(100) is a character count on MySQL and PostgreSQL. `vod_kr_driving_licence_number` is
+  characters, not bytes; VARCHAR(100) is a character count on MySQL and PostgreSQL. `vod_kr_driver_licence_number` is
   VARCHAR(15): the longest stored shape is the old Hangul form `서울 95-255933-61`, the numbered form is 12 digits.
   `vod_id_taxpayer_number` is VARCHAR(16) (stored as 15 or 16 digits, never dotted).
 - **Asian rules that may still change in `vo-documents`.** A stored value is checked again when it is read, so

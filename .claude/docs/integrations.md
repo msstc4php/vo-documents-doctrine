@@ -120,7 +120,7 @@ Type names are `vod_<cc>_<snake_name>` (`icao` for `Icao\PersonName`); the same 
 | `vod_it_passport_number` | `Document\IT\PassportNumber` | VARCHAR(9) | string |
 | `vod_it_person_name` | `Name\IT\PersonName` | CLOB (JSON) | sub-document |
 | `vod_jp_basic_pension_number` | `Document\JP\BasicPensionNumber` | VARCHAR(10) | string |
-| `vod_jp_driving_licence_number` | `Document\JP\DrivingLicenceNumber` | VARCHAR(12) | string |
+| `vod_jp_driver_licence_number` | `Document\JP\DriverLicenceNumber` | VARCHAR(12) | string |
 | `vod_jp_family_name` | `Name\JP\FamilyName` | VARCHAR(100) | string |
 | `vod_jp_family_name_reading` | `Name\JP\FamilyNameReading` | VARCHAR(100) | string |
 | `vod_jp_given_name` | `Name\JP\GivenName` | VARCHAR(100) | string |
@@ -129,11 +129,11 @@ Type names are `vod_<cc>_<snake_name>` (`icao` for `Icao\PersonName`); the same 
 | `vod_jp_passport_number` | `Document\JP\PassportNumber` | VARCHAR(9) | string |
 | `vod_jp_person_name` | `Name\JP\PersonName` | CLOB (JSON) | sub-document |
 | `vod_jp_residence_card_number` | `Document\JP\ResidenceCardNumber` | VARCHAR(12) | string |
-| `vod_kr_driving_licence_number` | `Document\KR\DrivingLicenceNumber` | VARCHAR(15) | string |
+| `vod_kr_driver_licence_number` | `Document\KR\DriverLicenceNumber` | VARCHAR(15) | string |
 | `vod_kr_family_name` | `Name\KR\FamilyName` | VARCHAR(100) | string |
 | `vod_kr_foreigner_registration_number` | `Document\KR\ForeignerRegistrationNumber` | VARCHAR(13) | string |
 | `vod_kr_given_name` | `Name\KR\GivenName` | VARCHAR(100) | string |
-| `vod_kr_ordinary_passport_number` | `Document\KR\OrdinaryPassportNumber` | VARCHAR(9) | string |
+| `vod_kr_multiple_entry_passport_number` | `Document\KR\MultipleEntryPassportNumber` | VARCHAR(9) | string |
 | `vod_kr_person_name` | `Name\KR\PersonName` | CLOB (JSON) | sub-document |
 | `vod_kr_resident_registration_number` | `Document\KR\ResidentRegistrationNumber` | VARCHAR(13) | string |
 | `vod_mx_curp` | `Document\MX\Curp` | VARCHAR(18) | string |
@@ -223,7 +223,7 @@ Type names are `vod_<cc>_<snake_name>` (`icao` for `Icao\PersonName`); the same 
 - The US DL/ID, CA driver-licence and CA health-card interfaces (`DlIdNumber`, `DriverLicenceNumber`,
   `HealthCardNumber`), their factories and the `IdentityCardNumber`/MX `DriverLicenceNumber` interfaces are not types:
   map the jurisdiction-specific class.
-- Asian class naming: `<Cc><ShortName>Type` (`CnCitizenIdentityNumberType`, `KrDrivingLicenceNumberType`,
+- Asian class naming: `<Cc><ShortName>Type` (`CnCitizenIdentityNumberType`, `KrDriverLicenceNumberType`,
   `InDevanagariGivenNameType`); the `Name\IN\Devanagari` classes use the `InDevanagari` prefix.
 - Americas class naming: `<Cc><ShortName>Type`, e.g. `UsAlDlIdNumberType` (`vod_us_al_dl_id_number`),
   `CaOnHealthCardNumberType`, `MxMexDriverLicenceNumberType`, `BrSpIdentityCardNumberType`. US, CA and MX/BR

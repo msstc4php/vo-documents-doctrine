@@ -83,13 +83,13 @@ use MSSTC4PHP\ValueObject\Documents\Document\IN\PermanentAccountNumber as InPerm
 use MSSTC4PHP\ValueObject\Documents\Document\IT\FiscalCode as ItFiscalCode;
 use MSSTC4PHP\ValueObject\Documents\Document\IT\PassportNumber as ItPassportNumber;
 use MSSTC4PHP\ValueObject\Documents\Document\JP\BasicPensionNumber as JpBasicPensionNumber;
-use MSSTC4PHP\ValueObject\Documents\Document\JP\DrivingLicenceNumber as JpDrivingLicenceNumber;
+use MSSTC4PHP\ValueObject\Documents\Document\JP\DriverLicenceNumber as JpDriverLicenceNumber;
 use MSSTC4PHP\ValueObject\Documents\Document\JP\MyNumber as JpMyNumber;
 use MSSTC4PHP\ValueObject\Documents\Document\JP\PassportNumber as JpPassportNumber;
 use MSSTC4PHP\ValueObject\Documents\Document\JP\ResidenceCardNumber as JpResidenceCardNumber;
-use MSSTC4PHP\ValueObject\Documents\Document\KR\DrivingLicenceNumber as KrDrivingLicenceNumber;
+use MSSTC4PHP\ValueObject\Documents\Document\KR\DriverLicenceNumber as KrDriverLicenceNumber;
 use MSSTC4PHP\ValueObject\Documents\Document\KR\ForeignerRegistrationNumber as KrForeignerRegistrationNumber;
-use MSSTC4PHP\ValueObject\Documents\Document\KR\OrdinaryPassportNumber as KrOrdinaryPassportNumber;
+use MSSTC4PHP\ValueObject\Documents\Document\KR\MultipleEntryPassportNumber as KrMultipleEntryPassportNumber;
 use MSSTC4PHP\ValueObject\Documents\Document\KR\ResidentRegistrationNumber as KrResidentRegistrationNumber;
 use MSSTC4PHP\ValueObject\Documents\Document\MX\Curp as MxCurp;
 use MSSTC4PHP\ValueObject\Documents\Document\MX\DriverLicence\MexDriverLicenceNumber as MxMexDriverLicenceNumber;
@@ -1107,9 +1107,9 @@ final class Samples
             10,
             self::BAD_DOCUMENT,
         ];
-        yield 'jp driving licence number' => [
-            'vod_jp_driving_licence_number',
-            JpDrivingLicenceNumber::from('123456789012'),
+        yield 'jp driver licence number' => [
+            'vod_jp_driver_licence_number',
+            JpDriverLicenceNumber::from('123456789012'),
             12,
             self::BAD_DOCUMENT,
         ];
@@ -1126,9 +1126,9 @@ final class Samples
             12,
             self::BAD_DOCUMENT,
         ];
-        yield 'kr driving licence number' => [
-            'vod_kr_driving_licence_number',
-            KrDrivingLicenceNumber::from('서울 95-255933-61'),
+        yield 'kr driver licence number' => [
+            'vod_kr_driver_licence_number',
+            KrDriverLicenceNumber::from('서울 95-255933-61'),
             15,
             self::BAD_DOCUMENT,
         ];
@@ -1138,9 +1138,9 @@ final class Samples
             13,
             self::BAD_DOCUMENT,
         ];
-        yield 'kr ordinary passport number' => [
-            'vod_kr_ordinary_passport_number',
-            KrOrdinaryPassportNumber::from('M12345678'),
+        yield 'kr multiple-entry passport number' => [
+            'vod_kr_multiple_entry_passport_number',
+            KrMultipleEntryPassportNumber::from('M12345678'),
             9,
             self::BAD_DOCUMENT,
         ];
@@ -1619,6 +1619,8 @@ final class Samples
             'vod_in_devanagari_person_name' => ['given'],
             'vod_jp_person_name' => ['family', 'given', 'familyReading', 'givenReading'],
             'vod_sa_person_name' => ['given', 'latin'],
+            'vod_cn_person_name' => ['family', 'latin'],
+            'vod_kr_person_name' => ['family', 'latin'],
         ];
         foreach (self::composites() as $label => [$name, , $payload]) {
             foreach ($required[$name] ?? ['family', 'given'] as $key) {

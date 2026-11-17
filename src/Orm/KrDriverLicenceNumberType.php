@@ -5,17 +5,17 @@ declare(strict_types=1);
 namespace MSSTC4PHP\ValueObject\Documents\Doctrine\Orm;
 
 use MSSTC4PHP\ValueObject\Doctrine\Orm\AbstractStringVoType;
-use MSSTC4PHP\ValueObject\Documents\Document\KR\DrivingLicenceNumber;
+use MSSTC4PHP\ValueObject\Documents\Document\KR\DriverLicenceNumber;
 use Override;
 
-final class KrDrivingLicenceNumberType extends AbstractStringVoType
+final class KrDriverLicenceNumberType extends AbstractStringVoType
 {
-    public const string NAME = 'vod_kr_driving_licence_number';
+    public const string NAME = 'vod_kr_driver_licence_number';
 
     #[Override]
     protected function valueObjectClass(): string
     {
-        return DrivingLicenceNumber::class;
+        return DriverLicenceNumber::class;
     }
 
     #[Override]

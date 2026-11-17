@@ -111,7 +111,7 @@ use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\ItFiscalCodeType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\ItGivenNameType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\ItPassportNumberType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\JpBasicPensionNumberType;
-use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\JpDrivingLicenceNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\JpDriverLicenceNumberType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\JpFamilyNameReadingType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\JpFamilyNameType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\JpGivenNameReadingType;
@@ -119,11 +119,11 @@ use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\JpGivenNameType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\JpMyNumberType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\JpPassportNumberType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\JpResidenceCardNumberType;
-use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\KrDrivingLicenceNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\KrDriverLicenceNumberType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\KrFamilyNameType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\KrForeignerRegistrationNumberType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\KrGivenNameType;
-use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\KrOrdinaryPassportNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\KrMultipleEntryPassportNumberType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\KrResidentRegistrationNumberType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\MxCurpType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\MxElectorKeyType;
@@ -364,13 +364,13 @@ use PHPUnit\Framework\TestCase;
 #[CoversClass(InPassportNumberType::class)]
 #[CoversClass(InPermanentAccountNumberType::class)]
 #[CoversClass(JpBasicPensionNumberType::class)]
-#[CoversClass(JpDrivingLicenceNumberType::class)]
+#[CoversClass(JpDriverLicenceNumberType::class)]
 #[CoversClass(JpMyNumberType::class)]
 #[CoversClass(JpPassportNumberType::class)]
 #[CoversClass(JpResidenceCardNumberType::class)]
-#[CoversClass(KrDrivingLicenceNumberType::class)]
+#[CoversClass(KrDriverLicenceNumberType::class)]
 #[CoversClass(KrForeignerRegistrationNumberType::class)]
-#[CoversClass(KrOrdinaryPassportNumberType::class)]
+#[CoversClass(KrMultipleEntryPassportNumberType::class)]
 #[CoversClass(KrResidentRegistrationNumberType::class)]
 #[CoversClass(SaIqamaNumberType::class)]
 #[CoversClass(SaNationalIdentityNumberType::class)]
