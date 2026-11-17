@@ -13,10 +13,16 @@
   (CN, JP, KR, SA; JP readings; ID `FullName`; IN Latin and Devanagari `GivenName`/`Surname`) and the composite
   `PersonName` per country, 48 types per branch. The Indian Devanagari names are `vod_in_devanagari_*`.
 - In all, 207 types per branch (ORM and ODM), one per non-abstract `vo-documents` class that is a value object.
-  Interfaces, factories and enums (`Jurisdiction`, `Sex`, `Name\US\NameSuffix`) get none.
+  Interfaces, factories and enums (`Jurisdiction`, `Sex`, `Name\US\NameSuffix`, `Document\IN\PanHolderType`) get
+  none.
 - The composite names of CN, KR, ID, SA and the Devanagari IN store the required Latin form of the passport
   (`latin`); JP and IN in Latin letters store only an override. Document numbers are stored in the folded ASCII form
-  (`vo-documents` folds fullwidth and Arabic-Indic digits before parsing).
+  (`vo-documents` folds fullwidth and Arabic-Indic digits before parsing), except the Korean driving licence of the
+  form issued before 2014-07-02, which keeps its Hangul region name (`서울 95-255933-61`).
+- Column lengths count characters (MySQL, PostgreSQL); a platform that counts bytes needs character semantics or a
+  wider column for the CJK, Hangul, Arabic and Devanagari names and the old Korean licence (README "Mapping a field").
+- The ORM and ODM round-trip tests store the Asian samples (KR licence in Hangul, CN citizen number and name, JP and SA
+  names) in SQLite and MongoDB and reload them (the ODM one runs where MongoDB is reachable, as in CI).
 - `vod_ca_on_health_card_number` stores the ten-digit Ontario health number and `vod_ca_on_health_card_version_code`
   the card's version code (one or two letters); `OnHealthCardNumber::fromCard()` splits a printed card into both.
 - `TypeRegistrar::registerAll()` (idempotent) and `types()` (name => class) for Symfony `doctrine.yaml`.

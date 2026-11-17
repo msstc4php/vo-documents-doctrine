@@ -18,9 +18,9 @@ A class added to `vo-documents` without a type here fails the suite after the ne
 
 Class names are flat and country-prefixed (`RuSnilsType`, `AuNswDriverLicenceNumberType`) because `FamilyName`,
 `GivenName` and `PersonName` exist in every `Name\<CC>` namespace. Interfaces, factories, enums (`Jurisdiction`, `Sex`,
-`Name\US\NameSuffix`) and `@internal` helper classes (`DE\SerialNumberFormat`, `ES\ControlLetter`, `GB\NhsCheckDigit`)
-are not value objects and have no type. So are the abstract bases (`Name\Latin\*`, `Name\RequiredLatin\*`,
-`Document\SA\AbstractIdentityNumber`) and the internal helpers added for Asia (`Internal\Gb11643`,
-`Internal\KoreanRegistrationNumber`, `Name\JP\PassportHepburn`, `Name\IN\IndianFullName`). The two Indian name
-families have distinct types (`vod_in_*` for Latin letters, `vod_in_devanagari_*`). The Chinese and Saudi driving
-licences and the Indonesian SIM have no class in `vo-documents`, hence no type.
+`Name\US\NameSuffix`, `Document\IN\PanHolderType`) and `@internal` helper classes (`DE\SerialNumberFormat`,
+`ES\ControlLetter`, `GB\NhsCheckDigit`) are not value objects and have no type. So are the abstract bases
+(`Name\Latin\*`, `Name\RequiredLatin\*`, `Document\SA\AbstractIdentityNumber`) and the internal helpers added for Asia
+(`Internal\Gb11643`, `Internal\KoreanRegistrationNumber`, `Name\JP\PassportHepburn`, `Name\IN\IndianFullName`). The two
+Indian name families have distinct types (`vod_in_*` for Latin letters, `vod_in_devanagari_*`). The Chinese and Saudi
+driving licences and the Indonesian SIM have no class in `vo-documents`, hence no type.

@@ -3,7 +3,8 @@
 Doctrine ORM and MongoDB ODM types for [`msstc4php/vo-documents`](https://github.com/msstc4php/vo-documents):
 207 types per branch: identity document numbers, name parts, Latin ICAO names, and the composite person name of each
 country (RU, AU, DE, FR, IT, ES, NL, CH, GB, TR, US, CA, MX, BR, CN, JP, KR, IN, ID and SA).
-Backed enums (`DriverLicenceCategory`, `Jurisdiction`, `Sex`, `Name\US\NameSuffix`) need no type: map them with `enumType`.
+Backed enums (`DriverLicenceCategory`, `Jurisdiction`, `Sex`, `Name\US\NameSuffix`, `Document\IN\PanHolderType`) need no
+type: map them with `enumType`.
 
 No framework is a runtime dependency. Install the Doctrine stack you actually use; the other branch never loads.
 
@@ -63,6 +64,12 @@ A string type stores the canonical upper-case form as each document defines it (
 the masked or formatted one. A composite stores the codec payload of the value object: JSON text in an ORM column, a
 sub-document in ODM (each type carries its own codec, so no mapper setup is needed). An invalid stored value throws
 the value object's own exception, whose message never contains it.
+
+Lengths are counted in characters: a CJK, Hangul, Arabic or Devanagari name part takes up to 100 characters (up to 400
+bytes in UTF-8), and the pre-2014 Korean licence (`서울 95-255933-61`, 15 characters) is stored with its Hangul region
+name. MySQL and PostgreSQL count VARCHAR in characters; on a platform that counts bytes (Oracle `VARCHAR2` with the
+default `NLS_LENGTH_SEMANTICS=BYTE`, SQL Server `varchar`) use character semantics or a Unicode type, or widen the
+column.
 
 ## Types
 

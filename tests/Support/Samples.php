@@ -1616,7 +1616,7 @@ final class Samples
             'vod_mx_person_name' => ['given'],
             'vod_id_person_name' => ['name', 'latin'],
             'vod_in_person_name' => ['given'],
-            'vod_in_devanagari_person_name' => ['given'],
+            'vod_in_devanagari_person_name' => ['given', 'latin'],
             'vod_jp_person_name' => ['family', 'given', 'familyReading', 'givenReading'],
             'vod_sa_person_name' => ['given', 'latin'],
             'vod_cn_person_name' => ['family', 'latin'],

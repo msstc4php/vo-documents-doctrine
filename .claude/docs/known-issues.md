@@ -67,9 +67,10 @@ platform-specific.
   BR `family` and `given` (see `Samples::compositeRequiredKeys()`).
 - **Optional given name.** `Name\NL`, `Name\CH` and `Name\GB` `PersonName` accept a null `given`, so `{"family":"X"}`
   is a valid payload for them; the wrong-shape tests use an unknown key (`surname`) instead.
-- **Asian names (plan 4).** Required payload keys: CN and KR `family` and `given` (a missing `given` key is refused, a
-  null one is a mononym), ID `name` and `latin`, IN `given` (`surname` and `latin` may be absent), JP `family`, `given`,
-  `familyReading` and `givenReading`, SA `given` and `latin`. CN, KR, ID, SA and IN-Devanagari store the Latin form
+- **Asian names (plan 4).** Required payload keys: CN and KR `family` and `latin` (a missing or null `given` is a name
+  stored whole in `family`), ID `name` and `latin`, IN in Latin letters `given` (`surname` and `latin` may be absent),
+  IN-Devanagari `given` and `latin` (`surname` may be absent), JP `family`, `given`, `familyReading` and
+  `givenReading`, SA `given` and `latin`. CN, KR, ID, SA and IN-Devanagari store the Latin form
   (required); IN-Latin and JP store only an override (a JP override equal to the derived Hepburn form is dropped, so
   the sample uses `YAMADA<<TAROH`).
 - **Same short names in two namespaces.** `Name\IN\GivenName` / `Surname` / `PersonName` and
@@ -78,9 +79,16 @@ platform-specific.
 - **Column widths in characters.** CJK, Hangul, Arabic and Devanagari name parts are bounded by `MAX_LENGTH` (100)
   characters, not bytes; VARCHAR(100) is a character count on MySQL and PostgreSQL. `vod_kr_driver_licence_number` is
   VARCHAR(15): the longest stored shape is the old Hangul form `서울 95-255933-61`, the numbered form is 12 digits.
+  On a byte-counting platform (Oracle `VARCHAR2` with byte semantics) these columns need character semantics or a
+  wider column; the README says so.
   `vod_id_taxpayer_number` is VARCHAR(16) (stored as 15 or 16 digits, never dotted).
 - **Asian rules that may still change in `vo-documents`.** A stored value is checked again when it is read, so
   tightening or relaxing one of the open decisions of `vo-documents` (JP derived long vowel, IN Aadhaar Verhoeff, SA
   first digit, KR foreigner birth date, ID NIK dates; see its `.claude/docs/known-issues.md`) changes which stored
   rows hydrate.
   Relaxing is safe; tightening needs a major version there.
+- **Tightened before 0.1.0 (code review of plan 4).** `vo-documents` now refuses non-letters in CN/KR/JP names (Han
+  radicals, Hangzhou numerals, `〇`, Hangul tone marks, a leading `ー` or iteration mark), a Devanagari ZWJ/ZWNJ not
+  after a virama, and folds the Persian kaf/yeh (SA) and `・`/`•` (KR) on parse. Nothing was released, so no stored row
+  is affected; a row written by a pre-release build with such a value no longer hydrates (folded ones hydrate to the
+  folded value, which differs from the stored text until it is written again).

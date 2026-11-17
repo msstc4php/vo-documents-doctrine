@@ -15,27 +15,46 @@ use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\AuNswDriverLicenceNumberType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\AuPersonNameType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\CaOnHealthCardNumberType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\CaOnHealthCardVersionCodeType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\CnCitizenIdentityNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\CnPersonNameType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\JpPersonNameType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\KrDriverLicenceNumberType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\RuPersonNameType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\RuSnilsType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\SaPersonNameType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\TypeRegistrar;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\UsPersonNameType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\UsSocialSecurityNumberType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Tests\Support\Orm\AmericasPerson;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Tests\Support\Orm\AsiaPerson;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Tests\Support\Orm\AuPerson;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Tests\Support\Orm\Person;
 use MSSTC4PHP\ValueObject\Documents\Document\AU\DriverLicence\NswDriverLicenceNumber;
 use MSSTC4PHP\ValueObject\Documents\Document\CA\HealthCard\OnHealthCardNumber;
 use MSSTC4PHP\ValueObject\Documents\Document\CA\HealthCard\OnHealthCardVersionCode;
+use MSSTC4PHP\ValueObject\Documents\Document\CN\CitizenIdentityNumber;
+use MSSTC4PHP\ValueObject\Documents\Document\KR\DriverLicenceNumber as KrDriverLicenceNumber;
 use MSSTC4PHP\ValueObject\Documents\Document\RU\Snils;
 use MSSTC4PHP\ValueObject\Documents\Document\US\SocialSecurityNumber;
 use MSSTC4PHP\ValueObject\Documents\Icao\PersonName as IcaoPersonName;
 use MSSTC4PHP\ValueObject\Documents\Name\AU\FamilyName as AuFamilyName;
 use MSSTC4PHP\ValueObject\Documents\Name\AU\GivenName as AuGivenName;
 use MSSTC4PHP\ValueObject\Documents\Name\AU\PersonName as AuPersonName;
+use MSSTC4PHP\ValueObject\Documents\Name\CN\FamilyName as CnFamilyName;
+use MSSTC4PHP\ValueObject\Documents\Name\CN\GivenName as CnGivenName;
+use MSSTC4PHP\ValueObject\Documents\Name\CN\PersonName as CnPersonName;
+use MSSTC4PHP\ValueObject\Documents\Name\JP\FamilyName as JpFamilyName;
+use MSSTC4PHP\ValueObject\Documents\Name\JP\FamilyNameReading as JpFamilyNameReading;
+use MSSTC4PHP\ValueObject\Documents\Name\JP\GivenName as JpGivenName;
+use MSSTC4PHP\ValueObject\Documents\Name\JP\GivenNameReading as JpGivenNameReading;
+use MSSTC4PHP\ValueObject\Documents\Name\JP\PersonName as JpPersonName;
 use MSSTC4PHP\ValueObject\Documents\Name\RU\FamilyName;
 use MSSTC4PHP\ValueObject\Documents\Name\RU\GivenName;
 use MSSTC4PHP\ValueObject\Documents\Name\RU\Patronymic;
 use MSSTC4PHP\ValueObject\Documents\Name\RU\PersonName;
+use MSSTC4PHP\ValueObject\Documents\Name\SA\FamilyName as SaFamilyName;
+use MSSTC4PHP\ValueObject\Documents\Name\SA\GivenName as SaGivenName;
+use MSSTC4PHP\ValueObject\Documents\Name\SA\PersonName as SaPersonName;
 use MSSTC4PHP\ValueObject\Documents\Name\US\FamilyName as UsFamilyName;
 use MSSTC4PHP\ValueObject\Documents\Name\US\GivenName as UsGivenName;
 use MSSTC4PHP\ValueObject\Documents\Name\US\PersonName as UsPersonName;
@@ -52,6 +71,11 @@ use PHPUnit\Framework\TestCase;
 #[CoversClass(UsPersonNameType::class)]
 #[CoversClass(CaOnHealthCardNumberType::class)]
 #[CoversClass(CaOnHealthCardVersionCodeType::class)]
+#[CoversClass(CnCitizenIdentityNumberType::class)]
+#[CoversClass(CnPersonNameType::class)]
+#[CoversClass(KrDriverLicenceNumberType::class)]
+#[CoversClass(JpPersonNameType::class)]
+#[CoversClass(SaPersonNameType::class)]
 #[UsesClass(TypeRegistrar::class)]
 final class OrmRoundTripTest extends TestCase
 {
@@ -80,6 +104,7 @@ final class OrmRoundTripTest extends TestCase
                 $this->entityManager->getClassMetadata(Person::class),
                 $this->entityManager->getClassMetadata(AuPerson::class),
                 $this->entityManager->getClassMetadata(AmericasPerson::class),
+                $this->entityManager->getClassMetadata(AsiaPerson::class),
             ],
         );
     }
@@ -200,5 +225,88 @@ final class OrmRoundTripTest extends TestCase
         );
         self::assertTrue($person->healthCard->equals($card->number()));
         self::assertTrue($person->healthCardVersionCode?->equals(OnHealthCardVersionCode::from('YM')));
+    }
+
+    public function testAsianDocumentsAndNamesSurviveAFlushAndReload(): void
+    {
+        $asia = $this->asiaPerson();
+        $this->entityManager->persist($asia);
+        $this->entityManager->flush();
+        $this->entityManager->clear();
+
+        $person = $this->entityManager->getRepository(AsiaPerson::class)->findOneBy([]);
+
+        self::assertInstanceOf(AsiaPerson::class, $person);
+        self::assertTrue($asia->cnCitizenId->equals($person->cnCitizenId));
+        self::assertTrue($asia->cnName->equals($person->cnName));
+        self::assertTrue($asia->krLicence->equals($person->krLicence));
+        self::assertSame('11', $person->krLicence->regionCode());
+        self::assertTrue($asia->jpName->equals($person->jpName));
+        self::assertSame('YAMADA<<TAROH', $person->jpName->latin()->value);
+        self::assertTrue($asia->saName->equals($person->saName));
+    }
+
+    public function testAsianRowHoldsTheHangulLicenceAndTheNationalScriptPayloads(): void
+    {
+        $this->entityManager->persist($this->asiaPerson());
+        $this->entityManager->flush();
+
+        $row = $this->connection->fetchAssociative(
+            'SELECT cnCitizenId, cnName, krLicence, jpName, saName FROM asia_person',
+        );
+
+        self::assertIsArray($row);
+        self::assertSame('110105199003071239', $row['cnCitizenId']);
+        self::assertSame('서울 95-255933-61', $row['krLicence']);
+        self::assertIsString($row['cnName']);
+        self::assertIsString($row['jpName']);
+        self::assertIsString($row['saName']);
+        self::assertSame(
+            ['family' => '张', 'given' => '伟', 'latin' => 'ZHANG<<WEI'],
+            \json_decode($row['cnName'], true, 512, \JSON_THROW_ON_ERROR),
+        );
+        self::assertSame(
+            [
+                'family' => '山田',
+                'given' => '太郎',
+                'familyReading' => 'ヤマダ',
+                'givenReading' => 'タロウ',
+                'latin' => 'YAMADA<<TAROH',
+            ],
+            \json_decode($row['jpName'], true, 512, \JSON_THROW_ON_ERROR),
+        );
+        self::assertSame(
+            [
+                'given' => 'محمد',
+                'father' => null,
+                'grandfather' => null,
+                'family' => 'آل سعود',
+                'latin' => 'AL<SAUD<<MOHAMMED',
+            ],
+            \json_decode($row['saName'], true, 512, \JSON_THROW_ON_ERROR),
+        );
+    }
+
+    private function asiaPerson(): AsiaPerson
+    {
+        return new AsiaPerson(
+            CitizenIdentityNumber::from('110105 19900307 1239'),
+            new CnPersonName(CnFamilyName::from('张'), CnGivenName::from('伟'), IcaoPersonName::from('ZHANG<<WEI')),
+            KrDriverLicenceNumber::from('서울9525593361'),
+            new JpPersonName(
+                JpFamilyName::from('山田'),
+                JpGivenName::from('太郎'),
+                JpFamilyNameReading::from('ヤマダ'),
+                JpGivenNameReading::from('タロウ'),
+                IcaoPersonName::from('YAMADA<<TAROH'),
+            ),
+            new SaPersonName(
+                SaGivenName::from('محمد'),
+                null,
+                null,
+                SaFamilyName::from('آل سعود'),
+                IcaoPersonName::from('AL<SAUD<<MOHAMMED'),
+            ),
+        );
     }
 }
