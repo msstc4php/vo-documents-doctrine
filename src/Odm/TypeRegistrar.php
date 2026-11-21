@@ -40,6 +40,7 @@ final class TypeRegistrar
         AuFamilyNameType::NAME => AuFamilyNameType::class,
         AuGivenNameType::NAME => AuGivenNameType::class,
         IcaoPersonNameType::NAME => IcaoPersonNameType::class,
+        IcaoMrzType::NAME => IcaoMrzType::class,
         RuPersonNameType::NAME => RuPersonNameType::class,
         AuPersonNameType::NAME => AuPersonNameType::class,
         DeIdentityCardNumberType::NAME => DeIdentityCardNumberType::class,

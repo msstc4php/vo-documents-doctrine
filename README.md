@@ -169,6 +169,7 @@ column.
 | `vod_gb_northern_ireland_driver_licence_number` | `Document\GB\NorthernIrelandDriverLicenceNumber` | VARCHAR(8) | string |
 | `vod_gb_passport_number` | `Document\GB\PassportNumber` | VARCHAR(9) | string |
 | `vod_gb_person_name` | `Name\GB\PersonName` | CLOB (JSON) | sub-document |
+| `vod_icao_mrz` | `Icao\Mrz\MachineReadableZone` (a `Td1`, `Td2` or `Td3`; the lines joined by `\n`) | VARCHAR(92) | string |
 | `vod_icao_person_name` | `Icao\PersonName` | VARCHAR(255) | string |
 | `vod_id_family_card_number` | `Document\ID\FamilyCardNumber` | VARCHAR(16) | string |
 | `vod_id_full_name` | `Name\ID\FullName` | VARCHAR(100) | string |
@@ -284,7 +285,8 @@ column.
 | `vod_us_wy_dl_id_number` | `Document\US\DlId\WyDlIdNumber` | VARCHAR(9) | string |
 
 Column lengths: string types use the longest accepted form; name columns use `AbstractNamePart::MAX_LENGTH` (100) for
-name parts and `Icao\PersonName::MAX_LENGTH` (255) for the ICAO name.
+name parts, `Icao\PersonName::MAX_LENGTH` (255) for the ICAO name and 92 for the MRZ (a TD1: 3 lines of 30 and 2 line
+breaks). `vod_icao_mrz` maps the abstract `MachineReadableZone`: it restores the format that fits the stored lines.
 
 **Ontario health card.** The printed card `9876543217 YM` is two value objects: `OnHealthCardNumber::fromCard()`
 returns an `OnHealthCard` with `number()` (`vod_ca_on_health_card_number`, the ten digits) and `versionCode()`

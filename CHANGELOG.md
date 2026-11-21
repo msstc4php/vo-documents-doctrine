@@ -1,5 +1,12 @@
 # Changelog
 
+## [Unreleased]
+
+### Added
+
+- ORM and ODM type `vod_icao_mrz` (`IcaoMrzType`) for `Icao\Mrz\MachineReadableZone` (`Td1`, `Td2`, `Td3`), column
+  length 92, in both `TypeRegistrar`s.
+
 ## [0.1.0] - 2026-11-18
 
 - ORM and ODM types for every string value object of `msstc4php/vo-documents` (`vod_<cc>_<snake_name>`) and for the

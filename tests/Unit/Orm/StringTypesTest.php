@@ -93,6 +93,7 @@ use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\GbNationalInsuranceNumberType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\GbNhsNumberType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\GbNorthernIrelandDriverLicenceNumberType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\GbPassportNumberType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\IcaoMrzType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\IcaoPersonNameType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\IdFamilyCardNumberType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\IdFullNameType;
@@ -227,6 +228,7 @@ use PHPUnit\Framework\TestCase;
 #[CoversClass(RuPatronymicType::class)]
 #[CoversClass(RuSnilsType::class)]
 #[CoversClass(IcaoPersonNameType::class)]
+#[CoversClass(IcaoMrzType::class)]
 #[CoversClass(DeIdentityCardNumberType::class)]
 #[CoversClass(DePassportNumberType::class)]
 #[CoversClass(DePensionInsuranceNumberType::class)]

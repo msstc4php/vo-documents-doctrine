@@ -144,6 +144,7 @@ use MSSTC4PHP\ValueObject\Documents\Document\US\MedicareBeneficiaryIdentifier as
 use MSSTC4PHP\ValueObject\Documents\Document\US\PassportBookNumber as UsPassportBookNumber;
 use MSSTC4PHP\ValueObject\Documents\Document\US\PassportCardNumber as UsPassportCardNumber;
 use MSSTC4PHP\ValueObject\Documents\Document\US\SocialSecurityNumber as UsSocialSecurityNumber;
+use MSSTC4PHP\ValueObject\Documents\Icao\Mrz\MachineReadableZone;
 use MSSTC4PHP\ValueObject\Documents\Icao\PersonName as IcaoPersonName;
 use MSSTC4PHP\ValueObject\Documents\Name\AbstractNamePart;
 use MSSTC4PHP\ValueObject\Documents\Name\AU\FamilyName as AuFamilyName;
@@ -1265,6 +1266,14 @@ final class Samples
             IcaoPersonName::MAX_LENGTH,
             self::BAD_NAME,
         ];
+        yield 'icao mrz, TD1 (the longest)' => [
+            'vod_icao_mrz',
+            MachineReadableZone::fromString(
+                "I<UTOD231458907<<<<<<<<<<<<<<<\n7408122F1204159UTO<<<<<<<<<<<6\nERIKSSON<<ANNA<MARIA<<<<<<<<<<",
+            ),
+            92,
+            self::BAD_NAME,
+        ];
     }
 
     /**
@@ -1651,6 +1660,18 @@ final class Samples
         yield 'id taxpayer number, fifteen digits' => [
             'vod_id_taxpayer_number',
             IdTaxpayerNumber::from('012345678901234'),
+        ];
+        yield 'icao mrz, TD3' => [
+            'vod_icao_mrz',
+            MachineReadableZone::fromString(
+                "PPUTOERIKSSON<<ANNA<MARIA<<<<<<<<<<<<<<<<<<<\nL898902C36UTO7408122F3404159ZE184226B<<<<<16",
+            ),
+        ];
+        yield 'icao mrz, TD2' => [
+            'vod_icao_mrz',
+            MachineReadableZone::fromString(
+                "I<UTOERIKSSON<<ANNA<MARIA<<<<<<<<<<<\nD231458907UTO7408122F1204159<<<<<<<6",
+            ),
         ];
     }
 

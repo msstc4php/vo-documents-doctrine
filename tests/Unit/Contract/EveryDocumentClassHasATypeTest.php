@@ -104,6 +104,7 @@ use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\GbNhsNumberType as OdmGbNhsNumb
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\GbNorthernIrelandDriverLicenceNumberType as OdmGbNorthernIrelandDriverLicenceNumberType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\GbPassportNumberType as OdmGbPassportNumberType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\GbPersonNameType as OdmGbPersonNameType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\IcaoMrzType as OdmIcaoMrzType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\IcaoPersonNameType as OdmIcaoPersonNameType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\IdFamilyCardNumberType as OdmIdFamilyCardNumberType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Odm\IdFullNameType as OdmIdFullNameType;
@@ -312,6 +313,7 @@ use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\GbNhsNumberType as OrmGbNhsNumb
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\GbNorthernIrelandDriverLicenceNumberType as OrmGbNorthernIrelandDriverLicenceNumberType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\GbPassportNumberType as OrmGbPassportNumberType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\GbPersonNameType as OrmGbPersonNameType;
+use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\IcaoMrzType as OrmIcaoMrzType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\IcaoPersonNameType as OrmIcaoPersonNameType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\IdFamilyCardNumberType as OrmIdFamilyCardNumberType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\IdFullNameType as OrmIdFullNameType;
@@ -454,6 +456,7 @@ use SplFileInfo;
 #[UsesClass(OrmAuVicDriverLicenceNumberType::class)]
 #[UsesClass(OrmAuWaDriverLicenceNumberType::class)]
 #[UsesClass(OrmIcaoPersonNameType::class)]
+#[UsesClass(OrmIcaoMrzType::class)]
 #[UsesClass(OrmRuDriverLicenceNumberType::class)]
 #[UsesClass(OrmRuFamilyNameType::class)]
 #[UsesClass(OrmRuGivenNameType::class)]
@@ -531,6 +534,7 @@ use SplFileInfo;
 #[UsesClass(OdmAuVicDriverLicenceNumberType::class)]
 #[UsesClass(OdmAuWaDriverLicenceNumberType::class)]
 #[UsesClass(OdmIcaoPersonNameType::class)]
+#[UsesClass(OdmIcaoMrzType::class)]
 #[UsesClass(OdmRuDriverLicenceNumberType::class)]
 #[UsesClass(OdmRuFamilyNameType::class)]
 #[UsesClass(OdmRuGivenNameType::class)]
@@ -877,7 +881,8 @@ final class EveryDocumentClassHasATypeTest extends TestCase
         }
 
         foreach ($this->valueObjectClasses() as $class) {
-            self::assertCount(1, $mapped[$class] ?? [], \sprintf('%s needs exactly one %s type.', $class, $branch));
+            $owner = $this->typedClass($class, $mapped);
+            self::assertCount(1, $mapped[$owner] ?? [], \sprintf('%s needs exactly one %s type.', $class, $branch));
         }
     }
 
@@ -890,9 +895,8 @@ final class EveryDocumentClassHasATypeTest extends TestCase
         $expected = $this->valueObjectClasses();
 
         foreach ($this->typeValueObjectClasses($branch) as $name => $class) {
-            self::assertContains(
-                $class,
-                $expected,
+            self::assertTrue(
+                \in_array($class, $expected, true) || $this->coversFinalSubclasses($class, $expected),
                 \sprintf('Type "%s" maps %s, which is not a document value object.', $name, $class),
             );
         }
@@ -901,6 +905,39 @@ final class EveryDocumentClassHasATypeTest extends TestCase
     public function testBothBranchesRegisterTheSameNames(): void
     {
         self::assertSame(\array_keys(OrmRegistrar::types()), \array_keys(OdmRegistrar::types()));
+    }
+
+    /**
+     * A type may map an abstract value object (`Icao\Mrz\MachineReadableZone`) that stands for its final subclasses.
+     *
+     * @param array<string, list<string>> $mapped
+     */
+    private function typedClass(string $class, array $mapped): string
+    {
+        if (isset($mapped[$class])) {
+            return $class;
+        }
+
+        $parents = \class_parents($class);
+        foreach ($parents === false ? [] : $parents as $parent) {
+            if (isset($mapped[$parent]) && new ReflectionClass($parent)->isAbstract()) {
+                return $parent;
+            }
+        }
+
+        return $class;
+    }
+
+    /**
+     * @param list<class-string> $expected
+     */
+    private function coversFinalSubclasses(string $class, array $expected): bool
+    {
+        if (!\class_exists($class) || !new ReflectionClass($class)->isAbstract()) {
+            return false;
+        }
+
+        return array_any($expected, fn (string $candidate): bool => \is_subclass_of($candidate, $class));
     }
 
     /**
