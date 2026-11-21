@@ -14,6 +14,17 @@ tag that contains them. If `v0.1.0` is tagged without them, tag them as `v0.2.0`
 `dev-main as …` alias of `composer-ci.json`) to `^0.2` in the same change; otherwise `composer update --prefer-lowest`
 resolves a release without the classes and the types fail to load.
 
+## "PHPUnit without optional libraries" stays red until vo-documents 0.2.0 is tagged
+
+That CI job installs with `composer.json` (`COMPOSER: composer.json`), so `msstc4php/vo-documents ^0.1` resolves to the `v0.1.0` tag, which has no
+`Icao\Mrz\MachineReadableZone`; `IcaoMrzType` and the completeness test then fail. It clears only when vo-documents `v0.2.0` is tagged and
+`composer.json` (and the `dev-main as …` alias of `composer-ci.json`) is raised to `^0.2`. The `composer-ci.json` jobs are green meanwhile.
+
+## `vod_icao_mrz` maps the abstract class
+
+`IcaoMrzType` names `MachineReadableZone` (abstract); `fromString()` picks `Td1`, `Td2` or `Td3` from the stored lines. Column length 92 = a TD1
+(3 lines of 30) plus 2 line breaks. `MachineReadableZone` does not implement `HasBirthDate`/`HasSex`, which the types do not need.
+
 ## ODM integration test not run locally
 
 No MongoDB server is available in the development sandbox, so `OdmRoundTripTest` is skipped there; it runs in CI

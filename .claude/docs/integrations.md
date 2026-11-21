@@ -98,6 +98,7 @@ Type names are `vod_<cc>_<snake_name>` (`icao` for `Icao\PersonName`); the same 
 | `vod_gb_northern_ireland_driver_licence_number` | `Document\GB\NorthernIrelandDriverLicenceNumber` | VARCHAR(8) | string |
 | `vod_gb_passport_number` | `Document\GB\PassportNumber` | VARCHAR(9) | string |
 | `vod_gb_person_name` | `Name\GB\PersonName` | CLOB (JSON) | sub-document |
+| `vod_icao_mrz` | `Icao\Mrz\MachineReadableZone` (a `Td1`, `Td2` or `Td3`; lines joined by `\n`) | VARCHAR(92) | string |
 | `vod_icao_person_name` | `Icao\PersonName` | VARCHAR(255) | string |
 | `vod_id_family_card_number` | `Document\ID\FamilyCardNumber` | VARCHAR(16) | string |
 | `vod_id_full_name` | `Name\ID\FullName` | VARCHAR(100) | string |

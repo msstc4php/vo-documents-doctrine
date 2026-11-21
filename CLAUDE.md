@@ -22,6 +22,11 @@ Tool configuration is byte-identical to the `php84` templates of `msstc4symfony/
 enforces it. Do not edit `.php-cs-fixer.dist.php`, `rector.php`, `phpstan*.neon`, `phpunit.xml.dist`,
 `infection.json5`, `Makefile` or `.gitignore` here. The hex layout of that standard does not apply.
 
+## Release order
+
+`vo-documents` `v0.2.0` (MRZ) must be tagged before this bridge's "PHPUnit without optional libraries" CI job can pass (it installs `^0.1` from
+`composer.json`); then raise the bound to `^0.2`.
+
 ## Adding a class of `vo-documents`
 
 Every non-abstract string value object and every composite with a codec needs one ORM and one ODM type named

@@ -1,7 +1,7 @@
 # msstc4php/vo-documents-doctrine
 
 Doctrine ORM and MongoDB ODM types for [`msstc4php/vo-documents`](https://github.com/msstc4php/vo-documents):
-207 types per branch: identity document numbers, name parts, Latin ICAO names, and the composite person name of each
+208 types per branch: identity document numbers, name parts, Latin ICAO names, and the composite person name of each
 country (RU, AU, DE, FR, IT, ES, NL, CH, GB, TR, US, CA, MX, BR, CN, JP, KR, IN, ID and SA).
 Backed enums (`DriverLicenceCategory`, `Jurisdiction`, `Sex`, `Name\US\NameSuffix`, `Document\IN\PanHolderType`) need no
 type: map them with `enumType`.
