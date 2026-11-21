@@ -199,6 +199,8 @@ use MSSTC4PHP\ValueObject\Documents\Doctrine\Orm\UsWyDlIdNumberType;
 use MSSTC4PHP\ValueObject\Documents\Doctrine\Tests\Support\Samples;
 use MSSTC4PHP\ValueObject\Documents\Document\CA\HealthCard\OnHealthCardNumber;
 use MSSTC4PHP\ValueObject\Documents\Document\CA\HealthCard\OnHealthCardVersionCode;
+use MSSTC4PHP\ValueObject\Documents\Icao\Mrz\Td1;
+use MSSTC4PHP\ValueObject\Documents\Icao\Mrz\Td3;
 use MSSTC4PHP\ValueObject\Exception\InvalidValueObjectException;
 use Override;
 use PHPUnit\Framework\Attributes\CoversClass;
@@ -429,6 +431,20 @@ final class StringTypesTest extends TestCase
         $versionCode = $versionCodeType->convertToPHPValue('YM', $this->platform);
         self::assertInstanceOf(OnHealthCardVersionCode::class, $versionCode);
         self::assertTrue($card->versionCode()?->equals($versionCode));
+    }
+
+    /**
+     * The type restores the format the stored lines have, whatever the entity property says: a property typed `Td3`
+     * that holds a TD1 row fails with a PHP TypeError, so properties are typed `MachineReadableZone`.
+     */
+    public function testTheMrzTypeRestoresTheFormatOfTheStoredLines(): void
+    {
+        $td1 = "I<UTOD231458907<<<<<<<<<<<<<<<\n7408122F1204159UTO<<<<<<<<<<<6\nERIKSSON<<ANNA<MARIA<<<<<<<<<<";
+        $td3 = "PPUTOERIKSSON<<ANNA<MARIA<<<<<<<<<<<<<<<<<<<\nL898902C36UTO7408122F3404159ZE184226B<<<<<16";
+        $type = Type::getType('vod_icao_mrz');
+
+        self::assertInstanceOf(Td1::class, $type->convertToPHPValue($td1, $this->platform));
+        self::assertInstanceOf(Td3::class, $type->convertToPHPValue($td3, $this->platform));
     }
 
     #[DataProviderExternal(Samples::class, 'stringLengths')]

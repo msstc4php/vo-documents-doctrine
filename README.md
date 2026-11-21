@@ -287,6 +287,8 @@ column.
 Column lengths: string types use the longest accepted form; name columns use `AbstractNamePart::MAX_LENGTH` (100) for
 name parts, `Icao\PersonName::MAX_LENGTH` (255) for the ICAO name and 92 for the MRZ (a TD1: 3 lines of 30 and 2 line
 breaks). `vod_icao_mrz` maps the abstract `MachineReadableZone`: it restores the format that fits the stored lines.
+Type the entity property as `MachineReadableZone`, not `Td1`, `Td2` or `Td3`: a `Td3` property loaded from a row holding
+a TD1 fails with a PHP `TypeError` on hydration, not a domain exception.
 
 **Ontario health card.** The printed card `9876543217 YM` is two value objects: `OnHealthCardNumber::fromCard()`
 returns an `OnHealthCard` with `number()` (`vod_ca_on_health_card_number`, the ten digits) and `versionCode()`

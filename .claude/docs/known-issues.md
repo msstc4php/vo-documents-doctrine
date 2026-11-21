@@ -23,7 +23,9 @@ That CI job installs with `composer.json` (`COMPOSER: composer.json`), so `msstc
 ## `vod_icao_mrz` maps the abstract class
 
 `IcaoMrzType` names `MachineReadableZone` (abstract); `fromString()` picks `Td1`, `Td2` or `Td3` from the stored lines. Column length 92 = a TD1
-(3 lines of 30) plus 2 line breaks. `MachineReadableZone` does not implement `HasBirthDate`/`HasSex`, which the types do not need.
+(3 lines of 30) plus 2 line breaks. `MachineReadableZone` implements `HasSex` (wave 3 review: `<` is `Sex::Unspecified`) but not `HasBirthDate`;
+the types need neither. Entity properties must be typed `MachineReadableZone`: a `Td3`-typed property hydrated from a TD1 row is a PHP
+`TypeError` (README; pinned by `testTheMrzTypeRestoresTheFormatOfTheStoredLines`).
 
 ## ODM integration test not run locally
 

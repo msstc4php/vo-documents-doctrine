@@ -6,7 +6,8 @@
 
 - ORM and ODM type `vod_icao_mrz` (`IcaoMrzType`) for `Icao\Mrz\MachineReadableZone` (`Td1`, `Td2`, `Td3`), column
   length 92, in both `TypeRegistrar`s (208 types per branch). Needs `msstc4php/vo-documents` 0.2.0, the release with the MRZ;
-  the lower bound in `composer.json` moves to `^0.2` with that tag.
+  the lower bound in `composer.json` moves to `^0.2` with that tag. Entity properties are typed as the abstract
+  `MachineReadableZone` (a `Td3` property holding a TD1 row is a PHP `TypeError`), see the README.
 
 ## [0.1.0] - 2026-11-18
 
