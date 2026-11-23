@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.3.0] - unreleased
+
+### Changed
+
+- Requires `msstc4php/vo-documents ^0.3` (was `^0.2`): vo-documents 0.3.0 rebuilds national names through their codec on `unserialize()` and requires vo-base `^1.3`. No change in this package's code.
+
 ## [0.2.0] - 2026-11-22
 
 ### Added

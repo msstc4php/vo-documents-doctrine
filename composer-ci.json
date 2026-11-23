@@ -33,7 +33,7 @@
     "require": {
         "php": ">=8.4",
         "msstc4php/vo-base-doctrine": "^1.1",
-        "msstc4php/vo-documents": "dev-main as 0.2.0"
+        "msstc4php/vo-documents": "dev-main as 0.3.0"
     },
     "require-dev": {
         "deptrac/deptrac": "^4.6",
