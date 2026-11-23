@@ -7,6 +7,7 @@ namespace MSSTC4PHP\ValueObject\Documents\Doctrine\Tests\Integration;
 use Composer\InstalledVersions;
 use Doctrine\DBAL\Connection;
 use Doctrine\DBAL\DriverManager;
+use Doctrine\DBAL\Types\Type;
 use Doctrine\ORM\Configuration;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Mapping\Driver\AttributeDriver;
@@ -161,6 +162,38 @@ final class OrmRoundTripTest extends TestCase
         );
     }
 
+    /**
+     * The one-off migration of the 1.0.0 CHANGELOG: rows written by 0.x keep their text until rewritten, so an equality
+     * lookup (which binds the 1.0 text) misses them; re-encoding each stored value through its type fixes that.
+     */
+    public function testMigrationRecipeRewritesA0xRowWithThe1Point0Keys(): void
+    {
+        $this->connection->insert('person', [
+            'snils' => '11223344595',
+            'name' => '{"family":"Иванов","given":"Иван","patronymic":null,"latin":null}',
+        ]);
+        $name = new PersonName(FamilyName::from('Иванов'), GivenName::from('Иван'));
+
+        self::assertNull($this->findPersonByName($name));
+
+        $type = Type::getType(RuPersonNameType::NAME);
+        $platform = $this->connection->getDatabasePlatform();
+        foreach ($this->connection->iterateAssociative('SELECT id, name FROM person') as $row) {
+            $migrated = $type->convertToDatabaseValue($type->convertToPHPValue($row['name'], $platform), $platform);
+            if ($migrated !== $row['name']) {
+                $this->connection->update('person', ['name' => $migrated], ['id' => $row['id']]);
+            }
+        }
+
+        $row = $this->connection->fetchOne('SELECT name FROM person');
+        self::assertIsString($row);
+        self::assertSame(
+            ['family' => 'Иванов', 'given' => 'Иван', 'patronymic' => null, 'latinOverride' => null],
+            \json_decode($row, true, 512, \JSON_THROW_ON_ERROR),
+        );
+        self::assertInstanceOf(Person::class, $this->findPersonByName($name));
+    }
+
     public function testAustralianLicenceAndPersonNameSurviveAFlushAndReload(): void
     {
         $name = new AuPersonName(
@@ -285,6 +318,16 @@ final class OrmRoundTripTest extends TestCase
             ],
             \json_decode($row['saName'], true, 512, \JSON_THROW_ON_ERROR),
         );
+    }
+
+    private function findPersonByName(PersonName $name): ?Person
+    {
+        $this->entityManager->clear();
+        $found = $this->entityManager->createQuery(
+            \sprintf('SELECT p FROM %s p WHERE p.name = :name', Person::class),
+        )->setParameter('name', $name, RuPersonNameType::NAME)->getOneOrNullResult();
+
+        return $found instanceof Person ? $found : null;
     }
 
     private function asiaPerson(): AsiaPerson

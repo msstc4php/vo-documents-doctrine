@@ -102,3 +102,10 @@ vo-documents 1.0 renamed codec keys: the derived names' override `latin` → `la
 `firstSurname`/`secondSurname`. The codecs read the old keys (`PayloadFields::upgraded()` there), so 0.x rows load;
 `Samples::payloadsOf0x()` with literal 0.x payloads pins it for the ORM and ODM types. A row with both an old and a new
 key is refused.
+
+**0.x rows are not rewritten by a flush (1.0 review CR-003).** ORM 3.8's `UnitOfWork::isSameConvertedDatabaseValue()`
+compares `convertToDatabaseValue()` of the hydrated and the current value: both give the 1.0 text, so even assigning
+an equal new instance (or a clone) writes nothing, and the 0.x text stays. ODM 2.17 compares by identity (`===`), so a
+new instance is written there. The one-off migration in the CHANGELOG re-encodes each row through the type with DBAL;
+`OrmRoundTripTest::testMigrationRecipeRewritesA0xRowWithThe1Point0Keys` pins it, and that a DQL equality lookup misses
+the 0.x row before it. A SQL `jsonb` key rename would not fix equality lookups (its text differs from `json_encode()`).

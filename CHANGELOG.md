@@ -26,8 +26,36 @@ wording, `@internal`.
 ### Upgrading from 0.x
 
 - No schema change: type names and column lengths are the same.
-- Rows of composite name columns need no migration; they are rewritten with the 1.0 keys on the next write. Do not run
-  0.x and 1.x on one database side by side (0.x cannot read the 1.0 keys).
+- **Install:** the new `conflict` entries refuse `doctrine/dbal <4`, `doctrine/orm <3` and `doctrine/mongodb-odm <2.9`;
+  upgrade those first.
+- **Composite name columns change text.** Rows written by 0.x keep loading through 1.x, but they are **not** rewritten
+  by reading or flushing them: recent ORM 3 releases (3.8 checked) compare the database value of the hydrated name with
+  that of the current one (both the 1.0 text), so even assigning an equal new instance writes nothing; ODM writes a field only when it holds
+  another instance. Until the rows are migrated, lookups by the stored text miss: a DQL or ODM equality condition on a
+  composite column binds the 1.0 text and misses 0.x rows, and JSON-path or ODM field queries on one version's keys
+  (`->>'latin'`, `$.first`, `name.first`, `name.latin`) miss the other's rows.
+- **Migrate once after upgrading** (ORM): re-encode each composite column through its type with DBAL, which writes
+  exactly the text a 1.0 flush would write (tested in `OrmRoundTripTest`):
+
+  ```php
+  $type = Type::getType(RuPersonNameType::NAME);
+  $platform = $connection->getDatabasePlatform();
+  foreach ($connection->iterateAssociative('SELECT id, name FROM person') as $row) {
+      $migrated = $type->convertToDatabaseValue($type->convertToPHPValue($row['name'], $platform), $platform);
+      if ($migrated !== $row['name']) {
+          $connection->update('person', ['name' => $migrated], ['id' => $row['id']]);
+      }
+  }
+  ```
+
+  Do it per composite column (`vod_<cc>_person_name`; the names that derive their Latin form change `latin` to
+  `latinOverride`, ES and MX also `first`/`second` to `firstSurname`/`secondSurname`; CN, KR, ID, SA and Devanagari IN
+  keep `latin`). A SQL key rename (`jsonb` in PostgreSQL, `JSON_*` in MySQL) fixes JSON-path queries but not equality
+  lookups, whose bound text is the codec's own `json_encode()` output. ODM: load each document, assign a new instance
+  of the name (for example `$document->name = clone $document->name`) and flush, or `$rename` the sub-document keys
+  (`name.latin` to `name.latinOverride`) for field queries.
+- Going back to 0.x after 1.x has written rows is not supported: 0.x cannot read the 1.0 keys. Do not run 0.x and 1.x
+  on one database side by side.
 - See the vo-documents 1.0.0 entry for the API changes of the value objects (enum case names, removed `fromNumber()`
   of partly covered countries, renamed name accessors).
 

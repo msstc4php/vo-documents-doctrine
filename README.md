@@ -83,8 +83,10 @@ later without a break.
 
 Composite payloads are the vo-documents 1.0 codec payloads: the names that derive their Latin form store only an
 override, under `latinOverride`; ES and MX store `firstSurname` and `secondSurname`. Rows written by 0.x (with
-`latin`, `first`, `second`) still load; new writes use the 1.0 keys, so do not run 0.x and 1.x of the bridge on one
-database side by side.
+`latin`, `first`, `second`) still load, but keep their 0.x text until they are migrated (an ORM flush does not rewrite
+them), so equality and JSON-key lookups miss them until then: run the one-off migration of the CHANGELOG, "Upgrading
+from 0.x". The change is one-way: do not run 0.x and 1.x of the bridge on one database side by side, and do not go back
+to 0.x once 1.x has written rows.
 
 ## Types
 
