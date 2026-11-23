@@ -21,6 +21,6 @@ final class CaSocialInsuranceNumberType extends AbstractStringVoType
     #[Override]
     protected function columnLength(): int
     {
-        return 9;
+        return SocialInsuranceNumber::MAX_LENGTH;
     }
 }

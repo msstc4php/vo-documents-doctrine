@@ -21,6 +21,6 @@ final class UsPaDlIdNumberType extends AbstractStringVoType
     #[Override]
     protected function columnLength(): int
     {
-        return 8;
+        return PaDlIdNumber::MAX_LENGTH;
     }
 }

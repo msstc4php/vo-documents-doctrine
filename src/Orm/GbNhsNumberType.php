@@ -21,6 +21,6 @@ final class GbNhsNumberType extends AbstractStringVoType
     #[Override]
     protected function columnLength(): int
     {
-        return 10;
+        return NhsNumber::MAX_LENGTH;
     }
 }

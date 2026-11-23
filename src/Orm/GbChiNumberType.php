@@ -21,6 +21,6 @@ final class GbChiNumberType extends AbstractStringVoType
     #[Override]
     protected function columnLength(): int
     {
-        return 10;
+        return ChiNumber::MAX_LENGTH;
     }
 }

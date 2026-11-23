@@ -21,6 +21,6 @@ final class CnCitizenIdentityNumberType extends AbstractStringVoType
     #[Override]
     protected function columnLength(): int
     {
-        return 18;
+        return CitizenIdentityNumber::MAX_LENGTH;
     }
 }

@@ -21,6 +21,6 @@ final class UsVtDlIdNumberType extends AbstractStringVoType
     #[Override]
     protected function columnLength(): int
     {
-        return 8;
+        return VtDlIdNumber::MAX_LENGTH;
     }
 }

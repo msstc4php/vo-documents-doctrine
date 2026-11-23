@@ -21,6 +21,6 @@ final class CaNuHealthCardNumberType extends AbstractStringVoType
     #[Override]
     protected function columnLength(): int
     {
-        return 9;
+        return NuHealthCardNumber::MAX_LENGTH;
     }
 }

@@ -21,6 +21,6 @@ final class MxElectorKeyType extends AbstractStringVoType
     #[Override]
     protected function columnLength(): int
     {
-        return 18;
+        return ElectorKey::MAX_LENGTH;
     }
 }

@@ -92,6 +92,18 @@ final class CompositeTypesTest extends TestCase
         self::assertSame(\json_encode($vo), \json_encode($restored));
     }
 
+    /**
+     * @param array<string, string|null> $payload
+     */
+    #[DataProviderExternal(Samples::class, 'payloadsOf0x')]
+    public function testReadsAPayloadStoredBy0x(string $name, array $payload, ValueObject $expected): void
+    {
+        $restored = Type::getType($name)->convertToPHPValue($payload);
+
+        self::assertInstanceOf($expected::class, $restored);
+        self::assertTrue($expected->equals($restored));
+    }
+
     #[DataProviderExternal(Samples::class, 'compositeNames')]
     public function testNullRoundTrips(string $name): void
     {

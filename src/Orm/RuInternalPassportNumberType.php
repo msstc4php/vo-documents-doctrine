@@ -21,6 +21,6 @@ final class RuInternalPassportNumberType extends AbstractStringVoType
     #[Override]
     protected function columnLength(): int
     {
-        return 10;
+        return InternalPassportNumber::MAX_LENGTH;
     }
 }

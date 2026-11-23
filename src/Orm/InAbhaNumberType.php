@@ -21,6 +21,6 @@ final class InAbhaNumberType extends AbstractStringVoType
     #[Override]
     protected function columnLength(): int
     {
-        return 14;
+        return AbhaNumber::MAX_LENGTH;
     }
 }

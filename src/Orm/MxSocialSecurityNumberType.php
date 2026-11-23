@@ -21,6 +21,6 @@ final class MxSocialSecurityNumberType extends AbstractStringVoType
     #[Override]
     protected function columnLength(): int
     {
-        return 11;
+        return SocialSecurityNumber::MAX_LENGTH;
     }
 }

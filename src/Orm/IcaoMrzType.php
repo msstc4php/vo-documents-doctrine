@@ -12,11 +12,6 @@ final class IcaoMrzType extends AbstractStringVoType
 {
     public const string NAME = 'vod_icao_mrz';
 
-    /**
-     * Three lines of 30 characters and two line breaks, the longest MRZ (TD1).
-     */
-    private const int LENGTH = 92;
-
     #[Override]
     protected function valueObjectClass(): string
     {
@@ -26,6 +21,6 @@ final class IcaoMrzType extends AbstractStringVoType
     #[Override]
     protected function columnLength(): int
     {
-        return self::LENGTH;
+        return MachineReadableZone::MAX_LENGTH;
     }
 }

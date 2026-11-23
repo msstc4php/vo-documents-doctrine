@@ -21,6 +21,6 @@ final class RuPassportIssuingUnitCodeType extends AbstractStringVoType
     #[Override]
     protected function columnLength(): int
     {
-        return 6;
+        return PassportIssuingUnitCode::MAX_LENGTH;
     }
 }

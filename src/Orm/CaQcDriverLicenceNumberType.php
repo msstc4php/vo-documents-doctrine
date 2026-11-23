@@ -21,6 +21,6 @@ final class CaQcDriverLicenceNumberType extends AbstractStringVoType
     #[Override]
     protected function columnLength(): int
     {
-        return 13;
+        return QcDriverLicenceNumber::MAX_LENGTH;
     }
 }

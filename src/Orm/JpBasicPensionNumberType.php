@@ -21,6 +21,6 @@ final class JpBasicPensionNumberType extends AbstractStringVoType
     #[Override]
     protected function columnLength(): int
     {
-        return 10;
+        return BasicPensionNumber::MAX_LENGTH;
     }
 }

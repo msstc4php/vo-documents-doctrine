@@ -21,6 +21,6 @@ final class UsKsDlIdNumberType extends AbstractStringVoType
     #[Override]
     protected function columnLength(): int
     {
-        return 9;
+        return KsDlIdNumber::MAX_LENGTH;
     }
 }

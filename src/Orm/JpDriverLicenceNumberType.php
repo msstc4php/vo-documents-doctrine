@@ -21,6 +21,6 @@ final class JpDriverLicenceNumberType extends AbstractStringVoType
     #[Override]
     protected function columnLength(): int
     {
-        return 12;
+        return DriverLicenceNumber::MAX_LENGTH;
     }
 }

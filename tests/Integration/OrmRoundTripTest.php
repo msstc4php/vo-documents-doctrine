@@ -156,7 +156,7 @@ final class OrmRoundTripTest extends TestCase
         self::assertSame('11223344595', $row['spouseSnils']);
         self::assertIsString($row['name']);
         self::assertSame(
-            ['family' => 'Иванов', 'given' => 'Иван', 'patronymic' => null, 'latin' => null],
+            ['family' => 'Иванов', 'given' => 'Иван', 'patronymic' => null, 'latinOverride' => null],
             \json_decode($row['name'], true, 512, \JSON_THROW_ON_ERROR),
         );
     }
@@ -271,7 +271,7 @@ final class OrmRoundTripTest extends TestCase
                 'given' => '太郎',
                 'familyReading' => 'ヤマダ',
                 'givenReading' => 'タロウ',
-                'latin' => 'YAMADA<<TAROH',
+                'latinOverride' => 'YAMADA<<TAROH',
             ],
             \json_decode($row['jpName'], true, 512, \JSON_THROW_ON_ERROR),
         );

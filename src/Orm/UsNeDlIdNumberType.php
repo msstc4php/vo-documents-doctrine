@@ -21,6 +21,6 @@ final class UsNeDlIdNumberType extends AbstractStringVoType
     #[Override]
     protected function columnLength(): int
     {
-        return 9;
+        return NeDlIdNumber::MAX_LENGTH;
     }
 }

@@ -21,6 +21,6 @@ final class KrResidentRegistrationNumberType extends AbstractStringVoType
     #[Override]
     protected function columnLength(): int
     {
-        return 13;
+        return ResidentRegistrationNumber::MAX_LENGTH;
     }
 }

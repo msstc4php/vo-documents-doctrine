@@ -21,6 +21,6 @@ final class MxCurpType extends AbstractStringVoType
     #[Override]
     protected function columnLength(): int
     {
-        return 18;
+        return Curp::MAX_LENGTH;
     }
 }

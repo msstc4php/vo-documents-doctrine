@@ -21,6 +21,6 @@ final class AuTasDriverLicenceNumberType extends AbstractStringVoType
     #[Override]
     protected function columnLength(): int
     {
-        return 8;
+        return TasDriverLicenceNumber::MAX_LENGTH;
     }
 }

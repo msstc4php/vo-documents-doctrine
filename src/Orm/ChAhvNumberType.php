@@ -21,6 +21,6 @@ final class ChAhvNumberType extends AbstractStringVoType
     #[Override]
     protected function columnLength(): int
     {
-        return 13;
+        return AhvNumber::MAX_LENGTH;
     }
 }

@@ -21,6 +21,6 @@ final class UsIlDlIdNumberType extends AbstractStringVoType
     #[Override]
     protected function columnLength(): int
     {
-        return 12;
+        return IlDlIdNumber::MAX_LENGTH;
     }
 }

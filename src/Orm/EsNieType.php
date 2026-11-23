@@ -21,6 +21,6 @@ final class EsNieType extends AbstractStringVoType
     #[Override]
     protected function columnLength(): int
     {
-        return 10;
+        return Nie::MAX_LENGTH;
     }
 }

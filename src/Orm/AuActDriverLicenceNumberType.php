@@ -21,6 +21,6 @@ final class AuActDriverLicenceNumberType extends AbstractStringVoType
     #[Override]
     protected function columnLength(): int
     {
-        return 10;
+        return ActDriverLicenceNumber::MAX_LENGTH;
     }
 }

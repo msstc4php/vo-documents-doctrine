@@ -21,6 +21,6 @@ final class RuSnilsType extends AbstractStringVoType
     #[Override]
     protected function columnLength(): int
     {
-        return 11;
+        return Snils::MAX_LENGTH;
     }
 }

@@ -21,6 +21,6 @@ final class IdFamilyCardNumberType extends AbstractStringVoType
     #[Override]
     protected function columnLength(): int
     {
-        return 16;
+        return FamilyCardNumber::MAX_LENGTH;
     }
 }

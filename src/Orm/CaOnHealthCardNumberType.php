@@ -21,6 +21,6 @@ final class CaOnHealthCardNumberType extends AbstractStringVoType
     #[Override]
     protected function columnLength(): int
     {
-        return 10;
+        return OnHealthCardNumber::MAX_LENGTH;
     }
 }

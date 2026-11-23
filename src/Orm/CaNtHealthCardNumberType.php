@@ -21,6 +21,6 @@ final class CaNtHealthCardNumberType extends AbstractStringVoType
     #[Override]
     protected function columnLength(): int
     {
-        return 8;
+        return NtHealthCardNumber::MAX_LENGTH;
     }
 }

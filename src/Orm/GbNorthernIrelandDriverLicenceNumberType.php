@@ -21,6 +21,6 @@ final class GbNorthernIrelandDriverLicenceNumberType extends AbstractStringVoTyp
     #[Override]
     protected function columnLength(): int
     {
-        return 8;
+        return NorthernIrelandDriverLicenceNumber::MAX_LENGTH;
     }
 }

@@ -21,6 +21,6 @@ final class GbNationalInsuranceNumberType extends AbstractStringVoType
     #[Override]
     protected function columnLength(): int
     {
-        return 9;
+        return NationalInsuranceNumber::MAX_LENGTH;
     }
 }

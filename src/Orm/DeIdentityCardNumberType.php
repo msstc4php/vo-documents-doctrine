@@ -21,6 +21,6 @@ final class DeIdentityCardNumberType extends AbstractStringVoType
     #[Override]
     protected function columnLength(): int
     {
-        return 9;
+        return IdentityCardNumber::MAX_LENGTH;
     }
 }

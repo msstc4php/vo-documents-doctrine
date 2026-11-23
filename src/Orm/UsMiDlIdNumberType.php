@@ -21,6 +21,6 @@ final class UsMiDlIdNumberType extends AbstractStringVoType
     #[Override]
     protected function columnLength(): int
     {
-        return 13;
+        return MiDlIdNumber::MAX_LENGTH;
     }
 }

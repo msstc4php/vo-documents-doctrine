@@ -21,6 +21,6 @@ final class BrCnsType extends AbstractStringVoType
     #[Override]
     protected function columnLength(): int
     {
-        return 15;
+        return Cns::MAX_LENGTH;
     }
 }

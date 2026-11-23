@@ -21,6 +21,6 @@ final class InAadhaarNumberType extends AbstractStringVoType
     #[Override]
     protected function columnLength(): int
     {
-        return 12;
+        return AadhaarNumber::MAX_LENGTH;
     }
 }

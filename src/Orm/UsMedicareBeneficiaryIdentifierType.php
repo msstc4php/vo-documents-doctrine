@@ -21,6 +21,6 @@ final class UsMedicareBeneficiaryIdentifierType extends AbstractStringVoType
     #[Override]
     protected function columnLength(): int
     {
-        return 11;
+        return MedicareBeneficiaryIdentifier::MAX_LENGTH;
     }
 }

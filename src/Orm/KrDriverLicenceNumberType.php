@@ -21,6 +21,6 @@ final class KrDriverLicenceNumberType extends AbstractStringVoType
     #[Override]
     protected function columnLength(): int
     {
-        return 15;
+        return DriverLicenceNumber::MAX_LENGTH;
     }
 }

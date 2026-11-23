@@ -21,6 +21,6 @@ final class GbGreatBritainDriverLicenceNumberType extends AbstractStringVoType
     #[Override]
     protected function columnLength(): int
     {
-        return 16;
+        return GreatBritainDriverLicenceNumber::MAX_LENGTH;
     }
 }

@@ -21,6 +21,6 @@ final class CaNsDriverLicenceNumberType extends AbstractStringVoType
     #[Override]
     protected function columnLength(): int
     {
-        return 14;
+        return NsDriverLicenceNumber::MAX_LENGTH;
     }
 }

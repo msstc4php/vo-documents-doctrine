@@ -21,6 +21,6 @@ final class ChIdentityDocumentNumberType extends AbstractStringVoType
     #[Override]
     protected function columnLength(): int
     {
-        return 8;
+        return IdentityDocumentNumber::MAX_LENGTH;
     }
 }

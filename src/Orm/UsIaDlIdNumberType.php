@@ -21,6 +21,6 @@ final class UsIaDlIdNumberType extends AbstractStringVoType
     #[Override]
     protected function columnLength(): int
     {
-        return 9;
+        return IaDlIdNumber::MAX_LENGTH;
     }
 }

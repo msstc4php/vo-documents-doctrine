@@ -21,6 +21,6 @@ final class CaSkDriverLicenceNumberType extends AbstractStringVoType
     #[Override]
     protected function columnLength(): int
     {
-        return 8;
+        return SkDriverLicenceNumber::MAX_LENGTH;
     }
 }

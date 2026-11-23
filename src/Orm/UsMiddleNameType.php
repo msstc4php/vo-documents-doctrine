@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace MSSTC4PHP\ValueObject\Documents\Doctrine\Orm;
 
 use MSSTC4PHP\ValueObject\Doctrine\Orm\AbstractStringVoType;
-use MSSTC4PHP\ValueObject\Documents\Name\AbstractNamePart;
 use MSSTC4PHP\ValueObject\Documents\Name\US\MiddleName;
 use Override;
 
@@ -22,6 +21,6 @@ final class UsMiddleNameType extends AbstractStringVoType
     #[Override]
     protected function columnLength(): int
     {
-        return AbstractNamePart::MAX_LENGTH;
+        return MiddleName::MAX_LENGTH;
     }
 }

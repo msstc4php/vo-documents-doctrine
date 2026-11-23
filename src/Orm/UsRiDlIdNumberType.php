@@ -21,6 +21,6 @@ final class UsRiDlIdNumberType extends AbstractStringVoType
     #[Override]
     protected function columnLength(): int
     {
-        return 8;
+        return RiDlIdNumber::MAX_LENGTH;
     }
 }

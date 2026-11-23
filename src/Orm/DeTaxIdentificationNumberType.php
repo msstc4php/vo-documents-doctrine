@@ -21,6 +21,6 @@ final class DeTaxIdentificationNumberType extends AbstractStringVoType
     #[Override]
     protected function columnLength(): int
     {
-        return 11;
+        return TaxIdentificationNumber::MAX_LENGTH;
     }
 }

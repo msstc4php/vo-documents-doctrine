@@ -21,6 +21,6 @@ final class UsWiDlIdNumberType extends AbstractStringVoType
     #[Override]
     protected function columnLength(): int
     {
-        return 14;
+        return WiDlIdNumber::MAX_LENGTH;
     }
 }

@@ -21,6 +21,6 @@ final class SaIqamaNumberType extends AbstractStringVoType
     #[Override]
     protected function columnLength(): int
     {
-        return 10;
+        return IqamaNumber::MAX_LENGTH;
     }
 }

@@ -1287,7 +1287,7 @@ final class Samples
         yield 'ru person name' => [
             'vod_ru_person_name',
             new RuPersonName(RuFamilyName::from('Иванов'), RuGivenName::from('Иван'), Patronymic::from('Иванович')),
-            ['family' => 'Иванов', 'given' => 'Иван', 'patronymic' => 'Иванович', 'latin' => null],
+            ['family' => 'Иванов', 'given' => 'Иван', 'patronymic' => 'Иванович', 'latinOverride' => null],
         ];
         yield 'ru person name with latin override' => [
             'vod_ru_person_name',
@@ -1297,12 +1297,12 @@ final class Samples
                 Patronymic::from('Иванович'),
                 IcaoPersonName::from('IVANOV<<IVAN<IVANOVICH'),
             ),
-            ['family' => 'Иванов', 'given' => 'Иван', 'patronymic' => 'Иванович', 'latin' => 'IVANOV<<IVAN<IVANOVICH'],
+            ['family' => 'Иванов', 'given' => 'Иван', 'patronymic' => 'Иванович', 'latinOverride' => 'IVANOV<<IVAN<IVANOVICH'],
         ];
         yield 'au person name' => [
             'vod_au_person_name',
             new AuPersonName(AuFamilyName::from('Smith'), AuGivenName::from('Jane')),
-            ['family' => 'Smith', 'given' => 'Jane', 'latin' => null],
+            ['family' => 'Smith', 'given' => 'Jane', 'latinOverride' => null],
         ];
         yield 'au person name with latin override' => [
             'vod_au_person_name',
@@ -1311,47 +1311,47 @@ final class Samples
                 AuGivenName::from('Zoë'),
                 IcaoPersonName::from('MULLER<<ZOE'),
             ),
-            ['family' => 'Müller', 'given' => 'Zoë', 'latin' => 'MULLER<<ZOE'],
+            ['family' => 'Müller', 'given' => 'Zoë', 'latinOverride' => 'MULLER<<ZOE'],
         ];
         yield 'de person name' => [
             'vod_de_person_name',
             new DePersonName(DeFamilyName::from('Müller'), DeGivenName::from('Hans')),
-            ['family' => 'Müller', 'given' => 'Hans', 'latin' => null],
+            ['family' => 'Müller', 'given' => 'Hans', 'latinOverride' => null],
         ];
         yield 'fr person name' => [
             'vod_fr_person_name',
             new FrPersonName(FrFamilyName::from('Dupont'), FrGivenName::from('Jean')),
-            ['family' => 'Dupont', 'given' => 'Jean', 'latin' => null],
+            ['family' => 'Dupont', 'given' => 'Jean', 'latinOverride' => null],
         ];
         yield 'it person name' => [
             'vod_it_person_name',
             new ItPersonName(ItFamilyName::from('Rossi'), ItGivenName::from('Mario')),
-            ['family' => 'Rossi', 'given' => 'Mario', 'latin' => null],
+            ['family' => 'Rossi', 'given' => 'Mario', 'latinOverride' => null],
         ];
         yield 'es person name' => [
             'vod_es_person_name',
             new EsPersonName(EsFamilyName::from('García'), null, EsGivenName::from('Ana')),
-            ['first' => 'García', 'second' => null, 'given' => 'Ana', 'latin' => null],
+            ['firstSurname' => 'García', 'secondSurname' => null, 'given' => 'Ana', 'latinOverride' => null],
         ];
         yield 'nl person name' => [
             'vod_nl_person_name',
             new NlPersonName(NlFamilyName::from('van der Berg'), NlGivenName::from('Jan')),
-            ['family' => 'van der Berg', 'given' => 'Jan', 'latin' => null],
+            ['family' => 'van der Berg', 'given' => 'Jan', 'latinOverride' => null],
         ];
         yield 'ch person name' => [
             'vod_ch_person_name',
             new ChPersonName(ChFamilyName::from('Meier'), ChGivenName::from('Anna')),
-            ['family' => 'Meier', 'given' => 'Anna', 'latin' => null],
+            ['family' => 'Meier', 'given' => 'Anna', 'latinOverride' => null],
         ];
         yield 'gb person name' => [
             'vod_gb_person_name',
             new GbPersonName(GbFamilyName::from('Smith'), GbGivenName::from('John')),
-            ['family' => 'Smith', 'given' => 'John', 'latin' => null],
+            ['family' => 'Smith', 'given' => 'John', 'latinOverride' => null],
         ];
         yield 'tr person name' => [
             'vod_tr_person_name',
             new TrPersonName(TrFamilyName::from('Yılmaz'), TrGivenName::from('Ayşe')),
-            ['family' => 'Yılmaz', 'given' => 'Ayşe', 'latin' => null],
+            ['family' => 'Yılmaz', 'given' => 'Ayşe', 'latinOverride' => null],
         ];
         yield 'de person name with latin override' => [
             'vod_de_person_name',
@@ -1360,7 +1360,7 @@ final class Samples
                 DeGivenName::from('Jürgen'),
                 IcaoPersonName::from('MULLER<<JURGEN'),
             ),
-            ['family' => 'Müller', 'given' => 'Jürgen', 'latin' => 'MULLER<<JURGEN'],
+            ['family' => 'Müller', 'given' => 'Jürgen', 'latinOverride' => 'MULLER<<JURGEN'],
         ];
         yield 'fr person name with latin override' => [
             'vod_fr_person_name',
@@ -1369,7 +1369,7 @@ final class Samples
                 FrGivenName::from('Joël'),
                 IcaoPersonName::from('MULLER<<JOEL'),
             ),
-            ['family' => 'Müller', 'given' => 'Joël', 'latin' => 'MULLER<<JOEL'],
+            ['family' => 'Müller', 'given' => 'Joël', 'latinOverride' => 'MULLER<<JOEL'],
         ];
         yield 'it person name with latin override' => [
             'vod_it_person_name',
@@ -1378,7 +1378,7 @@ final class Samples
                 ItGivenName::from('Anna'),
                 IcaoPersonName::from('MULLER<<ANNA'),
             ),
-            ['family' => 'Müller', 'given' => 'Anna', 'latin' => 'MULLER<<ANNA'],
+            ['family' => 'Müller', 'given' => 'Anna', 'latinOverride' => 'MULLER<<ANNA'],
         ];
         yield 'es person name with second surname and latin override' => [
             'vod_es_person_name',
@@ -1388,12 +1388,12 @@ final class Samples
                 EsGivenName::from('Ana'),
                 IcaoPersonName::from('ARGUELLES<LOPEZ<<ANA'),
             ),
-            ['first' => 'Argüelles', 'second' => 'López', 'given' => 'Ana', 'latin' => 'ARGUELLES<LOPEZ<<ANA'],
+            ['firstSurname' => 'Argüelles', 'secondSurname' => 'López', 'given' => 'Ana', 'latinOverride' => 'ARGUELLES<LOPEZ<<ANA'],
         ];
         yield 'nl person name with one name' => [
             'vod_nl_person_name',
             new NlPersonName(NlFamilyName::from('van der Berg'), null),
-            ['family' => 'van der Berg', 'given' => null, 'latin' => null],
+            ['family' => 'van der Berg', 'given' => null, 'latinOverride' => null],
         ];
         yield 'nl person name with latin override' => [
             'vod_nl_person_name',
@@ -1402,17 +1402,17 @@ final class Samples
                 NlGivenName::from('Anna'),
                 IcaoPersonName::from('MULLER<<ANNA'),
             ),
-            ['family' => 'Müller', 'given' => 'Anna', 'latin' => 'MULLER<<ANNA'],
+            ['family' => 'Müller', 'given' => 'Anna', 'latinOverride' => 'MULLER<<ANNA'],
         ];
         yield 'ch person name without given name and with latin override' => [
             'vod_ch_person_name',
             new ChPersonName(ChFamilyName::from('Müller'), null, IcaoPersonName::from('MULLER')),
-            ['family' => 'Müller', 'given' => null, 'latin' => 'MULLER'],
+            ['family' => 'Müller', 'given' => null, 'latinOverride' => 'MULLER'],
         ];
         yield 'gb person name with one name' => [
             'vod_gb_person_name',
             new GbPersonName(GbFamilyName::from('Smith'), null),
-            ['family' => 'Smith', 'given' => null, 'latin' => null],
+            ['family' => 'Smith', 'given' => null, 'latinOverride' => null],
         ];
         yield 'gb person name with latin override' => [
             'vod_gb_person_name',
@@ -1421,7 +1421,7 @@ final class Samples
                 GbGivenName::from('John'),
                 IcaoPersonName::from('SMYTH<<JOHN'),
             ),
-            ['family' => 'Smith', 'given' => 'John', 'latin' => 'SMYTH<<JOHN'],
+            ['family' => 'Smith', 'given' => 'John', 'latinOverride' => 'SMYTH<<JOHN'],
         ];
         yield 'tr person name with latin override' => [
             'vod_tr_person_name',
@@ -1430,7 +1430,7 @@ final class Samples
                 TrGivenName::from('Ayşe'),
                 IcaoPersonName::from('OZTURK<<AYSE'),
             ),
-            ['family' => 'Öztürk', 'given' => 'Ayşe', 'latin' => 'OZTURK<<AYSE'],
+            ['family' => 'Öztürk', 'given' => 'Ayşe', 'latinOverride' => 'OZTURK<<AYSE'],
         ];
         yield 'us person name' => [
             'vod_us_person_name',
@@ -1438,14 +1438,14 @@ final class Samples
                 UsFamilyName::from('Smith'),
                 UsGivenName::from('Jane'),
                 UsMiddleName::from('Quinn'),
-                NameSuffix::Junior,
+                NameSuffix::JR,
             ),
-            ['family' => 'Smith', 'given' => 'Jane', 'middle' => 'Quinn', 'suffix' => 'JR', 'latin' => null],
+            ['family' => 'Smith', 'given' => 'Jane', 'middle' => 'Quinn', 'suffix' => 'JR', 'latinOverride' => null],
         ];
         yield 'us person name with one name' => [
             'vod_us_person_name',
             new UsPersonName(UsFamilyName::from('Smith'), null),
-            ['family' => 'Smith', 'given' => null, 'middle' => null, 'suffix' => null, 'latin' => null],
+            ['family' => 'Smith', 'given' => null, 'middle' => null, 'suffix' => null, 'latinOverride' => null],
         ];
         yield 'us person name with latin override' => [
             'vod_us_person_name',
@@ -1461,18 +1461,18 @@ final class Samples
                 'given' => 'Jürgen',
                 'middle' => null,
                 'suffix' => null,
-                'latin' => 'MULLER<<JURGEN',
+                'latinOverride' => 'MULLER<<JURGEN',
             ],
         ];
         yield 'ca person name' => [
             'vod_ca_person_name',
             new CaPersonName(CaFamilyName::from('Tremblay'), CaGivenName::from('Marie')),
-            ['family' => 'Tremblay', 'given' => 'Marie', 'latin' => null],
+            ['family' => 'Tremblay', 'given' => 'Marie', 'latinOverride' => null],
         ];
         yield 'ca person name without given name' => [
             'vod_ca_person_name',
             new CaPersonName(CaFamilyName::from('Tremblay'), null),
-            ['family' => 'Tremblay', 'given' => null, 'latin' => null],
+            ['family' => 'Tremblay', 'given' => null, 'latinOverride' => null],
         ];
         yield 'ca person name with latin override' => [
             'vod_ca_person_name',
@@ -1481,17 +1481,17 @@ final class Samples
                 CaGivenName::from('Étienne'),
                 IcaoPersonName::from('BELLANGER<<ETIENNE'),
             ),
-            ['family' => 'Bélanger', 'given' => 'Étienne', 'latin' => 'BELLANGER<<ETIENNE'],
+            ['family' => 'Bélanger', 'given' => 'Étienne', 'latinOverride' => 'BELLANGER<<ETIENNE'],
         ];
         yield 'mx person name' => [
             'vod_mx_person_name',
             new MxPersonName(MxFamilyName::from('García'), MxFamilyName::from('López'), MxGivenName::from('María')),
-            ['first' => 'García', 'second' => 'López', 'given' => 'María', 'latin' => null],
+            ['firstSurname' => 'García', 'secondSurname' => 'López', 'given' => 'María', 'latinOverride' => null],
         ];
         yield 'mx person name without first surname' => [
             'vod_mx_person_name',
             new MxPersonName(null, null, MxGivenName::from('Juan')),
-            ['first' => null, 'second' => null, 'given' => 'Juan', 'latin' => null],
+            ['firstSurname' => null, 'secondSurname' => null, 'given' => 'Juan', 'latinOverride' => null],
         ];
         yield 'mx person name with latin override' => [
             'vod_mx_person_name',
@@ -1501,12 +1501,12 @@ final class Samples
                 MxGivenName::from('Jürgen'),
                 IcaoPersonName::from('MULLER<<JURGEN'),
             ),
-            ['first' => 'Müller', 'second' => null, 'given' => 'Jürgen', 'latin' => 'MULLER<<JURGEN'],
+            ['firstSurname' => 'Müller', 'secondSurname' => null, 'given' => 'Jürgen', 'latinOverride' => 'MULLER<<JURGEN'],
         ];
         yield 'br person name' => [
             'vod_br_person_name',
             new BrPersonName(BrFamilyName::from('Silva'), BrGivenName::from('João')),
-            ['family' => 'Silva', 'given' => 'João', 'latin' => null],
+            ['family' => 'Silva', 'given' => 'João', 'latinOverride' => null],
         ];
         yield 'br person name with latin override' => [
             'vod_br_person_name',
@@ -1515,7 +1515,7 @@ final class Samples
                 BrGivenName::from('João'),
                 IcaoPersonName::from('GONSALVES<<JOAO'),
             ),
-            ['family' => 'Gonçalves', 'given' => 'João', 'latin' => 'GONSALVES<<JOAO'],
+            ['family' => 'Gonçalves', 'given' => 'João', 'latinOverride' => 'GONSALVES<<JOAO'],
         ];
         yield 'cn person name' => [
             'vod_cn_person_name',
@@ -1535,12 +1535,12 @@ final class Samples
         yield 'in person name' => [
             'vod_in_person_name',
             new InPersonName(InGivenName::from('Anil'), InSurname::from('Kumar')),
-            ['given' => 'Anil', 'surname' => 'Kumar', 'latin' => null],
+            ['given' => 'Anil', 'surname' => 'Kumar', 'latinOverride' => null],
         ];
         yield 'in person name without surname' => [
             'vod_in_person_name',
             new InPersonName(InGivenName::from('Anil')),
-            ['given' => 'Anil', 'surname' => null, 'latin' => null],
+            ['given' => 'Anil', 'surname' => null, 'latinOverride' => null],
         ];
         yield 'in devanagari person name' => [
             'vod_in_devanagari_person_name',
@@ -1559,7 +1559,7 @@ final class Samples
                 JpFamilyNameReading::from('ヤマダ'),
                 JpGivenNameReading::from('タロウ'),
             ),
-            ['family' => '山田', 'given' => '太郎', 'familyReading' => 'ヤマダ', 'givenReading' => 'タロウ', 'latin' => null],
+            ['family' => '山田', 'given' => '太郎', 'familyReading' => 'ヤマダ', 'givenReading' => 'タロウ', 'latinOverride' => null],
         ];
         yield 'jp person name with latin override' => [
             'vod_jp_person_name',
@@ -1575,7 +1575,7 @@ final class Samples
                 'given' => '太郎',
                 'familyReading' => 'ヤマダ',
                 'givenReading' => 'タロウ',
-                'latin' => 'YAMADA<<TAROH',
+                'latinOverride' => 'YAMADA<<TAROH',
             ],
         ];
         yield 'kr person name' => [
@@ -1616,7 +1616,7 @@ final class Samples
     {
         $required = [
             'vod_ru_person_name' => ['family', 'given'],
-            'vod_es_person_name' => ['first', 'given'],
+            'vod_es_person_name' => ['firstSurname', 'given'],
             'vod_nl_person_name' => ['family'],
             'vod_ch_person_name' => ['family'],
             'vod_gb_person_name' => ['family'],
@@ -1693,6 +1693,63 @@ final class Samples
         foreach (self::strings() as $label => [$name, , , $invalid]) {
             yield $label => [$name, $invalid];
         }
+    }
+
+    /**
+     * Payloads as vo-documents-doctrine 0.x stored them (vo-documents 0.x keys: the Latin override under `latin`, the
+     * ES and MX surnames under `first` and `second`), with the name each must load as.
+     *
+     * @return iterable<string, array{non-empty-string, array<string, string|null>, ValueObject}>
+     */
+    public static function payloadsOf0x(): iterable
+    {
+        yield 'ru, override' => [
+            'vod_ru_person_name',
+            ['family' => 'Иванов', 'given' => 'Иван', 'patronymic' => 'Иванович', 'latin' => 'IVANOV<<IVAN<IVANOVICH'],
+            new RuPersonName(
+                RuFamilyName::from('Иванов'),
+                RuGivenName::from('Иван'),
+                Patronymic::from('Иванович'),
+                IcaoPersonName::from('IVANOV<<IVAN<IVANOVICH'),
+            ),
+        ];
+        yield 'de, no override' => [
+            'vod_de_person_name',
+            ['family' => 'Müller', 'given' => 'Hans', 'latin' => null],
+            new DePersonName(DeFamilyName::from('Müller'), DeGivenName::from('Hans')),
+        ];
+        yield 'es, two surnames and an override' => [
+            'vod_es_person_name',
+            ['first' => 'Argüelles', 'second' => 'López', 'given' => 'Ana', 'latin' => 'ARGUELLES<LOPEZ<<ANA'],
+            new EsPersonName(
+                EsFamilyName::from('Argüelles'),
+                EsFamilyName::from('López'),
+                EsGivenName::from('Ana'),
+                IcaoPersonName::from('ARGUELLES<LOPEZ<<ANA'),
+            ),
+        ];
+        yield 'mx, no surname' => [
+            'vod_mx_person_name',
+            ['first' => null, 'second' => null, 'given' => 'Juan', 'latin' => null],
+            new MxPersonName(null, null, MxGivenName::from('Juan')),
+        ];
+        yield 'jp, override' => [
+            'vod_jp_person_name',
+            [
+                'family' => '山田',
+                'given' => '太郎',
+                'familyReading' => 'ヤマダ',
+                'givenReading' => 'タロウ',
+                'latin' => 'YAMADA<<TAROH',
+            ],
+            new JpPersonName(
+                JpFamilyName::from('山田'),
+                JpGivenName::from('太郎'),
+                JpFamilyNameReading::from('ヤマダ'),
+                JpGivenNameReading::from('タロウ'),
+                IcaoPersonName::from('YAMADA<<TAROH'),
+            ),
+        ];
     }
 
     /**

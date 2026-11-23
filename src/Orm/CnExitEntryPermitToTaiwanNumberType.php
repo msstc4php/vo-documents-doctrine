@@ -21,6 +21,6 @@ final class CnExitEntryPermitToTaiwanNumberType extends AbstractStringVoType
     #[Override]
     protected function columnLength(): int
     {
-        return 9;
+        return ExitEntryPermitToTaiwanNumber::MAX_LENGTH;
     }
 }

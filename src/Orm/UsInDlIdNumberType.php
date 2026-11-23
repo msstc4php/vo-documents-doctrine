@@ -21,6 +21,6 @@ final class UsInDlIdNumberType extends AbstractStringVoType
     #[Override]
     protected function columnLength(): int
     {
-        return 10;
+        return InDlIdNumber::MAX_LENGTH;
     }
 }

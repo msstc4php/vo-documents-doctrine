@@ -21,6 +21,6 @@ final class FrNirType extends AbstractStringVoType
     #[Override]
     protected function columnLength(): int
     {
-        return 15;
+        return Nir::MAX_LENGTH;
     }
 }

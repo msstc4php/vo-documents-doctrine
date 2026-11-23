@@ -21,6 +21,6 @@ final class CnForeignerPermanentResidenceNumberType extends AbstractStringVoType
     #[Override]
     protected function columnLength(): int
     {
-        return 18;
+        return ForeignerPermanentResidenceNumber::MAX_LENGTH;
     }
 }

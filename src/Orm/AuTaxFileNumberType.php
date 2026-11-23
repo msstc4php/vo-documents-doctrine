@@ -21,6 +21,6 @@ final class AuTaxFileNumberType extends AbstractStringVoType
     #[Override]
     protected function columnLength(): int
     {
-        return 9;
+        return TaxFileNumber::MAX_LENGTH;
     }
 }

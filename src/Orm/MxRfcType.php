@@ -21,6 +21,6 @@ final class MxRfcType extends AbstractStringVoType
     #[Override]
     protected function columnLength(): int
     {
-        return 13;
+        return Rfc::MAX_LENGTH;
     }
 }

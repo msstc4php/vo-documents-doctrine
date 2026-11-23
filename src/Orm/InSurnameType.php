@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace MSSTC4PHP\ValueObject\Documents\Doctrine\Orm;
 
 use MSSTC4PHP\ValueObject\Doctrine\Orm\AbstractStringVoType;
-use MSSTC4PHP\ValueObject\Documents\Name\AbstractNamePart;
 use MSSTC4PHP\ValueObject\Documents\Name\IN\Surname;
 use Override;
 
@@ -22,6 +21,6 @@ final class InSurnameType extends AbstractStringVoType
     #[Override]
     protected function columnLength(): int
     {
-        return AbstractNamePart::MAX_LENGTH;
+        return Surname::MAX_LENGTH;
     }
 }

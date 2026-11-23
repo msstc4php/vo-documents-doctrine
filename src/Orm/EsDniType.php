@@ -21,6 +21,6 @@ final class EsDniType extends AbstractStringVoType
     #[Override]
     protected function columnLength(): int
     {
-        return 9;
+        return Dni::MAX_LENGTH;
     }
 }

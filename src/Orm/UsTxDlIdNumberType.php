@@ -21,6 +21,6 @@ final class UsTxDlIdNumberType extends AbstractStringVoType
     #[Override]
     protected function columnLength(): int
     {
-        return 8;
+        return TxDlIdNumber::MAX_LENGTH;
     }
 }

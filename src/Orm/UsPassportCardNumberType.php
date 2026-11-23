@@ -21,6 +21,6 @@ final class UsPassportCardNumberType extends AbstractStringVoType
     #[Override]
     protected function columnLength(): int
     {
-        return 9;
+        return PassportCardNumber::MAX_LENGTH;
     }
 }

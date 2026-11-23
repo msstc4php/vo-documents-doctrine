@@ -21,6 +21,6 @@ final class IdTaxpayerNumberType extends AbstractStringVoType
     #[Override]
     protected function columnLength(): int
     {
-        return 16;
+        return TaxpayerNumber::MAX_LENGTH;
     }
 }

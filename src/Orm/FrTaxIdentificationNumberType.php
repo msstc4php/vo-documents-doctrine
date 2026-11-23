@@ -21,6 +21,6 @@ final class FrTaxIdentificationNumberType extends AbstractStringVoType
     #[Override]
     protected function columnLength(): int
     {
-        return 13;
+        return TaxIdentificationNumber::MAX_LENGTH;
     }
 }

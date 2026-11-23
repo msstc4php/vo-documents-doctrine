@@ -21,6 +21,6 @@ final class UsHiDlIdNumberType extends AbstractStringVoType
     #[Override]
     protected function columnLength(): int
     {
-        return 9;
+        return HiDlIdNumber::MAX_LENGTH;
     }
 }

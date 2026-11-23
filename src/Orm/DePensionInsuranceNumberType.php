@@ -21,6 +21,6 @@ final class DePensionInsuranceNumberType extends AbstractStringVoType
     #[Override]
     protected function columnLength(): int
     {
-        return 12;
+        return PensionInsuranceNumber::MAX_LENGTH;
     }
 }

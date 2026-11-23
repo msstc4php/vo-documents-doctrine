@@ -21,6 +21,6 @@ final class UsNjDlIdNumberType extends AbstractStringVoType
     #[Override]
     protected function columnLength(): int
     {
-        return 15;
+        return NjDlIdNumber::MAX_LENGTH;
     }
 }

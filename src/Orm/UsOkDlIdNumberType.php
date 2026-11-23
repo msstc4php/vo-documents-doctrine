@@ -21,6 +21,6 @@ final class UsOkDlIdNumberType extends AbstractStringVoType
     #[Override]
     protected function columnLength(): int
     {
-        return 10;
+        return OkDlIdNumber::MAX_LENGTH;
     }
 }

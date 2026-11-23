@@ -21,6 +21,6 @@ final class ItFiscalCodeType extends AbstractStringVoType
     #[Override]
     protected function columnLength(): int
     {
-        return 16;
+        return FiscalCode::MAX_LENGTH;
     }
 }

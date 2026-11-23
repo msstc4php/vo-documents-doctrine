@@ -21,6 +21,6 @@ final class CaBcDriverLicenceNumberType extends AbstractStringVoType
     #[Override]
     protected function columnLength(): int
     {
-        return 8;
+        return BcDriverLicenceNumber::MAX_LENGTH;
     }
 }

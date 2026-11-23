@@ -21,6 +21,6 @@ final class CaQcHealthCardNumberType extends AbstractStringVoType
     #[Override]
     protected function columnLength(): int
     {
-        return 12;
+        return QcHealthCardNumber::MAX_LENGTH;
     }
 }

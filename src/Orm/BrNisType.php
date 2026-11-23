@@ -21,6 +21,6 @@ final class BrNisType extends AbstractStringVoType
     #[Override]
     protected function columnLength(): int
     {
-        return 11;
+        return Nis::MAX_LENGTH;
     }
 }

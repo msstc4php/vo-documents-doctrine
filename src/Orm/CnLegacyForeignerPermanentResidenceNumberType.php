@@ -21,6 +21,6 @@ final class CnLegacyForeignerPermanentResidenceNumberType extends AbstractString
     #[Override]
     protected function columnLength(): int
     {
-        return 15;
+        return LegacyForeignerPermanentResidenceNumber::MAX_LENGTH;
     }
 }

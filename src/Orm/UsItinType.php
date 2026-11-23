@@ -21,6 +21,6 @@ final class UsItinType extends AbstractStringVoType
     #[Override]
     protected function columnLength(): int
     {
-        return 9;
+        return Itin::MAX_LENGTH;
     }
 }

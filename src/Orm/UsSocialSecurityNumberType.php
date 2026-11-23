@@ -21,6 +21,6 @@ final class UsSocialSecurityNumberType extends AbstractStringVoType
     #[Override]
     protected function columnLength(): int
     {
-        return 9;
+        return SocialSecurityNumber::MAX_LENGTH;
     }
 }

@@ -21,6 +21,6 @@ final class BrSpIdentityCardNumberType extends AbstractStringVoType
     #[Override]
     protected function columnLength(): int
     {
-        return 9;
+        return SpIdentityCardNumber::MAX_LENGTH;
     }
 }

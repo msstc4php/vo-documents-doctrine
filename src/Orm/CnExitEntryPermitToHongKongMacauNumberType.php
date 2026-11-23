@@ -21,6 +21,6 @@ final class CnExitEntryPermitToHongKongMacauNumberType extends AbstractStringVoT
     #[Override]
     protected function columnLength(): int
     {
-        return 9;
+        return ExitEntryPermitToHongKongMacauNumber::MAX_LENGTH;
     }
 }

@@ -21,6 +21,6 @@ final class CaPeHealthCardNumberType extends AbstractStringVoType
     #[Override]
     protected function columnLength(): int
     {
-        return 8;
+        return PeHealthCardNumber::MAX_LENGTH;
     }
 }

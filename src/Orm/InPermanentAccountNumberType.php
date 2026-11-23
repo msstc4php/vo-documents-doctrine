@@ -21,6 +21,6 @@ final class InPermanentAccountNumberType extends AbstractStringVoType
     #[Override]
     protected function columnLength(): int
     {
-        return 10;
+        return PermanentAccountNumber::MAX_LENGTH;
     }
 }

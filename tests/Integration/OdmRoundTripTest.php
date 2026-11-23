@@ -134,7 +134,7 @@ final class OdmRoundTripTest extends TestCase
         self::assertIsArray($raw);
         self::assertSame('11223344595', $raw['snils']);
         self::assertSame(
-            ['family' => 'Иванов', 'given' => 'Иван', 'patronymic' => null, 'latin' => null],
+            ['family' => 'Иванов', 'given' => 'Иван', 'patronymic' => null, 'latinOverride' => null],
             $raw['name'],
         );
     }
@@ -178,7 +178,7 @@ final class OdmRoundTripTest extends TestCase
                 'given' => '太郎',
                 'familyReading' => 'ヤマダ',
                 'givenReading' => 'タロウ',
-                'latin' => 'YAMADA<<TAROH',
+                'latinOverride' => 'YAMADA<<TAROH',
             ],
             $raw['jpName'],
         );

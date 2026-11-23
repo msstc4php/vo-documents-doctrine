@@ -21,6 +21,6 @@ final class BrPassportNumberType extends AbstractStringVoType
     #[Override]
     protected function columnLength(): int
     {
-        return 8;
+        return PassportNumber::MAX_LENGTH;
     }
 }

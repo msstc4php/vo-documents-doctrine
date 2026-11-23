@@ -21,6 +21,6 @@ final class CaBcHealthCardNumberType extends AbstractStringVoType
     #[Override]
     protected function columnLength(): int
     {
-        return 10;
+        return BcHealthCardNumber::MAX_LENGTH;
     }
 }

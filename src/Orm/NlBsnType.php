@@ -21,6 +21,6 @@ final class NlBsnType extends AbstractStringVoType
     #[Override]
     protected function columnLength(): int
     {
-        return 9;
+        return Bsn::MAX_LENGTH;
     }
 }

@@ -21,6 +21,6 @@ final class RuDriverLicenceNumberType extends AbstractStringVoType
     #[Override]
     protected function columnLength(): int
     {
-        return 10;
+        return DriverLicenceNumber::MAX_LENGTH;
     }
 }

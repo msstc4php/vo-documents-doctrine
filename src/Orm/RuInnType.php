@@ -21,6 +21,6 @@ final class RuInnType extends AbstractStringVoType
     #[Override]
     protected function columnLength(): int
     {
-        return 12;
+        return Inn::MAX_LENGTH;
     }
 }
