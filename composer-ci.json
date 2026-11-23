@@ -32,8 +32,9 @@
     ],
     "require": {
         "php": ">=8.4",
-        "msstc4php/vo-base-doctrine": "^1.1",
-        "msstc4php/vo-documents": "dev-main as 0.4.0"
+        "msstc4php/vo-base": "^1.4",
+        "msstc4php/vo-base-doctrine": "^1.3",
+        "msstc4php/vo-documents": "dev-main as 1.0.0"
     },
     "require-dev": {
         "deptrac/deptrac": "^4.6",
@@ -51,6 +52,11 @@
         "rector/rector": "^2.1",
         "roave/backward-compatibility-check": "^8.20",
         "roave/security-advisories": "dev-latest"
+    },
+    "conflict": {
+        "doctrine/dbal": "<4",
+        "doctrine/mongodb-odm": "<2.9",
+        "doctrine/orm": "<3"
     },
     "suggest": {
         "doctrine/dbal": "To persist the document value objects as Doctrine ORM column types.",
