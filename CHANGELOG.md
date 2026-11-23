@@ -29,9 +29,9 @@ wording, `@internal`.
 - **Install:** the new `conflict` entries refuse `doctrine/dbal <4`, `doctrine/orm <3` and `doctrine/mongodb-odm <2.9`;
   upgrade those first.
 - **Composite name columns change text.** Rows written by 0.x keep loading through 1.x, but they are **not** rewritten
-  by reading or flushing them: recent ORM 3 releases (3.8 checked) compare the database value of the hydrated name with
-  that of the current one (both the 1.0 text), so even assigning an equal new instance writes nothing; ODM writes a field only when it holds
-  another instance. Until the rows are migrated, lookups by the stored text miss: a DQL or ODM equality condition on a
+  by reading them, and whether a flush after assigning an equal new instance rewrites them depends on the ORM release
+  (3.8 compares the database values, both the 1.0 text, and writes nothing; 3.3 compares instances and writes); ODM
+  writes a field only when it holds another instance. Do not rely on either: run the migration below. Until the rows are migrated, lookups by the stored text miss: a DQL or ODM equality condition on a
   composite column binds the 1.0 text and misses 0.x rows, and JSON-path or ODM field queries on one version's keys
   (`->>'latin'`, `$.first`, `name.first`, `name.latin`) miss the other's rows.
 - **Migrate once after upgrading** (ORM): re-encode each composite column through its type with DBAL, which writes
