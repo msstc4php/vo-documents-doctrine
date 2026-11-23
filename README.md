@@ -7,6 +7,9 @@ Backed enums (`DriverLicenceCategory`, `Jurisdiction`, `Sex`, `Name\US\NameSuffi
 type: map them with `enumType`.
 
 No framework is a runtime dependency. Install the Doctrine stack you actually use; the other branch never loads.
+Supported: `doctrine/dbal` 4, `doctrine/orm` 3, `doctrine/mongodb-odm` 2.9+ (older majors conflict at install).
+
+Status: stable since 1.0.0; see "Backward compatibility".
 
 ## Install
 
@@ -21,7 +24,7 @@ None of the packages is on Packagist yet, so register the GitHub repositories:
         { "type": "vcs", "url": "https://github.com/msstc4php/vo-documents-doctrine" }
     ],
     "require": {
-        "msstc4php/vo-documents-doctrine": "^0.1"
+        "msstc4php/vo-documents-doctrine": "^1.0"
     }
 }
 ```
@@ -68,8 +71,20 @@ the value object's own exception, whose message never contains it.
 Lengths are counted in characters: a CJK, Hangul, Arabic or Devanagari name part takes up to 100 characters (up to 400
 bytes in UTF-8), and the pre-2014 Korean licence (`서울 95-255933-61`, 15 characters) is stored with its Hangul region
 name. MySQL and PostgreSQL count VARCHAR in characters; on a platform that counts bytes (Oracle `VARCHAR2` with the
-default `NLS_LENGTH_SEMANTICS=BYTE`, SQL Server `varchar`) use character semantics or a Unicode type, or widen the
-column.
+default `NLS_LENGTH_SEMANTICS=BYTE`, SQL Server `varchar`) use character semantics or a Unicode type. A declared
+`#[ORM\Column(length: …)]` does not win over the type's length (vo-base-doctrine merges the type's length first, and a
+schema diff reverts a manual widening); for a wider column, subclass the type and override `columnLength()`, or
+register your own type name.
+
+Each column length is the value object's public `MAX_LENGTH` (`Snils::MAX_LENGTH`, `FamilyName::MAX_LENGTH`), which
+vo-documents freezes for 1.x. There is one type per jurisdiction class (`vod_au_nsw_driver_licence_number`, …): a
+column that holds "any AU licence" is not provided in 1.0; a polymorphic type (jurisdiction plus number) can be added
+later without a break.
+
+Composite payloads are the vo-documents 1.0 codec payloads: the names that derive their Latin form store only an
+override, under `latinOverride`; ES and MX store `firstSurname` and `secondSurname`. Rows written by 0.x (with
+`latin`, `first`, `second`) still load; new writes use the 1.0 keys, so do not run 0.x and 1.x of the bridge on one
+database side by side.
 
 ## Types
 
@@ -302,3 +317,14 @@ collide in a unique index, or match each other in a lookup. Give these columns a
 collation: on MySQL `utf8mb4_bin` or `utf8mb4_0900_as_cs`
 (`#[ORM\Column(type: 'vod_au_family_name', options: ['collation' => 'utf8mb4_bin'])]`). PostgreSQL's default
 deterministic collations already compare exactly.
+
+## Backward compatibility
+
+From 1.0.0 on, a breaking change needs 2.0. The 1.x promise covers the type names (`vod_<cc>_<snake_name>`), the
+type classes and their `NAME` constants, the ORM column lengths (each is the frozen `MAX_LENGTH` of its value object)
+and the stored forms: the canonical string of a document number and the codec payload of a composite name. A minor
+release may add types (a new class in vo-documents gets its type in the same minor) and never makes a stored row
+unreadable. A stored value is validated again when it is read, so a vo-documents minor that relaxes a rule only lets
+more rows hydrate; tightening one would be a major there.
+
+Not covered: exception message wording, and anything `@internal`.

@@ -1,5 +1,36 @@
 # Changelog
 
+## [1.0.0] - unreleased
+
+First stable release: from here on a breaking change needs 2.0.
+
+**Backward compatibility (full text in the README, "Backward compatibility"):** 1.x covers the type names and
+classes, the ORM column lengths (each the frozen `MAX_LENGTH` of its value object) and the stored forms (canonical
+strings, codec payloads). A minor adds types and never makes a stored row unreadable. Not covered: exception message
+wording, `@internal`.
+
+### Changed
+
+- Requires `msstc4php/vo-documents ^1.0` (was `^0.4`), `msstc4php/vo-base ^1.4` (now explicit: the composite types use
+  its `Payload\PayloadCodec`) and `msstc4php/vo-base-doctrine ^1.3` (was `^1.1`).
+- Every ORM type's column length is its value object's public `MAX_LENGTH` instead of a literal; the lengths are
+  unchanged.
+- Composite columns follow the vo-documents 1.0 payloads: the override of the names that derive their Latin form is
+  stored under `latinOverride` (was `latin`), the ES and MX surnames under `firstSurname` and `secondSurname` (were
+  `first`, `second`). Rows written by 0.x still load.
+- `conflict` with `doctrine/dbal <4`, `doctrine/orm <3` and `doctrine/mongodb-odm <2.9`, so an unsupported stack fails
+  at install instead of at runtime.
+- README: a declared column length does not widen a column (subclass the type instead); one type per jurisdiction
+  class (a polymorphic type may come later, additively); install `^1.0`.
+
+### Upgrading from 0.x
+
+- No schema change: type names and column lengths are the same.
+- Rows of composite name columns need no migration; they are rewritten with the 1.0 keys on the next write. Do not run
+  0.x and 1.x on one database side by side (0.x cannot read the 1.0 keys).
+- See the vo-documents 1.0.0 entry for the API changes of the value objects (enum case names, removed `fromNumber()`
+  of partly covered countries, renamed name accessors).
+
 ## [0.4.0] - 2026-11-23
 
 ### Changed

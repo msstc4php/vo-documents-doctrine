@@ -24,9 +24,10 @@ enforces it. Do not edit `.php-cs-fixer.dist.php`, `rector.php`, `phpstan*.neon`
 
 ## Release order
 
-Tag `vo-documents` first: this bridge's "PHPUnit without optional libraries" CI job installs the bound from `composer.json`
-(`^0.4` since 0.4.0), so it fails until that `vo-documents` tag exists. A
-`vo-documents` minor release always needs a bridge release that raises the bound, since `^0.x` excludes `0.x+1`.
+Tag `vo-documents` 1.0.0 first: this bridge's "PHPUnit without optional libraries" CI job installs the bounds of
+`composer.json` (`msstc4php/vo-documents ^1.0`, `vo-base ^1.4`, `vo-base-doctrine ^1.3`), so it fails until that tag
+exists; then tag this bridge 1.0.0 the same day. Within 1.x a vo-documents minor no longer forces a bridge release,
+except when it adds a class (the completeness test wants its type).
 
 ## Adding a class of `vo-documents`
 
