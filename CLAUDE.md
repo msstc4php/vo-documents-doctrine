@@ -25,7 +25,7 @@ enforces it. Do not edit `.php-cs-fixer.dist.php`, `rector.php`, `phpstan*.neon`
 ## Release order
 
 Tag `vo-documents` first: this bridge's "PHPUnit without optional libraries" CI job installs the bound from `composer.json`
-(`^0.3` since 0.3.0, for the names rebuilt on unserialize), so it fails until that `vo-documents` tag exists. A
+(`^0.4` since 0.4.0), so it fails until that `vo-documents` tag exists. A
 `vo-documents` minor release always needs a bridge release that raises the bound, since `^0.x` excludes `0.x+1`.
 
 ## Adding a class of `vo-documents`

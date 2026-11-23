@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.4.0] - unreleased
+
+### Changed
+
+- Requires `msstc4php/vo-documents ^0.4` (was `^0.3`): vo-documents 0.4.0 lets every framework bridge map the abstract
+  `MachineReadableZone` and register the composite-name codecs from one class. No change in this package's code.
+
 ## [0.3.0] - 2026-11-23
 
 ### Changed
