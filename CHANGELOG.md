@@ -48,7 +48,8 @@ wording, `@internal`.
   }
   ```
 
-  Do it per composite column (`vod_<cc>_person_name`; the names that derive their Latin form change `latin` to
+  On a large table, page by id (`WHERE id > :last ORDER BY id LIMIT 1000`) instead of one iteration. Do it per
+  composite column (`vod_<cc>_person_name`; the names that derive their Latin form change `latin` to
   `latinOverride`, ES and MX also `first`/`second` to `firstSurname`/`secondSurname`; CN, KR, ID, SA and Devanagari IN
   keep `latin`). A SQL key rename (`jsonb` in PostgreSQL, `JSON_*` in MySQL) fixes JSON-path queries but not equality
   lookups, whose bound text is the codec's own `json_encode()` output. ODM: load each document, assign a new instance

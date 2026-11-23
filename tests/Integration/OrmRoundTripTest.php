@@ -176,6 +176,17 @@ final class OrmRoundTripTest extends TestCase
 
         self::assertNull($this->findPersonByName($name));
 
+        $loaded = $this->entityManager->getRepository(Person::class)->findOneBy([]);
+        self::assertInstanceOf(Person::class, $loaded);
+        $loaded->name = new PersonName(FamilyName::from('Иванов'), GivenName::from('Иван'));
+        $this->entityManager->flush();
+        $this->entityManager->clear();
+        self::assertSame(
+            '{"family":"Иванов","given":"Иван","patronymic":null,"latin":null}',
+            $this->connection->fetchOne('SELECT name FROM person'),
+            'A flush skips an equal value, so it never rewrites a 0.x row.',
+        );
+
         $type = Type::getType(RuPersonNameType::NAME);
         $platform = $this->connection->getDatabasePlatform();
         foreach ($this->connection->iterateAssociative('SELECT id, name FROM person') as $row) {

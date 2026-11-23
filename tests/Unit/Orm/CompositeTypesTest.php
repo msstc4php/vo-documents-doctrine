@@ -117,6 +117,26 @@ final class CompositeTypesTest extends TestCase
         self::assertTrue($expected->equals($restored));
     }
 
+    /**
+     * The CHANGELOG migration step (decode, encode) moves a 0.x payload to the 1.0 keys, leaves a 1.0 payload as it is
+     * (so the loop updates nothing twice) and keeps NULL.
+     *
+     * @param array<string, string|null> $payload
+     */
+    #[DataProviderExternal(Samples::class, 'payloadsOf0x')]
+    public function testMigrationStepRewritesA0xPayloadOnce(string $name, array $payload, ValueObject $expected): void
+    {
+        $type = Type::getType($name);
+        $reencode = fn (?string $stored): mixed => $type->convertToDatabaseValue($type->convertToPHPValue($stored, $this->platform), $this->platform);
+
+        $migrated = $reencode(\json_encode($payload, \JSON_THROW_ON_ERROR));
+
+        self::assertSame($type->convertToDatabaseValue($expected, $this->platform), $migrated);
+        self::assertIsString($migrated);
+        self::assertSame($migrated, $reencode($migrated));
+        self::assertNull($reencode(null));
+    }
+
     #[DataProviderExternal(Samples::class, 'compositeNames')]
     public function testNullRoundTrips(string $name): void
     {
